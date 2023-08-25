@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymelead.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,13 +14,11 @@
 
 <body>
 
-    <nav th:replace="/fragments/navbar :: nav"  > </nav>
+    <nav th:replace="/fragments/navbar :: nav"> </nav>
 
     <div id="contenedor">
-        <img class="fondoegg" src="img/FondoZoom_1.jpg" alt="" width="100%" height="56.25%">
+        <img class="fondoegg" src="/img/fondoarmenteros.jpg" alt="nada" width="100%" height="500px">
     </div>
-
-
     <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
         <div class="card-body">
             <h5 class="card-title">Exito!</h5>
@@ -28,7 +26,7 @@
         </div>
     </div>
 
-    <footer class="text-muted py-5">
+    <footer class="text-muted py-5" style="background-color: burlywood">
         <div class="containerFooter">
             <p class="mb-1" id="pie">Esta porquería la hizo Kave Canem</p>
             <p class="mb-0" id="pie">Otra oportunidad <a id="pie" href="/"><br>Visit the homepage</a> or read our <a
