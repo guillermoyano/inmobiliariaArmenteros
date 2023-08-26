@@ -1,278 +1,361 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://www.thymelead.org/extras/spring-security">
-
-<head>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymelead.org/extras/spring-security"
+>
+  <head>
     <title>Rutina Form</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/navbar.css">
-    <link rel="stylesheet" href="/css/formularios.css">
-    <link rel="stylesheet" href="/css/error1.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/formulariodos.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+     rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
 <body>
+    <nav th:replace="/fragments/navbar :: nav"> </nav>
 
-    <!--<nav th:replace="/fragments/navbar" :: nav> </nav>-->
-
-
-    <div class="contenedorForm">
-        <div class="login-card">
-            <div class="card-header">
-                <div class="log">Formulario para registrar una propiedad</div>
-            </div>
-            <form class="formulario" action="/propiedad/registro" method="POST">
-                <div class="form-group">
-                    <label>
-                        <input name="tipoVivienda" type="text" class="inputForm">
-                        <span>Tipo de Vivienda</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                <input type="number" name="mts2Totales" class="inputForm">
-                    <span> Mt2 Cuadrados</span>
-                    </label>
-                    <br>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="mts2Cubiertos" type="number" class="inputForm">
-                        <span>Mt2 Cubiertos</span>
-                    </label>
-                    <br>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input required="" name="mts2Descubiertos" type="number" class="inputForm" >
-                        <span>Mt2 Descubiertos</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input required="" name="localidad" type="text" class="inputForm">
-                        <span>Localidad</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input required=""  placeholder="" name="barrio" type="text" class="inputForm">
-                        <span>Barrio</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input required=""  placeholder="" name="calle" type="text" class="inputForm">
-                        <span>Calle</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input required=""  placeholder="" name="descripcion" type="text" class="inputForm">
-                        <span>Descripcion</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input required=""  placeholder="" name="altura" type="text" class="inputForm">
-                        <span>Altura</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input required=""  placeholder="" name="cantBanios" type="number" class="inputForm">
-                        <span>Cantidad de Baños</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input required=""  placeholder="" name="cantHabitaciones" type="number" class="inputForm">
-                        <span>Cantidad Habitaciones</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input required=""  placeholder="" name="estado" type="text" class="inputForm">
-                        <span>Estado</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="aguaCorriente" type="checkbox" class="inputForm">
-                        <span>Agua Corriente</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="aireAcondicionado" type="checkbox" class="inputForm">
-                        <span>Aire Acondicionado</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="aptoCredito" type="checkbox" class="inputForm">
-                        <span>Apto Credito</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="balcon" type="checkbox" class="inputForm">
-                        <span>Balcon</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="banio" type="checkbox" class="inputForm">
-                        <span>Baño</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="aptoProfesional" type="checkbox" class="inputForm">
-                        <span>Apto Profesional</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="cloacas" type="checkbox" class="inputForm">
-                        <span>Cloacas</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="gasNatural" type="checkbox" class="inputForm">
-                        <span>Gas Natural</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="permiteMascotas" type="checkbox" class="inputForm">
-                        <span>Permite Mascotas</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="salonJuegos" type="checkbox" class="inputForm">
-                        <span>Salon Juegos</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="gimnasio" type="checkbox" class="inputForm">
-                        <span>Gimnasio</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="luz" type="checkbox" class="inputForm">
-                        <span>Luz</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="pavimento" type="checkbox" class="inputForm">
-                        <span>Pavimento</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="cocina" type="checkbox" class="inputForm">
-                        <span>Cocina</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="patio" type="checkbox" class="inputForm">
-                        <span>Patio</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="quincho" type="checkbox" class="inputForm">
-                        <span>Quincho</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="sum" type="checkbox" class="inputForm">
-                        <span>Sum</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="terraza" type="checkbox" class="inputForm">
-                        <span>terraza</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="baulera" type="checkbox" class="inputForm">
-                        <span>Baulera</span>
-                    </label>
-                </div>
-               <div class="form-group">
-                    <label>
-                        <input name="parrilla" type="checkbox" class="inputForm">
-                        <span>Parrilla</span>
-                    </label>
-                </div> 
-                <div class="form-group">
-                    <label>
-                        <input name="cochera" type="checkbox" class="inputForm">
-                        <span>Cochera</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="pileta" type="checkbox" class="inputForm">
-                        <span>Pileta</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="ascensor" type="checkbox" class="inputForm">
-                        <span>Ascensor</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="lavadero" type="checkbox" class="inputForm">
-                        <span>Lavadero</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="suite" type="checkbox" class="inputForm">
-                        <span>Suite</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="vestidor" type="checkbox" class="inputForm">
-                        <span>Vestidor</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="toillete" type="checkbox" class="inputForm">
-                        <span>Toillete</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label>
-                        <input name="expensas" type="checkbox" class="inputForm">
-                        <span>Expensas</span>
-                    </label>
-                </div>
-                
-                
-                <div class="form-group">
-                    <input value="Enviar" type="submit">
-                </div>
-            </form>
+    <div class="contenedorForm" style="margin-top: 50px; background-color: bisque; opacity: 0.7; border-radius: 10px; margin-top: 13px;">
+        
+      <div class="login-card">
+        <div class="card-header">
+          Formulario para registrar una propiedad</div>
+    
+        <form class="formulario" action="/propiedad/registro" method="POST">
+          <div class="form-group">
+            <label>
+              <input name="tipoVivienda" type="text" class="inputForm" />
+              <span>Tipo de Vivienda</span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <input type="number" name="mts2Totales" class="inputForm" />
+              <span> Mt2 Cuadrados</span>
+            </label>
+            <br />
+          </div>
+          <div class="form-group">
+            <label>
+              <input name="mts2Cubiertos" type="number" class="inputForm" />
+              <span>Mt2 Cubiertos</span>
+            </label>
+            <br />
+          </div>
+          <div class="form-group">
+            <label>
+              <input
+                required=""
+                name="mts2Descubiertos"
+                type="number"
+                class="inputForm"
+              />
+              <span>Mt2 Descubiertos</span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <input
+                required=""
+                name="localidad"
+                type="text"
+                class="inputForm"
+              />
+              <span>Localidad</span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <input
+                required=""
+                placeholder=""
+                name="barrio"
+                type="text"
+                class="inputForm"
+              />
+              <span>Barrio</span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <input
+                required=""
+                placeholder=""
+                name="calle"
+                type="text"
+                class="inputForm"
+              />
+              <span>Calle</span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <input
+                required=""
+                placeholder=""
+                name="descripcion"
+                type="text"
+                class="inputForm"
+              />
+              <span>Descripcion</span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <input
+                required=""
+                placeholder=""
+                name="altura"
+                type="text"
+                class="inputForm"
+              />
+              <span>Altura</span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <input
+                required=""
+                placeholder=""
+                name="cantBanios"
+                type="number"
+                class="inputForm"
+              />
+              <span>Cantidad de Baños</span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <input
+                required=""
+                placeholder=""
+                name="cantHabitaciones"
+                type="number"
+                class="inputForm"
+              />
+              <span>Cantidad Habitaciones</span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <input
+                required=""
+                placeholder=""
+                name="estado"
+                type="text"
+                class="inputForm"
+              />
+              <span>Estado</span>
+            </label>
+          </div>
         </div>
     </div>
-<!--
+</div>
+    <br>
+        <div class="container" style="background-color: bisque; opacity: 0.7; border-radius: 10px; margin-top: 13px;">
+            <div class="row row-cols-4" style="text-align: center; font-size: 18px; font-style: oblique; font-weight: 1000;">
+              
+                <div class="form-group">
+                  <input
+                    name="aguaCorriente"
+                    type="checkbox"
+                    class="inputForm"
+                  />
+                  
+                  <span>Agua Corriente</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input
+                    name="aireAcondicionado"
+                    type="checkbox"
+                    class="inputForm"
+                  />
+                  <span>Aire Acondicionado</span>
+                </label>
+              </div>
+              
+              <div class="form-group">
+                <label>
+                  <input name="aptoCredito" type="checkbox" class="inputForm" />
+                  <span>Apto Credito</span>
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label>
+                  <input name="balcon" type="checkbox" class="inputForm" />
+                  <span>Balcon</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="banio" type="checkbox" class="inputForm" />
+                  <span>Baño</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input
+                    name="aptoProfesional"
+                    type="checkbox"
+                    class="inputForm"
+                  />
+                  <span>Apto Profesional</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="cloacas" type="checkbox" class="inputForm" />
+                  <span>Cloacas</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="gasNatural" type="checkbox" class="inputForm" />
+                  <span>Gas Natural</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input
+                    name="permiteMascotas"
+                    type="checkbox"
+                    class="inputForm"
+                  />
+                  <span>Permite Mascotas</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="salonJuegos" type="checkbox" class="inputForm" />
+                  <span>Salon Juegos</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="gimnasio" type="checkbox" class="inputForm" />
+                  <span>Gimnasio</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="luz" type="checkbox" class="inputForm" />
+                  <span>Luz</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="pavimento" type="checkbox" class="inputForm" />
+                  <span>Pavimento</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="cocina" type="checkbox" class="inputForm" />
+                  <span>Cocina</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="patio" type="checkbox" class="inputForm" />
+                  <span>Patio</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="quincho" type="checkbox" class="inputForm" />
+                  <span>Quincho</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="sum" type="checkbox" class="inputForm" />
+                  <span>Sum</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="terraza" type="checkbox" class="inputForm" />
+                  <span>terraza</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="baulera" type="checkbox" class="inputForm" />
+                  <span>Baulera</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="parrilla" type="checkbox" class="inputForm" />
+                  <span>Parrilla</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="cochera" type="checkbox" class="inputForm" />
+                  <span>Cochera</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="pileta" type="checkbox" class="inputForm" />
+                  <span>Pileta</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="ascensor" type="checkbox" class="inputForm" />
+                  <span>Ascensor</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="lavadero" type="checkbox" class="inputForm" />
+                  <span>Lavadero</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="suite" type="checkbox" class="inputForm" />
+                  <span>Suite</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="vestidor" type="checkbox" class="inputForm" />
+                  <span>Vestidor</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="toillete" type="checkbox" class="inputForm" />
+                  <span>Toillete</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input name="expensas" type="checkbox" class="inputForm" />
+                  <span>Expensas</span>
+                </label>
+              </div>
+            </div>
+          </div>
+<br>
+<div class="cointainer" style="text-align: center;">          
+<div class="form-group">
+            <input value="CARGAR" type="submit" class="btn btn-primary"/>
+          </div>
+</div>
+        </form>
+      </div>
+    </body>
+  </html>
+    <!--
     <div id="successPopup" class="popup">
         <div th:if="${error != null}" class="card1">
             <div class="card_image"> <img src="/img/sadDog.jpg" /> </div>
@@ -291,7 +374,7 @@
             </div>
         </div>
     </div>-->
-<!--
+    <!--
     <script>
         function showSuccessPopup() {
             var successPopup = document.getElementById("successPopup");
@@ -320,7 +403,4 @@
         // Ejemplo de uso: Mostrar popup de error después de un evento fallido
         showErrorPopup();
     </script>-->
-
-</body>
-
-</html>
+  
