@@ -1,6 +1,7 @@
 package com.inmobiliaria.armenteros.servicios;
 import com.inmobiliaria.armenteros.entidades.Propietario;
 import com.inmobiliaria.armenteros.excepciones.MiException;
+import com.inmobiliaria.armenteros.repositorios.PropiedadRepositorio;
 import com.inmobiliaria.armenteros.repositorios.PropietarioRepositorio;
 import java.util.ArrayList;
 import java.util.List;

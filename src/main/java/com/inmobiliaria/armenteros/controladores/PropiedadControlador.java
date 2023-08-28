@@ -2,6 +2,7 @@ package com.inmobiliaria.armenteros.controladores;
 
 import com.inmobiliaria.armenteros.entidades.Propiedad;
 import com.inmobiliaria.armenteros.entidades.Propietario;
+import com.inmobiliaria.armenteros.repositorios.PropietarioRepositorio;
 import com.inmobiliaria.armenteros.servicios.PropiedadServicio;
 import com.inmobiliaria.armenteros.servicios.PropietarioServicio;
 import java.util.List;
@@ -30,12 +31,12 @@ public class PropiedadControlador {
     @Autowired
     PropietarioServicio propietarioServicio;
     @Autowired
-    PropietarioControlador propietarioControlador;
+    PropietarioRepositorio propietarioRepositorio;
 
     @GetMapping("/registrar")
-    public String registrar(ModelMap modelo, @PathVariable Long dni) {
+    public String registrar(ModelMap modelo, Long idPropietario) {
         
-        modelo.put("propietario", propietarioServicio.getone(dni));
+        modelo.put("propietario", propietarioRepositorio.buscarPropietarioPordni());
         return "propiedad_form.html";
     }
     
@@ -51,7 +52,7 @@ public class PropiedadControlador {
             @RequestParam(required = false) Boolean patio, @RequestParam(required = false) Boolean quincho, @RequestParam(required = false) Boolean sum, @RequestParam(required = false) Boolean terraza,
             @RequestParam(required = false) Boolean baulera, @RequestParam(required = false) Boolean parrilla, @RequestParam(required = false) Boolean cochera, @RequestParam(required = false) Boolean pileta,
             @RequestParam(required = false) Boolean ascensor, @RequestParam(required = false) Boolean lavadero, @RequestParam(required = false) Boolean suite, @RequestParam(required = false) Boolean vestidor,
-            @RequestParam(required = false) Boolean toillete, @RequestParam(required = false) Boolean expensas, @RequestParam(required = false) String tipoVivienda, ModelMap modelo, @RequestParam Long dni, RedirectAttributes redirect) {
+            @RequestParam(required = false) Boolean toillete, @RequestParam(required = false) Boolean expensas, @RequestParam(required = false) String tipoVivienda, ModelMap modelo, @PathVariable Long idPropietario, RedirectAttributes redirect) {
         System.out.println("algo");
 
         try {
@@ -59,7 +60,7 @@ public class PropiedadControlador {
                     descripcion, altura, cantBanios, cantHabitaciones, estado, aguaCorriente, aireAcondicionado,
                     aptoCredito, balcon, banio, aptoProfesional, cloacas, gasNatural, permiteMascotas, salonJuegos,
                     gimnasio, luz, pavimento, cocina, patio, quincho, sum, terraza, baulera, parrilla, cochera,
-                    pileta, ascensor, lavadero, suite, vestidor, toillete, expensas, tipoVivienda, dni);
+                    pileta, ascensor, lavadero, suite, vestidor, toillete, expensas, tipoVivienda, idPropietario);
 
             List<Propietario> propietarios = propietarioServicio.listarPropietarios();
 

@@ -50,6 +50,6 @@ public class PropietarioControlador {
             return "propietario_form.html";
         }
             System.out.println("3");
-        return "propiedad_form.html";
+        return "redirect:../propiedad/registrar";
         }
 }

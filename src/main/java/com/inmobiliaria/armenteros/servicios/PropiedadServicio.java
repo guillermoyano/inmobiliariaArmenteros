@@ -29,11 +29,11 @@ public class PropiedadServicio {
             String descripcion, Integer altura, Integer cantBanios, Integer cantHabitaciones, String estado, Boolean aguaCorriente, Boolean aireAcondicionado,
             Boolean aptoCredito, Boolean balcon, Boolean banio, Boolean aptoProfesional, Boolean cloacas, Boolean gasNatural, Boolean permiteMascotas, Boolean salonJuegos,
             Boolean gimnasio, Boolean luz, Boolean pavimento, Boolean cocina, Boolean patio, Boolean quincho, Boolean sum, Boolean terraza, Boolean baulera, Boolean parrilla,
-            Boolean cochera, Boolean pileta, Boolean ascensor, Boolean lavadero, Boolean suite, Boolean vestidor, Boolean toillete, Boolean expensas, String tipoVivienda, Long dni) throws Exception {
+            Boolean cochera, Boolean pileta, Boolean ascensor, Boolean lavadero, Boolean suite, Boolean vestidor, Boolean toillete, Boolean expensas, String tipoVivienda, Long idPropietario) throws Exception {
 
         validar(localidad, barrio, calle, descripcion, mts2Totales, mts2Cubiertos, mts2Descubiertos, altura, cantBanios, cantHabitaciones, estado, tipoVivienda);
 
-        Optional<Propietario> respuestaPropietario = propietarioRepositorio.findById(dni);
+        Optional<Propietario> respuestaPropietario = propietarioRepositorio.findById(idPropietario);
 
         Propietario propietario = new Propietario();
 

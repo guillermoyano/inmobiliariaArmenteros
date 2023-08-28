@@ -1,8 +1,9 @@
 package com.inmobiliaria.armenteros.entidades;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,6 +24,8 @@ import lombok.ToString;
 public class Propietario {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idPropietario;
     private Long dni;
     private String nombreApellido;
     private Long telefono;

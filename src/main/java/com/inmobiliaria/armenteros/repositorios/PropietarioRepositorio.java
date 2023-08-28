@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PropietarioRepositorio extends JpaRepository <Propietario, Long> {
     
-    @Query(value = "SELECT * FROM Propietario p order by dni desc limit 1", nativeQuery = true)
+    @Query(value = "SELECT * FROM Propietario p order by id_Propietario desc limit 1", nativeQuery = true)
     public Propietario buscarPropietarioPordni();
 
 }
