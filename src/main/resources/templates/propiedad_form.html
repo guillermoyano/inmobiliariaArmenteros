@@ -24,6 +24,17 @@
           Formulario para registrar una propiedad</div>
     
         <form class="formulario" action="/propiedad/registro" method="POST">
+
+            <input hidden th:value="${propietario.dni}" name="dni">
+
+            <div class="form-group">
+                <label>
+                    <label class="mb-2">Nombre del propietario</label>
+                    <input type="text" class="form-control" th:value="${propietario.nombreApellido}" name="dni" readonly>
+                </label>
+              </div>
+
+
           <div class="form-group">
             <label>
               <input name="tipoVivienda" type="text" class="inputForm" />
