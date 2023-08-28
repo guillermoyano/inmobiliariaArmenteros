@@ -1,0 +1,57 @@
+.huevo{
+    height: 50px;
+
+}
+
+.containerFooter{
+    padding-left: 10px;
+}
+
+body{
+    background-image: url(../img/Inmobiliaria1.jpeg);
+    background-size: cover;
+    width: 100%;
+}
+#pie{
+    color: black;
+    text-decoration: none;
+}
+
+#contenedor {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.mensajeExito{
+    width: 20%;
+    margin: auto;
+    text-align: center;
+}
+
+.mensajeError{
+    width: 20%;
+    margin: auto;
+    text-align: center;
+}
+
+.formulario{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.containerFooter{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+}
+#cargar{
+    font-family: fantasy;
+    font-style: initial;
+    font-size: 26px;
+
+}

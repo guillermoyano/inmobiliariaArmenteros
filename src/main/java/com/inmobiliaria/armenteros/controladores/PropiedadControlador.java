@@ -1,7 +1,6 @@
 package com.inmobiliaria.armenteros.controladores;
 
 import com.inmobiliaria.armenteros.entidades.Propiedad;
-import com.inmobiliaria.armenteros.excepciones.MiException;
 import com.inmobiliaria.armenteros.servicios.PropiedadServicio;
 import java.util.List;
 import java.util.logging.Level;
