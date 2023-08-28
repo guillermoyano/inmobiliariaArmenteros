@@ -28,7 +28,5 @@ public class Propietario {
     private Long telefono;
     private String email;
     private String dirección;
-    @OneToOne
-    private Propiedad propiedad;
         
 }

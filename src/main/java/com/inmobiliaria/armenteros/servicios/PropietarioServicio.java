@@ -1,8 +1,6 @@
 package com.inmobiliaria.armenteros.servicios;
-import com.inmobiliaria.armenteros.entidades.Propiedad;
 import com.inmobiliaria.armenteros.entidades.Propietario;
 import com.inmobiliaria.armenteros.excepciones.MiException;
-import com.inmobiliaria.armenteros.repositorios.PropiedadRepositorio;
 import com.inmobiliaria.armenteros.repositorios.PropietarioRepositorio;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,26 +18,21 @@ public class PropietarioServicio {
 
     @Autowired
     private PropietarioRepositorio propietarioRepositorio;
-    @Autowired
-    private PropiedadRepositorio propiedadRepositorio;
 
     @Transactional
-    public void crearPropietario(Long dni, String nombreApellido, Long telefono, String email, String direccion, String idPropiedad, Propiedad propiedad) throws MiException{
+    public void crearPropietario(Long dni, String nombreApellido, Long telefono, String email, String direccion) throws MiException{
 
         if(dni == null){
             throw new MiException ("El DNI debe ser ingresado");
         }
         
         Propietario propietario = new Propietario();
-        propiedadRepositorio.findById(idPropiedad).get();
-        Propiedad propiedades = new Propiedad();
 
         propietario.setDni(dni);
         propietario.setNombreApellido(nombreApellido);
         propietario.setEmail(email);
         propietario.setTelefono(telefono);
         propietario.setDirección(direccion);
-        propietario.setPropiedad(propiedad);
         propietarioRepositorio.save(propietario);
     }
 
@@ -51,7 +44,7 @@ public class PropietarioServicio {
     }
 
     @Transactional
-    public void modificarPropietario(Long dni, String nombreApellido, Long telefono, String email, String direccion, String idPropiedad, Propiedad propiedad) throws MiException {
+    public void modificarPropietario(Long dni, String nombreApellido, Long telefono, String email, String direccion) throws MiException {
 
         validar(dni, nombreApellido, telefono, email, direccion);
 
@@ -66,7 +59,6 @@ public class PropietarioServicio {
             propietario.setTelefono(telefono);
             propietario.setEmail(email);
             propietario.setDirección(direccion);
-            propietario.setPropiedad(propiedad);
 
             propietarioRepositorio.save(propietario);
         }

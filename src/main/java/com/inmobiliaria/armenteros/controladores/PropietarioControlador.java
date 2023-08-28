@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -27,20 +28,18 @@ public class PropietarioControlador {
     
     @GetMapping("/registrar")
     public String registrar(ModelMap modelo){
-        List<Propietario>propietario = propietarioServicio.listarPropietarios();
-        modelo.addAttribute("propietarios", propietario);
+       
         return "propietario_form.html";
     }
 
     @PostMapping("/registro")
     public String registro(@RequestParam(required = false) Long dni, @RequestParam(required = false) String nombreApellido, 
             @RequestParam(required = false) Long telefono, @RequestParam(required = false) String email, 
-            @RequestParam(required = false) String direccion, @RequestParam(required = false) String idPropiedad, 
-            @RequestParam(required = false) Propiedad propiedad, ModelMap modelo){
+            @RequestParam(required = false) String direccion, ModelMap modelo, RedirectAttributes redirect){
             System.out.println("algo");
             
         try {
-            propietarioServicio.crearPropietario(dni, nombreApellido, telefono, email, direccion, idPropiedad, propiedad);
+            propietarioServicio.crearPropietario(dni, nombreApellido, telefono, email, direccion);
             System.out.println("1");
             
         } catch (Exception ex) {
@@ -51,6 +50,6 @@ public class PropietarioControlador {
             return "propietario_form.html";
         }
             System.out.println("3");
-        return "propietario_form.html";
+        return "propiedad_form.html";
         }
 }

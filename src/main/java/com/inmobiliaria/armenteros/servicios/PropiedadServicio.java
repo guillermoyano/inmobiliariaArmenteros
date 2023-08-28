@@ -1,7 +1,9 @@
 package com.inmobiliaria.armenteros.servicios;
 
 import com.inmobiliaria.armenteros.entidades.Propiedad;
+import com.inmobiliaria.armenteros.entidades.Propietario;
 import com.inmobiliaria.armenteros.repositorios.PropiedadRepositorio;
+import com.inmobiliaria.armenteros.repositorios.PropietarioRepositorio;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,17 +21,31 @@ public class PropiedadServicio {
 
     @Autowired
     private PropiedadRepositorio propiedadRepositorio;
-
+     @Autowired
+    private PropietarioRepositorio propietarioRepositorio;
+     
+@Transactional
     public void crearPropiedad(Double mts2Totales, Double mts2Cubiertos, Double mts2Descubiertos, String localidad, String barrio, String calle,
             String descripcion, Integer altura, Integer cantBanios, Integer cantHabitaciones, String estado, Boolean aguaCorriente, Boolean aireAcondicionado,
             Boolean aptoCredito, Boolean balcon, Boolean banio, Boolean aptoProfesional, Boolean cloacas, Boolean gasNatural, Boolean permiteMascotas, Boolean salonJuegos,
             Boolean gimnasio, Boolean luz, Boolean pavimento, Boolean cocina, Boolean patio, Boolean quincho, Boolean sum, Boolean terraza, Boolean baulera, Boolean parrilla,
-            Boolean cochera, Boolean pileta, Boolean ascensor, Boolean lavadero, Boolean suite, Boolean vestidor, Boolean toillete, Boolean expensas, String tipoVivienda) throws Exception {
+            Boolean cochera, Boolean pileta, Boolean ascensor, Boolean lavadero, Boolean suite, Boolean vestidor, Boolean toillete, Boolean expensas, String tipoVivienda, Long dni) throws Exception {
 
         validar(localidad, barrio, calle, descripcion, mts2Totales, mts2Cubiertos, mts2Descubiertos, altura, cantBanios, cantHabitaciones, estado, tipoVivienda);
 
+        Optional<Propietario> respuestaPropietario = propietarioRepositorio.findById(dni);
+
+        Propietario propietario = new Propietario();
+
+        if (respuestaPropietario.isPresent()) {
+            propietario = respuestaPropietario.get();
+        }
+        
+        
+        
         Propiedad propiedad = new Propiedad();
 
+        propiedad.setPropietario(propietario);
         propiedad.setMts2Totales(mts2Totales);
         propiedad.setMts2Cubiertos(mts2Cubiertos);
         propiedad.setMts2Descubiertos(mts2Descubiertos);
