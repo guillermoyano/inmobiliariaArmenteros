@@ -52,8 +52,7 @@ public class PropiedadControlador {
             @RequestParam(required = false) Boolean patio, @RequestParam(required = false) Boolean quincho, @RequestParam(required = false) Boolean sum, @RequestParam(required = false) Boolean terraza,
             @RequestParam(required = false) Boolean baulera, @RequestParam(required = false) Boolean parrilla, @RequestParam(required = false) Boolean cochera, @RequestParam(required = false) Boolean pileta,
             @RequestParam(required = false) Boolean ascensor, @RequestParam(required = false) Boolean lavadero, @RequestParam(required = false) Boolean suite, @RequestParam(required = false) Boolean vestidor,
-            @RequestParam(required = false) Boolean toillete, @RequestParam(required = false) Boolean expensas, @RequestParam(required = false) String tipoVivienda, ModelMap modelo, @PathVariable Long idPropietario, RedirectAttributes redirect) {
-        System.out.println("algo");
+            @RequestParam(required = false) Boolean toillete, @RequestParam(required = false) Boolean expensas, @RequestParam(required = false) String tipoVivienda, ModelMap modelo, @RequestParam(required = false) Long idPropietario, RedirectAttributes redirect) {
 
         try {
             propiedadServicio.crearPropiedad(mts2Totales, mts2Cubiertos, mts2Descubiertos, localidad, barrio, calle,
@@ -61,23 +60,16 @@ public class PropiedadControlador {
                     aptoCredito, balcon, banio, aptoProfesional, cloacas, gasNatural, permiteMascotas, salonJuegos,
                     gimnasio, luz, pavimento, cocina, patio, quincho, sum, terraza, baulera, parrilla, cochera,
                     pileta, ascensor, lavadero, suite, vestidor, toillete, expensas, tipoVivienda, idPropietario);
-
-            List<Propietario> propietarios = propietarioServicio.listarPropietarios();
-
-            redirect.addAttribute("propietarios", propietarios);
             redirect.addFlashAttribute("exito", "La propiedad fue cargada correctamente");
-
-            System.out.println("1");
 
         } catch (Exception ex) {
             List<Propiedad> propiedades = propiedadServicio.listarPropiedades();
             modelo.addAttribute("propiedades", propiedades);
             Logger.getLogger(PropiedadControlador.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("2");
             return "propiedad_form.html";
         }
         System.out.println("3");
-        return "propiedad_form.html";
+        return "index.html";
     }
 
 }

@@ -14,10 +14,10 @@
 
 <body>
 
-    <nav th:replace="/fragments/navbar :: nav"> </nav>
+    <nav th:replace="fragments/navbar :: nav"> </nav>
 
     <div id="contenedor">
-        <img class="fondoegg" src="/img/fondoarmenteros.jpg" alt="nada" width="100%" height="500px">
+        <img src="/img/fondoarmenteros.jpg" alt="nada" width="100%" height="500px">
     </div>
     <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
         <div class="card-body">

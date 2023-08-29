@@ -1,6 +1,5 @@
 package com.inmobiliaria.armenteros.controladores;
 
-import com.inmobiliaria.armenteros.entidades.Propiedad;
 import com.inmobiliaria.armenteros.entidades.Propietario;
 import com.inmobiliaria.armenteros.servicios.PropietarioServicio;
 import java.util.List;
