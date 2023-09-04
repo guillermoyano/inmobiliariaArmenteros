@@ -99,5 +99,13 @@ public class PropietarioServicio {
         }
 
     }
+    
+    public Propietario buscarPorDni(Long dni){
+        Propietario propietario = new Propietario();
+        
+        propietario = propietarioRepositorio.buscarPropietarioPorDni(dni);
+        
+        return propietario;
+    }
 
 }

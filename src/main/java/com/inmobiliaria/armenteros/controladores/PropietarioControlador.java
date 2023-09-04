@@ -1,6 +1,7 @@
 package com.inmobiliaria.armenteros.controladores;
 
 import com.inmobiliaria.armenteros.entidades.Propietario;
+import com.inmobiliaria.armenteros.repositorios.PropietarioRepositorio;
 import com.inmobiliaria.armenteros.servicios.PropietarioServicio;
 import java.util.List;
 import java.util.logging.Level;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,9 +26,31 @@ public class PropietarioControlador {
 
     @Autowired
     PropietarioServicio propietarioServicio;
+    @Autowired
+    PropietarioRepositorio propietarioRepositorio;
+    
+    @GetMapping("/buscarPropietario")
+    public String buscarPropietario(ModelMap modelo){
+        
+        System.out.println("-2");
+        return "buscarPropietario.html";
+    }
+    
+    @PostMapping("/buscarPropietario")
+    public String buscarPropietarioPorDni(@RequestParam Long dni, RedirectAttributes redirect, ModelMap modelo){
+        Propietario propietario = propietarioServicio.buscarPorDni(dni);
+        System.out.println("-1");
+        if(propietario !=null){
+            return "index.html";
+//            return "redirect:../propiedad/registrar/" + propietario.getIdPropietario() ;
+        }else{
+            return "propietario_form.html";
+        }
+    }
+    
     
     @GetMapping("/registrar")
-    public String registrar(ModelMap modelo){
+    public String registrar(ModelMap modelo, @PathVariable Long idPropietario){
        
         return "propietario_form.html";
     }
@@ -38,7 +62,11 @@ public class PropietarioControlador {
             System.out.println("algo");
             
         try {
-            propietarioServicio.crearPropietario(dni, nombreApellido, telefono, email, direccion);
+            if(propietarioServicio.buscarPorDni(dni)==null){
+                propietarioServicio.crearPropietario(dni, nombreApellido, telefono, email, direccion);
+                return "redirect:../propiedad/registrar";
+            }
+                           
             System.out.println("1");
             
         } catch (Exception ex) {
