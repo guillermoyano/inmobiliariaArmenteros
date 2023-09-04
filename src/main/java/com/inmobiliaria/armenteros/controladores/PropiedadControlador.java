@@ -1,5 +1,6 @@
 package com.inmobiliaria.armenteros.controladores;
 
+import com.inmobiliaria.armenteros.entidades.Imagen;
 import com.inmobiliaria.armenteros.entidades.Propiedad;
 import com.inmobiliaria.armenteros.entidades.Propietario;
 import com.inmobiliaria.armenteros.repositorios.PropietarioRepositorio;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
@@ -52,14 +54,16 @@ public class PropiedadControlador {
             @RequestParam(required = false) Boolean patio, @RequestParam(required = false) Boolean quincho, @RequestParam(required = false) Boolean sum, @RequestParam(required = false) Boolean terraza,
             @RequestParam(required = false) Boolean baulera, @RequestParam(required = false) Boolean parrilla, @RequestParam(required = false) Boolean cochera, @RequestParam(required = false) Boolean pileta,
             @RequestParam(required = false) Boolean ascensor, @RequestParam(required = false) Boolean lavadero, @RequestParam(required = false) Boolean suite, @RequestParam(required = false) Boolean vestidor,
-            @RequestParam(required = false) Boolean toillete, @RequestParam(required = false) Boolean expensas, @RequestParam(required = false) String tipoVivienda, ModelMap modelo, @RequestParam(required = false) Long idPropietario, RedirectAttributes redirect) {
+            @RequestParam(required = false) Boolean toillete, @RequestParam(required = false) Boolean expensas, @RequestParam(required = false) String tipoVivienda, ModelMap modelo, 
+            @RequestParam(required = false) Long idPropietario, MultipartFile archivo,  RedirectAttributes redirect) {
 
         try {
-            propiedadServicio.crearPropiedad(mts2Totales, mts2Cubiertos, mts2Descubiertos, localidad, barrio, calle,
-                    descripcion, altura, cantBanios, cantHabitaciones, estado, aguaCorriente, aireAcondicionado,
-                    aptoCredito, balcon, banio, aptoProfesional, cloacas, gasNatural, permiteMascotas, salonJuegos,
-                    gimnasio, luz, pavimento, cocina, patio, quincho, sum, terraza, baulera, parrilla, cochera,
-                    pileta, ascensor, lavadero, suite, vestidor, toillete, expensas, tipoVivienda, idPropietario);
+            propiedadServicio.crearPropiedad(mts2Totales, mts2Cubiertos, 
+                    mts2Descubiertos, localidad, barrio, calle, descripcion, altura, cantBanios, 
+                    cantHabitaciones, estado, aguaCorriente, aireAcondicionado, aptoCredito, balcon, 
+                    banio, aptoProfesional, cloacas, gasNatural, permiteMascotas, salonJuegos, gimnasio, luz, pavimento, 
+                    cocina, patio, quincho, sum, terraza, baulera, parrilla, cochera, pileta, ascensor, lavadero, 
+                    suite, vestidor, toillete, expensas, tipoVivienda, idPropietario, archivo);
             redirect.addFlashAttribute("exito", "La propiedad fue cargada correctamente");
 
         } catch (Exception ex) {

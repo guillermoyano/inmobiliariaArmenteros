@@ -1,9 +1,12 @@
 package com.inmobiliaria.armenteros.entidades;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -80,5 +83,6 @@ public class Propiedad {
     private String tipoVivienda;
     @OneToOne
     private Propietario propietario;
-
+    @OneToOne
+    private Imagen imagen;
 }
