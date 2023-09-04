@@ -3,10 +3,12 @@ package com.inmobiliaria.armenteros.controladores;
 import com.inmobiliaria.armenteros.entidades.Propietario;
 import com.inmobiliaria.armenteros.repositorios.PropietarioRepositorio;
 import com.inmobiliaria.armenteros.servicios.PropietarioServicio;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,8 +43,8 @@ public class PropietarioControlador {
         Propietario propietario = propietarioServicio.buscarPorDni(dni);
         System.out.println("-1");
         if(propietario !=null){
-            return "index.html";
-//            return "redirect:../propiedad/registrar/" + propietario.getIdPropietario() ;
+           // return "index.html";
+          return "redirect:../propietario/listaUnico/" + propietario.getIdPropietario() ;
         }else{
             return "propietario_form.html";
         }
@@ -79,4 +81,32 @@ public class PropietarioControlador {
             System.out.println("3");
         return "redirect:../propiedad/registrar";
         }
+    
+    @GetMapping("/lista")
+    public String listar(ModelMap modelo, @Param("keyword") Long keyword) {
+        try {
+            List<Propietario> propietarios = new ArrayList<>();
+
+            if (keyword == null) {
+                propietarioRepositorio.findAll().forEach(propietarios::add);
+            } else {
+                propietarioRepositorio. buscarPropietarioPorDni1(keyword).forEach(propietarios::add);
+                modelo.addAttribute("keyword", keyword);
+            }
+            modelo.addAttribute("tutores", propietarios);
+        } catch (Exception e) {
+            modelo.addAttribute("error", e.getMessage());
+        }
+        return "propietario_list.html";
+
+    }
+
+    @GetMapping("/listaUnico/{idPropietario}")
+    public String listarunico(ModelMap modelo, @PathVariable Long idPropietario) {
+        Propietario propietarios = propietarioServicio.getone(idPropietario);
+        modelo.addAttribute("propietarios", propietarios);
+
+        return "propietario_unico.html";
+
+    }
 }

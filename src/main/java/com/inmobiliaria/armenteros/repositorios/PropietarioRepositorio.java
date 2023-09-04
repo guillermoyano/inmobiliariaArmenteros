@@ -1,6 +1,7 @@
 package com.inmobiliaria.armenteros.repositorios;
 
 import com.inmobiliaria.armenteros.entidades.Propietario;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -18,5 +19,8 @@ public interface PropietarioRepositorio extends JpaRepository <Propietario, Long
     
      @Query("SELECT p FROM Propietario p WHERE p.dni = :dni")
     public Propietario buscarPropietarioPorDni(@Param("dni") Long dni);
+    
+    @Query(value="SELECT * FROM Propietario WHERE dni like %:dni%", nativeQuery = true)
+    public List<Propietario> buscarPropietarioPorDni1(@Param("dni") Long dni);
 
 }

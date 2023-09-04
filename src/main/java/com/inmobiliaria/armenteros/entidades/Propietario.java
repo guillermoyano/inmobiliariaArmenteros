@@ -30,6 +30,6 @@ public class Propietario {
     private String nombreApellido;
     private Long telefono;
     private String email;
-    private String dirección;
+    private String direccion;
         
 }

@@ -33,7 +33,7 @@ public class PropietarioServicio {
         propietario.setNombreApellido(nombreApellido);
         propietario.setEmail(email);
         propietario.setTelefono(telefono);
-        propietario.setDirección(direccion);
+        propietario.setDireccion(direccion);
         propietarioRepositorio.save(propietario);
     }
 
@@ -42,6 +42,16 @@ public class PropietarioServicio {
         List<Propietario> propietarios = new ArrayList();
         propietarios = propietarioRepositorio.findAll();
         return propietarios;
+    }
+    
+    public List<Propietario> propietarioUnico(Long idPropietario) {
+
+        List<Propietario> propietarios = new ArrayList();
+
+        propietarios = propietarioRepositorio.findAll();
+
+        return propietarios;
+
     }
 
     @Transactional
@@ -59,7 +69,7 @@ public class PropietarioServicio {
             propietario.setNombreApellido(nombreApellido);
             propietario.setTelefono(telefono);
             propietario.setEmail(email);
-            propietario.setDirección(direccion);
+            propietario.setDireccion(direccion);
 
             propietarioRepositorio.save(propietario);
         }
@@ -107,5 +117,7 @@ public class PropietarioServicio {
         
         return propietario;
     }
+    
+    
 
 }

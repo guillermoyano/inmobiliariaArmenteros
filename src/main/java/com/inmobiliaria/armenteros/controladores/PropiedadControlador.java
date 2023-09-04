@@ -35,10 +35,10 @@ public class PropiedadControlador {
     @Autowired
     PropietarioRepositorio propietarioRepositorio;
 
-    @GetMapping("/registrar")
-    public String registrar(ModelMap modelo, Long idPropietario) {
+    @GetMapping("/registrar/{idPropietario}")
+    public String registrar(ModelMap modelo, @PathVariable Long idPropietario) {
         
-        modelo.put("propietario", propietarioRepositorio.buscarPropietarioPordni());
+        modelo.put("propietario", propietarioServicio.getone(idPropietario));
         return "propiedad_form.html";
     }
     
