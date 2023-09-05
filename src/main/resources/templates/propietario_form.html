@@ -24,7 +24,7 @@
             <form class="formulario" action="/propietario/registro" method="POST">
                 <div class="form-group">
                     <label>
-                        <input name="dni" type="text" class="inputForm" />
+                        <input name="dni" type="text" id="campo" class="inputForm" readonly/>
                         <span>Dni</span>
                     </label>
                 </div>
@@ -73,6 +73,11 @@
                 integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     </body>
+    
+    <script>
+    var valor = localStorage.getItem('valor');
+    document.getElementById('campo').value = valor;
+  </script>
 </html>
 <!--
 <div id="successPopup" class="popup">

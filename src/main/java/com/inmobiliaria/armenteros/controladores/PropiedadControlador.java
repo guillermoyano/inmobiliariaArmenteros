@@ -3,13 +3,16 @@ package com.inmobiliaria.armenteros.controladores;
 import com.inmobiliaria.armenteros.entidades.Imagen;
 import com.inmobiliaria.armenteros.entidades.Propiedad;
 import com.inmobiliaria.armenteros.entidades.Propietario;
+import com.inmobiliaria.armenteros.repositorios.PropiedadRepositorio;
 import com.inmobiliaria.armenteros.repositorios.PropietarioRepositorio;
 import com.inmobiliaria.armenteros.servicios.PropiedadServicio;
 import com.inmobiliaria.armenteros.servicios.PropietarioServicio;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +33,8 @@ public class PropiedadControlador {
 
     @Autowired
     PropiedadServicio propiedadServicio;
+    @Autowired
+    PropiedadRepositorio propiedadRepositorio;
     @Autowired
     PropietarioServicio propietarioServicio;
     @Autowired
@@ -76,4 +81,21 @@ public class PropiedadControlador {
         return "index.html";
     }
 
+        @GetMapping("/lista")
+    public String listar(ModelMap modelo, @Param("keyword")String keyword){
+        try{
+            List<Propiedad> propiedades = new ArrayList<>();
+            if(keyword==null){
+                propiedadRepositorio.findAll().forEach(propiedades::add);
+            }else{
+                propiedadRepositorio.buscarPropiedadPorCalle(keyword).forEach(propiedades::add);
+                modelo.addAttribute("keyword", keyword);
+            }
+            modelo.addAttribute("propiedades", propiedades);
+        }catch(Exception e){
+            modelo.addAttribute("error", e.getMessage());
+        }
+        return "propiedad_list.html";
+        
+    }
 }
