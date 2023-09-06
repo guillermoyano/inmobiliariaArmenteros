@@ -42,60 +42,82 @@ public class PropiedadControlador {
 
     @GetMapping("/registrar/{idPropietario}")
     public String registrar(ModelMap modelo, @PathVariable Long idPropietario) {
-        
+
         modelo.put("propietario", propietarioServicio.getone(idPropietario));
         return "propiedad_form.html";
     }
-    
+
+    @GetMapping("/registrarUno")
+    public String registrarUno(ModelMap modelo, Long idPropietario) {
+
+        modelo.put("propietario", propietarioRepositorio.buscarPropietarioPorId());
+        return "propiedad_form.html";
+    }
 
     @PostMapping("/registro")
-    public String registro(@RequestParam(required = false) Double mts2Totales, @RequestParam(required = false) Double mts2Cubiertos, @RequestParam(required = false) Double mts2Descubiertos,
-            @RequestParam(required = false) String localidad, @RequestParam(required = false) String barrio, @RequestParam(required = false) String calle, @RequestParam(required = false) String descripcion,
-            @RequestParam(required = false) Integer altura, @RequestParam(required = false) Integer cantBanios, @RequestParam(required = false) Integer cantHabitaciones,
-            @RequestParam(required = false) String estado, @RequestParam(required = false) Boolean aguaCorriente, @RequestParam(required = false) Boolean aireAcondicionado,
-            @RequestParam(required = false) Boolean aptoCredito, @RequestParam(required = false) Boolean balcon, @RequestParam(required = false) Boolean banio, @RequestParam(required = false) Boolean aptoProfesional,
-            @RequestParam(required = false) Boolean cloacas, @RequestParam(required = false) Boolean gasNatural, @RequestParam(required = false) Boolean permiteMascotas, @RequestParam(required = false) Boolean salonJuegos,
-            @RequestParam(required = false) Boolean gimnasio, @RequestParam(required = false) Boolean luz, @RequestParam(required = false) Boolean pavimento, @RequestParam(required = false) Boolean cocina,
-            @RequestParam(required = false) Boolean patio, @RequestParam(required = false) Boolean quincho, @RequestParam(required = false) Boolean sum, @RequestParam(required = false) Boolean terraza,
-            @RequestParam(required = false) Boolean baulera, @RequestParam(required = false) Boolean parrilla, @RequestParam(required = false) Boolean cochera, @RequestParam(required = false) Boolean pileta,
-            @RequestParam(required = false) Boolean ascensor, @RequestParam(required = false) Boolean lavadero, @RequestParam(required = false) Boolean suite, @RequestParam(required = false) Boolean vestidor,
-            @RequestParam(required = false) Boolean toillete, @RequestParam(required = false) Boolean expensas, @RequestParam(required = false) String tipoVivienda, ModelMap modelo, 
-            @RequestParam(required = false) Long idPropietario, MultipartFile archivo,  RedirectAttributes redirect) {
-
+    public String registro(@RequestParam(required = false) Double mts2Totales, @RequestParam(required = false) Double mts2Cubiertos,
+            @RequestParam(required = false) Double mts2Descubiertos, @RequestParam(required = false) String localidad,
+            @RequestParam(required = false) String barrio, @RequestParam(required = false) String calle,
+            @RequestParam(required = false) String descripcion, @RequestParam(required = false) Integer altura,
+            @RequestParam(required = false) Integer cantBanios, @RequestParam(required = false) Integer cantHabitaciones,
+            @RequestParam(required = false) String estado, @RequestParam(required = false) Boolean aguaCorriente,
+            @RequestParam(required = false) Boolean aireAcondicionado, @RequestParam(required = false) Boolean aptoCredito,
+            @RequestParam(required = false) Boolean balcon, @RequestParam(required = false) Boolean banio,
+            @RequestParam(required = false) Boolean aptoProfesional, @RequestParam(required = false) Boolean cloacas,
+            @RequestParam(required = false) Boolean gasNatural, @RequestParam(required = false) Boolean permiteMascotas,
+            @RequestParam(required = false) Boolean salonJuegos, @RequestParam(required = false) Boolean gimnasio,
+            @RequestParam(required = false) Boolean luz, @RequestParam(required = false) Boolean pavimento,
+            @RequestParam(required = false) Boolean cocina, @RequestParam(required = false) Boolean patio,
+            @RequestParam(required = false) Boolean quincho, @RequestParam(required = false) Boolean sum,
+            @RequestParam(required = false) Boolean terraza, @RequestParam(required = false) Boolean baulera,
+            @RequestParam(required = false) Boolean parrilla, @RequestParam(required = false) Boolean cochera,
+            @RequestParam(required = false) Boolean pileta, @RequestParam(required = false) Boolean ascensor,
+            @RequestParam(required = false) Boolean lavadero, @RequestParam(required = false) Boolean suite,
+            @RequestParam(required = false) Boolean vestidor, @RequestParam(required = false) Boolean toillete,
+            @RequestParam(required = false) Boolean expensas, @RequestParam(required = false) String tipoVivienda,
+            @RequestParam(required = false) Long idPropietario, MultipartFile archivo,
+            RedirectAttributes redirect, ModelMap modelo) {
+        System.out.println("sssss");
         try {
-            propiedadServicio.crearPropiedad(mts2Totales, mts2Cubiertos, 
-                    mts2Descubiertos, localidad, barrio, calle, descripcion, altura, cantBanios, 
-                    cantHabitaciones, estado, aguaCorriente, aireAcondicionado, aptoCredito, balcon, 
-                    banio, aptoProfesional, cloacas, gasNatural, permiteMascotas, salonJuegos, gimnasio, luz, pavimento, 
-                    cocina, patio, quincho, sum, terraza, baulera, parrilla, cochera, pileta, ascensor, lavadero, 
-                    suite, vestidor, toillete, expensas, tipoVivienda, idPropietario, archivo);
+            propiedadServicio.crearPropiedad(mts2Totales, mts2Cubiertos, mts2Descubiertos, 
+                    localidad, barrio, calle, descripcion, altura, cantBanios, cantHabitaciones, 
+                    estado, aguaCorriente, aireAcondicionado, aptoCredito, balcon, banio, aptoProfesional, 
+                    cloacas, gasNatural, permiteMascotas, salonJuegos, gimnasio, luz, pavimento, cocina,
+                    patio, quincho, sum, terraza, baulera, parrilla, cochera, pileta, ascensor, lavadero, suite, 
+                    vestidor, toillete, expensas, tipoVivienda, idPropietario, archivo);
+//            List<Propietario> propietarios = propietarioServicio.listarPropietarios();
+//            redirect.addAttribute("propietarios", propietarios);
             redirect.addFlashAttribute("exito", "La propiedad fue cargada correctamente");
 
+            System.out.println("2sssss");
+
         } catch (Exception ex) {
-            List<Propiedad> propiedades = propiedadServicio.listarPropiedades();
-            modelo.addAttribute("propiedades", propiedades);
+//            List<Propiedad> propiedades = propiedadServicio.listarPropiedades();
+//            modelo.addAttribute("propiedades", propiedades);
             Logger.getLogger(PropiedadControlador.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("4sssss");
             return "propiedad_form.html";
+
         }
-        System.out.println("3");
+        System.out.println("3sssss");
         return "index.html";
     }
 
-        @GetMapping("/lista")
-    public String listar(ModelMap modelo, @Param("keyword")String keyword){
-        try{
+    @GetMapping("/lista")
+    public String listar(ModelMap modelo, @Param("keyword") String keyword) {
+        try {
             List<Propiedad> propiedades = new ArrayList<>();
-            if(keyword==null){
+            if (keyword == null) {
                 propiedadRepositorio.findAll().forEach(propiedades::add);
-            }else{
+            } else {
                 propiedadRepositorio.buscarPropiedadPorCalle(keyword).forEach(propiedades::add);
                 modelo.addAttribute("keyword", keyword);
             }
             modelo.addAttribute("propiedades", propiedades);
-        }catch(Exception e){
+        } catch (Exception e) {
             modelo.addAttribute("error", e.getMessage());
         }
         return "propiedad_list.html";
-        
+
     }
 }

@@ -1,13 +1,13 @@
 package com.inmobiliaria.armenteros.entidades;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import lombok.AccessLevel;
@@ -16,14 +16,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
  * @author Guillote
  */
 @Entity
-//@SequenceGenerator(name = "sec_generator", sequenceName = "secuencial_sequence", initialValue = 100, allocationSize = 1)
+@SequenceGenerator(name = "sec_generator", sequenceName = "secuencial_sequence", initialValue = 100, allocationSize = 1)
 @Getter
 @Setter
 @ToString
@@ -31,13 +30,11 @@ import org.hibernate.annotations.GenericGenerator;
 @AllArgsConstructor
 public class Propiedad {
 
-
-    
     @Id
-//    @SequenceGenerator(name = "sec_generator", sequenceName = "secuencial_sequence", initialValue = 100, allocationSize = 1)
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sec_generator")
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @SequenceGenerator(name = "sec_generator", sequenceName = "secuencial_sequence", initialValue = 100, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sec_generator")
+//    @GeneratedValue(generator = "uuid")
+//    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String idPropiedad;
     private Double mts2Totales;
     private Double mts2Cubiertos;

@@ -66,7 +66,7 @@ public class PropietarioControlador {
         try {
             if(propietarioServicio.buscarPorDni(dni)==null){
                 propietarioServicio.crearPropietario(dni, nombreApellido, telefono, email, direccion);
-                return "redirect:../propiedad/registrar";
+                
             }
                            
             System.out.println("1");
@@ -79,7 +79,7 @@ public class PropietarioControlador {
             return "propietario_form.html";
         }
             System.out.println("3");
-        return "redirect:../propiedad/registrar";
+        return "redirect:../propiedad/registrarUno";
         }
     
     @GetMapping("/lista")
