@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface PropiedadRepositorio extends JpaRepository <Propiedad, String> {
+public interface PropiedadRepositorio extends JpaRepository <Propiedad, Integer> {
 
     @Query(value="SELECT * FROM Propiedad WHERE calle like %:calle%", nativeQuery = true) 
    public List<Propiedad> buscarPropiedadPorCalle(@Param("calle") String calle);

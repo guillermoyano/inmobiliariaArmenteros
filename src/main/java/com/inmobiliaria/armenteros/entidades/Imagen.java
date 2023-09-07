@@ -6,7 +6,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,5 +36,7 @@ public class Imagen {
     @Lob
     @Basic(fetch = FetchType.LAZY)
     private byte[] contenido;
+    @ManyToOne
+    private Propiedad propiedad;
 
 }

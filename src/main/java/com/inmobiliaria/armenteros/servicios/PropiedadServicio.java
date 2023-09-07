@@ -3,12 +3,15 @@ package com.inmobiliaria.armenteros.servicios;
 import com.inmobiliaria.armenteros.entidades.Imagen;
 import com.inmobiliaria.armenteros.entidades.Propiedad;
 import com.inmobiliaria.armenteros.entidades.Propietario;
+import com.inmobiliaria.armenteros.excepciones.MiException;
 import com.inmobiliaria.armenteros.repositorios.PropiedadRepositorio;
 import com.inmobiliaria.armenteros.repositorios.PropietarioRepositorio;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,7 +37,7 @@ public class PropiedadServicio {
             Boolean aptoCredito, Boolean balcon, Boolean banio, Boolean aptoProfesional, Boolean cloacas, Boolean gasNatural, Boolean permiteMascotas, Boolean salonJuegos,
             Boolean gimnasio, Boolean luz, Boolean pavimento, Boolean cocina, Boolean patio, Boolean quincho, Boolean sum, Boolean terraza, Boolean baulera, Boolean parrilla,
             Boolean cochera, Boolean pileta, Boolean ascensor, Boolean lavadero, Boolean suite, Boolean vestidor, Boolean toillete, Boolean expensas, String tipoVivienda, Long idPropietario,
-            MultipartFile archivo) throws Exception {
+            List <MultipartFile> archivo) throws Exception {
 
         validar(localidad, barrio, calle, descripcion, mts2Totales, mts2Cubiertos, mts2Descubiertos, altura, cantBanios, cantHabitaciones, estado, tipoVivienda);
 
@@ -147,11 +150,23 @@ public class PropiedadServicio {
         if (expensas != null) {
             propiedad.setExpensas(true);
         }
-        Imagen imagen = imagenServicio.crearImagen(archivo);
-                
-        propiedad.setImagen(imagen);
         
-        propiedadRepositorio.save(propiedad);
+        archivo.forEach(img->{
+        Imagen imagen;
+        
+            try {
+                imagen = imagenServicio.crearImagen(img);
+                imagen.setPropiedad(propiedad);
+                 propiedad.agregarImagen(imagen);
+                 
+            } catch (MiException ex) {
+                Logger.getLogger(PropiedadServicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+            propiedadRepositorio.save(propiedad);    
+     
+       
     }
 
     public List<Propiedad> listarPropiedades() {
@@ -164,7 +179,7 @@ public class PropiedadServicio {
     }
 
     @Transactional
-    public void modificarPropiedad(String idPropiedad, Double mts2Totales, Double mts2Cubiertos, Double mts2Descubiertos, String localidad, String barrio, String calle,
+    public void modificarPropiedad(Integer idPropiedad, Double mts2Totales, Double mts2Cubiertos, Double mts2Descubiertos, String localidad, String barrio, String calle,
             String descripcion, Integer altura, Integer cantBanios, Integer cantHabitaciones, Date fechaPublicacion, String estado, Boolean aguaCorriente, Boolean aireAcondicionado,
             Boolean aptoCredito, Boolean balcon, Boolean banio, Boolean aptoProfesional, Boolean cloacas, Boolean gasNatural, Boolean permiteMascotas, Boolean salonJuegos,
             Boolean gimnasio, Boolean luz, Boolean pavimento, Boolean cocina, Boolean patio, Boolean quincho, Boolean sum, Boolean terraza, Boolean baulera, Boolean parrilla,
@@ -227,7 +242,7 @@ public class PropiedadServicio {
     }
 
     @Transactional
-    public void eliminarPropiedad(String idPropiedad) throws Exception {
+    public void eliminarPropiedad(Integer idPropiedad) throws Exception {
 
         Optional<Propiedad> respuesta = propiedadRepositorio.findById(idPropiedad);
 
@@ -237,7 +252,7 @@ public class PropiedadServicio {
         }
     }
 
-    public Propiedad getone(String idPropiedad) {
+    public Propiedad getone(Integer idPropiedad) {
         return propiedadRepositorio.getOne(idPropiedad);
     }
 
