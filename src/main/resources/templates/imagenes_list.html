@@ -18,47 +18,25 @@
 
 <body>
     <nav th:replace="/fragments/navbar" :: nav> </nav>
-    <h2 class="titulo">Lista de Propiedades</h2>
+    <h2 class="titulo">Lista de Imagenes</h2>
 
-
-    <div class="contenedorInput">
-        <form th:action="@{/propiedad/lista}">
-
-            <input type="text" id="keyword" name="keyword" class="coolinput" th:value="${keyword}"
-                placeholder="Ingrese el nombre de la Calle" style="text-align: center;">
-            <div class="divBoton">
-                <button type="submit" class="botonSearch" style="width: 100px; height: 40px; color: white; 
-            border-radius: 10px"><b>Buscar</b></button>
-                <button onclick="limpiar()" class="botonSearch" style="width: 100px; height: 40px; background-color: black; color: white; 
-            border-radius: 10px"><b>Limpiar</b></button>
-            </div>
-            <div class="divBoton">
-
-            </div>
-        </form>
-    </div>
 
     <div class="contenedorInput">
         <div class="table-wrapper">
-            <table class="fl-table">
-                <thead>
-                    <tr style="background-color: white;">
-                        <th>Imagen</th>
-                        <th>Tipo de Vivienda</th>
-                        <th>Calle</th>
-                        <th>Altura</th>
-                        <th>Barrio</th>
-                        <th>Localidad</th>
-                    </tr>
-                </thead>
-                <tbody th:each="propiedad : ${propiedades}">
+            <table class="fl-table"> 
+                <tbody th:block th:each="imagen : ${imagenes}">
+               
+                        <img th:src="${imagen.idImagen}" style="width: 10%">
+                        </img>
+<!--                    <img th:src="@{/lista/{id}(id=${imagen.idImagen})}" style="width: 10%">-->
+<!--                        <img   th:if="${propiedad.imagen != null}" th:src="@{/imagen/propiedad/__${propiedad.idPropiedad}__}"></img>-->
+               
+                <tbody>
+<!--                    <tbody th:each="propiedad : ${propiedades}">
                     <tr>
+                        <td style="background-color: white;"><img style="width: 70px; border-radius: 20px;"
                         
-                        <td style=""><img style="width: 70px; border-radius: 20px;"
-                                          th:if="${propiedad.imagenes != null}" th:src="@{/imagen/propiedad/__${propiedad.idPropiedad}__}">
-<!--                        th:src="@{/imagen/propiedad/__${imagenes}__}">-->
-                                
-                                
+                                th:if="${propiedad.imagen != null}" th:src="@{/imagen/propiedad/__${propiedad.idPropiedad}__}">
                         </td>
                         <td th:text="${propiedad.tipoVivienda}" style="background-color: white;"></td>
                         <td th:text="${propiedad.calle}" style="background-color: white;"></td>
@@ -66,7 +44,7 @@
                         <td th:text="${propiedad.barrio}" style="background-color: white;"></td>
                         <td th:text="${propiedad.localidad}" style="background-color: white;"></td>
                      </tr>
-                <tbody>
+                <tbody>-->
             </table>
         </div>
     </div>
