@@ -75,7 +75,10 @@ public class ImagenServicio {
     }
 
     @Transactional
-    public List<Imagen> listarTodos() {
-        return imagenRepositorio.findAll();
+    public List<byte[]> listarTodos() {
+        
+        List<byte[]>imagenes = imagenRepositorio.listaContenido();
+        
+        return imagenes;
     }
 }
