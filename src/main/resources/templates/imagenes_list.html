@@ -51,20 +51,23 @@
                             <th>Localidad</th>
                         </tr>
                     </thead>
-                    <tbody th:each="imagen : ${imagenes}">
-                        <tr>
 
-                            <td style=""><img style="width: 70px; border-radius: 20px;"
-                                              th:if="${imagenes != null}" th:src="@{/imagen/lista/__${imagen.contenido}__}">
-                                    <!--                        th:src="@{/imagen/propiedad/__${imagenes}__}">-->
+<div th:each="imagen : ${imagenes}">
+    <img th:src="@{'data:image/jpeg;base64,'+${imagen.getContenido()}}" />
 
+</div>
 
+                    <!-- <tbody th:each="imagen : ${imagenes}">
+                        <tr >
+
+                            <td style=""> -->
+                                <!-- <img th:src="${imagen.contenido} == null ? _ : @{'data:image/png;base64,'+${imagen.contenido}}"> -->
+                            <!-- <img  style="width: 70px; border-radius: 20px;"
+                                            th:src="${imagen.contenido}">  -->
+                                            <!-- <img  th:src="${'data:image/jpeg;base64,' + imagen.contenido}"> -->
+                                            <!-- <img th:src="@{'data:image/jpeg;base64,'+${imagen.contenido}}" />
                             </td>
-<!--                            <td th:text="${propiedad.tipoVivienda}" style="background-color: white;"></td>
-                            <td th:text="${propiedad.calle}" style="background-color: white;"></td>
-                            <td th:text="${propiedad.altura}" style="background-color: white;"></td>
-                            <td th:text="${propiedad.barrio}" style="background-color: white;"></td>
-                            <td th:text="${propiedad.localidad}" style="background-color: white;"></td>-->
+
                         </tr>
                         <tbody>
                             </table>
@@ -88,7 +91,7 @@
                                         <p th:text="${exito}"></p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
 
                             <script>

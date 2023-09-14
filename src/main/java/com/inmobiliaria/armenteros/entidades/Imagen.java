@@ -35,7 +35,7 @@ public class Imagen {
     private String nombre;
     @Lob
     @Basic(fetch = FetchType.LAZY)
-    private byte[] contenido;
+    public byte[] contenido;
     @ManyToOne
     private Propiedad propiedad;
 

@@ -53,17 +53,38 @@ public class ImagenControlador {
 //    }
     
     @GetMapping("/lista")
-    public ResponseEntity<List<byte[]>> obtener(){
-       
-        List<byte[]> imagenes= imagenServicio.listarTodos();
+    public ResponseEntity<List<Imagen>> obtenerImagenes(){
+        
+       List<Imagen> imagenes= imagenRepositorio.findAll();
        
        
        HttpHeaders headers = new HttpHeaders();
-      
-       headers.setContentType(MediaType.APPLICATION_JSON);
        
+       headers.setContentType(MediaType.APPLICATION_JSON);
+        
        return new ResponseEntity<>(imagenes,headers, HttpStatus.OK); 
     }
+    
+    
+//    @GetMapping("/lista")
+//    public String ListarImagenes(ModelMap modelo) {
+//        List<Imagen> imagenes = imagenRepositorio.findAll();
+//        modelo.addAttribute("imagenes", imagenes);
+//        return "imagenes_list.html";
+//    }
+    
+//    @GetMapping("/lista")
+//    public ResponseEntity<List<byte[]>> obtener(){
+//       
+//        List<byte[]> imagenes= imagenServicio.listarTodos();
+//       
+//       
+//       HttpHeaders headers = new HttpHeaders();
+//      
+//       headers.setContentType(MediaType.APPLICATION_JSON);
+//       
+//       return new ResponseEntity<>(imagenes,headers, HttpStatus.OK); 
+//    }
     
     
 //    @GetMapping("/lista")
