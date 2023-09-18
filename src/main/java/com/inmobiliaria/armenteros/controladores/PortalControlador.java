@@ -1,14 +1,19 @@
 package com.inmobiliaria.armenteros.controladores;
 
+import com.inmobiliaria.armenteros.entidades.Imagen;
 import com.inmobiliaria.armenteros.entidades.Propiedad;
 import com.inmobiliaria.armenteros.entidades.Usuario;
 import com.inmobiliaria.armenteros.excepciones.MiException;
+import com.inmobiliaria.armenteros.repositorios.ImagenRepositorio;
 import com.inmobiliaria.armenteros.repositorios.PropiedadRepositorio;
 import com.inmobiliaria.armenteros.servicios.UsuarioServicio;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -32,14 +37,25 @@ public class PortalControlador {
     private UsuarioServicio usuarioServicio;
     @Autowired
     private PropiedadRepositorio propiedadRepositorio;
+    @Autowired
+    private ImagenRepositorio imagenRepositorio;
 
     @GetMapping("/")
     public String index(ModelMap modelo) {
 
-      List<Propiedad> propiedades = propiedadRepositorio.findAll();
-      
-      modelo.addAttribute( "propiedades", propiedades);
-        
+        List<Propiedad> propiedades = propiedadRepositorio.findAll();
+
+        List<Imagen> imagenes = imagenRepositorio.findAll();
+        List<String> imagen1 = new ArrayList<>();
+        List<byte[]> fotos = new ArrayList<>();
+
+        for (Imagen aux : imagenes) {
+            byte[] foto = aux.getContenido();
+            String base = Base64.getEncoder().encodeToString(foto);
+            imagen1.add(base);
+        }
+        modelo.addAttribute("propiedades", propiedades);
+        modelo.addAttribute("imagen1", imagen1);
         return "index.html";
     }
 

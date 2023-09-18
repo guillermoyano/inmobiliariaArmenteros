@@ -69,6 +69,7 @@
     <div class="row row-cols-1 row-cols-md-2 g-4">
       <div th:each="propiedad : ${propiedades}" class="col">
         <p th:text="${propiedad.idPropiedad}"></p>
+        <p th:text="${propiedad.calle}"></p>
         <div class="card mb-3" style="max-width: 540px;">
           <div class="row g-0">
             <div class="col-md-4">
@@ -79,12 +80,14 @@
 
                     <!-- "@{/imagen/propiedad/__${propiedad.idPropiedad}__}" -->
 
-                    <div th:each="imagen1, iterStat : ${propiedad.idImagen}"
+                    <div th:each="imagen1, iterStat : ${imagen1}"
                       th:class="${iterStat.index == 0} ? 'carousel-item active' : 'carousel-item'">
-                      <img style="width: 80px; height: 40px"
+                      <img style="width: 180px; height: 60px"
                         th:src="'data:image/jpeg;base64,' + ${#strings.toString(imagen1)}" alt="Imagen">
                     </div>
+                    
                   </div>
+                  
                   <!-- Controles del carrusel -->
                   <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -112,37 +115,7 @@
       </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- 
-
-
-
-
-
-
-
-
     <div class="row row-cols-1 row-cols-md-2 g-4">
       <div class="col">
         <div class="card mb-3" style="max-width: 540px;">
@@ -360,76 +333,6 @@
     integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
     crossorigin="anonymous"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <!-- <nav th:replace="/fragments/navbar :: nav"></nav>
 
   <div id="contenedor">
@@ -459,12 +362,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script> -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js"
+<!--  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js"
     integrity="sha384-q9CRHqZndzlxGLOj+xrdLDJa9ittGte1NksRmgJKeCV9DrM7Kz868XYqsKWPpAmn"
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
     integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>-->
 </body>
 
 </html>

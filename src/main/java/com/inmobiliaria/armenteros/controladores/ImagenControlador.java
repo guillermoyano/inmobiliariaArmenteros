@@ -1,6 +1,7 @@
 package com.inmobiliaria.armenteros.controladores;
 
 import com.inmobiliaria.armenteros.entidades.Imagen;
+import com.inmobiliaria.armenteros.entidades.Propiedad;
 import com.inmobiliaria.armenteros.repositorios.ImagenRepositorio;
 import com.inmobiliaria.armenteros.servicios.ImagenServicio;
 import com.inmobiliaria.armenteros.servicios.PropiedadServicio;
@@ -46,13 +47,12 @@ public class ImagenControlador {
         System.out.println(fotos);
         return "carruselImagenes.html";
     }
-    
-    
-     @GetMapping("/propiedad/{idPropiedad}")
-    public String listarImagenesPropiedad(ModelMap modelo, @PathVariable Integer idPropiedad) {
 
+    @GetMapping("/propiedad/{idPropiedad}")
+    public String listarImagenesPropiedad(ModelMap modelo, @PathVariable Integer idPropiedad) {
+        Propiedad propiedad = propiedadServicio.getone(idPropiedad);
         List<Imagen> imagenes = imagenRepositorio.listaImagenes(idPropiedad);
-         System.out.println("aca Ta!!");
+        System.out.println("aca Ta!!");
         List<String> imagen1 = new ArrayList<>();
         List<byte[]> fotos = new ArrayList<>();
 
@@ -61,12 +61,10 @@ public class ImagenControlador {
             String base = Base64.getEncoder().encodeToString(foto);
             imagen1.add(base);
         }
-
         modelo.addAttribute("imagen1", imagen1);
+        modelo.addAttribute("propiedad", propiedad);
         System.out.println(fotos);
-        return "imagen1";
+        return "carruselImagenes.html";
     }
-    
+
 }
-
-

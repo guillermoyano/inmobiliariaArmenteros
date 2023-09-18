@@ -18,6 +18,10 @@
 
     <div class="container mt-5" style="width: 800px; height: 100px" data-bs-interval="2000">
         <h1>Carrusel de Propiedades</h1>
+        <div th:each="propiedad : ${propiedad}">
+            <p th:text="${propiedad.idPropiedad}"></p>
+            <p th:text="${propiedad.calle}"></p>
+        </div>
         <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
             <!-- Diapositivas del carrusel -->
             <div class="carousel-inner" style="border-radius: 5%">
