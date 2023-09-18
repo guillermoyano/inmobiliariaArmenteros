@@ -1,4 +1,18 @@
-.navBar{
+.full-width-image {
+    width: 100vw;
+    height: auto;
+}
+
+.navbar-nav .nav-item {
+    border-right: 1px solid #ccc; /* Añade un borde derecho */
+}
+
+/* Elimina el borde derecho del último elemento del menú */
+.navbar-nav .nav-item:last-child {
+    border-right: none;
+}
+
+/* .navBar{
     background-color: #fff !important;
 }
 
@@ -77,4 +91,4 @@
 }
 .boton:active{
     box-shadow: none;
-}
+} */
