@@ -18,7 +18,7 @@
 
   <div class="container-fluid p-0">
     <img src="./img/casa.jpg" class="full-width-image" alt="...">
-</div>
+  </div>
 
   <div class="container">
     <div class="container d-flex justify-content-center">
@@ -64,6 +64,85 @@
     </div>
   </div>
   <div class="container">
+
+
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div th:each="propiedad : ${propiedades}" class="col">
+        <p th:text="${propiedad.idPropiedad}"></p>
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                  <!-- Diapositivas del carrusel -->
+                  <div class="carousel-inner" style="border-radius: 5%">
+
+                    <!-- "@{/imagen/propiedad/__${propiedad.idPropiedad}__}" -->
+
+                    <div th:each="imagen1, iterStat : ${propiedad.idImagen}"
+                      th:class="${iterStat.index == 0} ? 'carousel-item active' : 'carousel-item'">
+                      <img style="width: 80px; height: 40px"
+                        th:src="'data:image/jpeg;base64,' + ${#strings.toString(imagen1)}" alt="Imagen">
+                    </div>
+                  </div>
+                  <!-- Controles del carrusel -->
+                  <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExample" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                  </a>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+
+
+
+
+
+
     <div class="row row-cols-1 row-cols-md-2 g-4">
       <div class="col">
         <div class="card mb-3" style="max-width: 540px;">
@@ -272,7 +351,7 @@
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Acerca</a></li>
       </ul>
     </footer>
-  </div>
+  </div> -->
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js"
     integrity="sha384-q9CRHqZndzlxGLOj+xrdLDJa9ittGte1NksRmgJKeCV9DrM7Kz868XYqsKWPpAmn"

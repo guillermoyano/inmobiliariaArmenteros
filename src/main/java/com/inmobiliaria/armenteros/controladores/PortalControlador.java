@@ -1,7 +1,9 @@
 package com.inmobiliaria.armenteros.controladores;
 
+import com.inmobiliaria.armenteros.entidades.Propiedad;
 import com.inmobiliaria.armenteros.entidades.Usuario;
 import com.inmobiliaria.armenteros.excepciones.MiException;
+import com.inmobiliaria.armenteros.repositorios.PropiedadRepositorio;
 import com.inmobiliaria.armenteros.servicios.UsuarioServicio;
 import java.io.IOException;
 import java.util.List;
@@ -28,10 +30,16 @@ public class PortalControlador {
 
     @Autowired
     private UsuarioServicio usuarioServicio;
+    @Autowired
+    private PropiedadRepositorio propiedadRepositorio;
 
     @GetMapping("/")
-    public String index() {
+    public String index(ModelMap modelo) {
 
+      List<Propiedad> propiedades = propiedadRepositorio.findAll();
+      
+      modelo.addAttribute( "propiedades", propiedades);
+        
         return "index.html";
     }
 
