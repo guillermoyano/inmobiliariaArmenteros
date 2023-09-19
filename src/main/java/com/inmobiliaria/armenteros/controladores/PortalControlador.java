@@ -10,7 +10,9 @@ import com.inmobiliaria.armenteros.servicios.UsuarioServicio;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -44,105 +46,131 @@ public class PortalControlador {
     public String index(ModelMap modelo) {
 
         List<Propiedad> propiedades = propiedadRepositorio.findAll();
-
         List<Imagen> imagenes = imagenRepositorio.findAll();
-        List<String> imagen1 = new ArrayList<>();
-        List<byte[]> fotos = new ArrayList<>();
 
-        for (Imagen aux : imagenes) {
-            byte[] foto = aux.getContenido();
-            String base = Base64.getEncoder().encodeToString(foto);
-            imagen1.add(base);
+        Map<Integer, List<String>> imagenesPorPropiedad = new HashMap<>();
+
+        for (Propiedad aux : propiedades) {
+            Integer idPropiedad = aux.getIdPropiedad();
+            List<String> imagen1 = new ArrayList<>();
+
+            for (Imagen aux1 : imagenes) {
+                if (aux1.getPropiedad().getIdPropiedad() == idPropiedad) {
+                    byte[] foto = aux1.getContenido();
+                    String base = Base64.getEncoder().encodeToString(foto);
+                    imagen1.add(base);
+                }
+            }
+            imagenesPorPropiedad.put(idPropiedad, imagen1);
         }
-        modelo.addAttribute("propiedades", propiedades);
-        modelo.addAttribute("imagen1", imagen1);
-        return "index.html";
-    }
+            modelo.addAttribute("propiedades", propiedades);
+            modelo.addAttribute("imagenesPorPropiedad", imagenesPorPropiedad);
+            return "index.html";
+        }
 
-    @GetMapping("/registrar")
-    public String registrar() {
+        @GetMapping("/registrar")
+        public String registrar() {
         return "registro.html";
-    }
-
-    @PostMapping("/registro")
-    public String registro(MultipartFile archivo, @RequestParam String nombre, @RequestParam String email, @RequestParam String password, String password2, ModelMap modelo, RedirectAttributes redirectAttributes) throws IOException, MiException {
-
-        try {
-            usuarioServicio.registrar(nombre, email, password, password2, archivo);
-            redirectAttributes.addFlashAttribute("exito", "El usuario fue cargado correctamente!");
-
-            return "redirect:/";
-        } catch (MiException ex) {
-            modelo.put("error", ex.getMessage());
-            modelo.put("nombre", nombre);
-            modelo.put("email", email);
-
-            return "registro.html";
         }
 
-    }
+        @PostMapping("/registro")
+        public String registro
+        (MultipartFile archivo, @RequestParam String nombre, @RequestParam String email, @RequestParam String password, String password2
+        , ModelMap modelo, RedirectAttributes redirectAttributes) throws IOException, MiException {
 
-    @GetMapping("/login")
-    public String login(@RequestParam(required = false) String error, ModelMap modelo) {
+            try {
+                usuarioServicio.registrar(nombre, email, password, password2, archivo);
+                redirectAttributes.addFlashAttribute("exito", "El usuario fue cargado correctamente!");
+
+                return "redirect:/";
+            } catch (MiException ex) {
+                modelo.put("error", ex.getMessage());
+                modelo.put("nombre", nombre);
+                modelo.put("email", email);
+
+                return "registro.html";
+            }
+
+        }
+
+        @GetMapping("/login")
+        public String login
+        (@RequestParam(required = false)
+        String error, ModelMap modelo
+        
+            ) {
 
         if (error != null) {
-            modelo.put("error", "Usuario o contraseña inválidos");
+                modelo.put("error", "Usuario o contraseña inválidos");
+            }
+
+            return "login.html";
         }
 
-        return "login.html";
-    }
-
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
-    @GetMapping("/inicio")
-    public String inicio(HttpSession session) {
+        @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+        @GetMapping("/inicio")
+        public String inicio
+        (HttpSession session
+        
+            ) {
 
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
 
-        if (logueado.getRol().toString().equals("ADMIN")) {
-            return "redirect:/admin/dashboard";
+            if (logueado.getRol().toString().equals("ADMIN")) {
+                return "redirect:/admin/dashboard";
+            }
+
+            return "inicio.html";
         }
 
-        return "inicio.html";
-    }
-
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
-    @GetMapping("/perfil")
-    public String perfil(ModelMap modelo, HttpSession session) {
+        @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+        @GetMapping("/perfil")
+        public String perfil
+        (ModelMap modelo, HttpSession session
+        
+            ) {
 
         Usuario usuario = (Usuario) session.getAttribute("usuariosession");
-        modelo.put("usuario", usuario);
-
-        return "usuario_modificar.html";
-    }
-
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
-    @PostMapping("/perfil/{id}")
-    public String actualizar(MultipartFile archivo, @PathVariable String id, @RequestParam String nombre,
-            @RequestParam String email, @RequestParam String password, @RequestParam String password2, ModelMap modelo, RedirectAttributes redirectAttributes) {
-
-        try {
-            usuarioServicio.actualizar(archivo, id, nombre, email, password, password2);
-
-            redirectAttributes.addFlashAttribute("exito", "El usuario fue actualizado correctamente!");
-
-            return "redirect:/";
-
-        } catch (MiException ex) {
-
-            modelo.put("error", ex.getMessage());
-            modelo.put("nombre", nombre);
-            modelo.put("email", email);
+            modelo.put("usuario", usuario);
 
             return "usuario_modificar.html";
         }
-    }
 
-    @GetMapping("/lista")
-    public String listar(ModelMap modelo) {
+        @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+        @PostMapping("/perfil/{id}")
+        public String actualizar
+        (MultipartFile archivo, @PathVariable String id, @RequestParam String nombre,
+            @RequestParam String email, @RequestParam String password, @RequestParam String password2, ModelMap modelo
+        , RedirectAttributes redirectAttributes
+        
+            ) {
+
+        try {
+                usuarioServicio.actualizar(archivo, id, nombre, email, password, password2);
+
+                redirectAttributes.addFlashAttribute("exito", "El usuario fue actualizado correctamente!");
+
+                return "redirect:/";
+
+            } catch (MiException ex) {
+
+                modelo.put("error", ex.getMessage());
+                modelo.put("nombre", nombre);
+                modelo.put("email", email);
+
+                return "usuario_modificar.html";
+            }
+        }
+
+        @GetMapping("/lista")
+        public String listar
+        (ModelMap modelo
+        
+            ) {
         List<Usuario> usuarios = usuarioServicio.listarUsuarios();
-        modelo.put("usuarios", usuarios);
+            modelo.put("usuarios", usuarios);
 
-        return "usuario_list.html";
+            return "usuario_list.html";
+        }
+
     }
-
-}

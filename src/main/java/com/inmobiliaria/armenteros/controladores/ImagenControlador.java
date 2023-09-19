@@ -35,16 +35,13 @@ public class ImagenControlador {
 
         List<Imagen> imagenes = imagenRepositorio.findAll();
         List<String> imagen1 = new ArrayList<>();
-        List<byte[]> fotos = new ArrayList<>();
 
         for (Imagen aux : imagenes) {
             byte[] foto = aux.getContenido();
             String base = Base64.getEncoder().encodeToString(foto);
             imagen1.add(base);
         }
-
         modelo.addAttribute("imagen1", imagen1);
-        System.out.println(fotos);
         return "carruselImagenes.html";
     }
 
@@ -54,7 +51,6 @@ public class ImagenControlador {
         List<Imagen> imagenes = imagenRepositorio.listaImagenes(idPropiedad);
         System.out.println("aca Ta!!");
         List<String> imagen1 = new ArrayList<>();
-        List<byte[]> fotos = new ArrayList<>();
 
         for (Imagen aux : imagenes) {
             byte[] foto = aux.getContenido();
@@ -63,7 +59,6 @@ public class ImagenControlador {
         }
         modelo.addAttribute("imagen1", imagen1);
         modelo.addAttribute("propiedad", propiedad);
-        System.out.println(fotos);
         return "carruselImagenes.html";
     }
 
