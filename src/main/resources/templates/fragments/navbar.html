@@ -1,40 +1,34 @@
 <div class="container">
     <div class="container d-flex justify-content-center">
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg navbar-light" style="width: 80%;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <img src="/img/armenteros_1-removebg-preview.png" alt="" width="180" height="65"
-                        class="d-inline-block align-text-top">
+                    <img src="/img/armenteros_1-removebg-preview.png" alt="" width="180" height="65">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarColor01">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="#" id="propietariosDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Propietarios
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Crear Propietario</a></li>
-                                <li><a class="dropdown-item" href="#">Buscar Propietario</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Propiedades
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Crear Propiedades</a></li>
-                                <li><a class="dropdown-item" href="#">Buscar Propiedades</a></li>
+                            <ul class="dropdown-menu" aria-labelledby="propietariosDropdown">
+                                <li><a class="dropdown-item" href="propietario/buscarPropietario">Cargar Propietarios</a></li>
+                                <!-- Agrega más opciones si es necesario -->
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Logueo</a>
+                            <a class="nav-link" href="#">Propiedades</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Tasaciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Logueo</a>
                         </li>
                     </ul>
                 </div>
@@ -42,142 +36,3 @@
         </nav>
     </div>
 </div>
-
-
-<!-- <nav class="navbar navbar-expand-lg navBar">
-            <div class="containerImg">
-                <a href="/" class="navbar-brand d-flex align-items-center">
-                    <img class="logo" src="/img/fotoramio.png" alt="Img logo" width="10%">
-                </a>
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse elementosNav" id="navbarNavDropdown">
-                <ul class="navbar-nav ms-auto elementos">
-                    
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Propietarios</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" th:href="@{/propietario/buscarPropietario}">Buscar Propietario</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" th:href="@{/libro/lista}">Listar Propietarios</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Propiedades</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" th:href="@{/propiedad/lista}">Listar Propiedades</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Perfil</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" th:href="@{/perfil}" >Editar Perfil</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" th:href="@{/admin/listar}">Eliminar Perfil</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="/logout" >Cerrar Sesión</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link " href="/registrar" id="navbarDropdown" role="button" aria-expanded="false">
-                            Registrate!</a>
-                    </li>
-        
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login" id="navbarDropdown" role="button" aria-expanded="false">
-                            Ingresar</a>    
-                    </li>
-
-                </ul>
-            </div>
-        </nav>
-        && #request.requestURI.equals('/registrar') 
-        
-        
-        <li class="nav-item">
-                <a class="nav-link " th:if="${session.usuariosession == null && #request.requestURI.startsWith('/login')}"  href="/registrar" id="navbarDropdown" role="button" aria-expanded="false">
-                    Registrate!
-                </a>
-               
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " th:if="${session.usuariosession == null && #request.requestURI.equals('/')}"  href="/registrar" id="navbarDropdown" role="button" aria-expanded="false">
-                    Registrate!
-                </a>
-               
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" th:if="${session.usuariosession == null && #request.requestURI.startsWith('/registrar')}" href="/login" id="navbarDropdown" role="button" aria-expanded="false">
-                    Ingresar
-                </a>    
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:if="${session.usuariosession == null && #request.requestURI.equals('/')}" href="/login" id="navbarDropdown" role="button" aria-expanded="false">
-                    Ingresar
-                </a>    
-            </li>
-
-
-
-
-
-
-
-
-
-
-
-            <li class="nav-item">
-                <a class="nav-link " th:if="${(session.usuariosession == null && #request.requestURI.startsWith('/login')) || (session.usuariosession == null && #request.requestURI.equals('/'))}"  href="/registrar" id="navbarDropdown" role="button" aria-expanded="false">
-                    Registrate!
-                </a>
-               
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" th:if="${(session.usuariosession == null && #request.requestURI.startsWith('/registrar')) || (session.usuariosession == null && #request.requestURI.equals('/'))}" href="/login" id="navbarDropdown" role="button" aria-expanded="false">
-                    Ingresar
-                </a>    
-            </li>
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <select>
-    <option th:each="autor : ${autores}"
-            th:value="${autor.id}" 
-            th:text="${autor.nombre}"
-            th:selected="${autor.id == libro.autor.id}">
-    </option>
-</select>
-        -->
-
-
-
-
-
-
-
-         

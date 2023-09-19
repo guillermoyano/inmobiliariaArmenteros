@@ -3,14 +3,35 @@
     height: auto;
 }
 
-.navbar-nav .nav-item {
-    border-right: 1px solid #ccc; /* Añade un borde derecho */
+a {
+    text-decoration: none;
+    /* Elimina el subrayado */
 }
 
-/* Elimina el borde derecho del último elemento del menú */
+/* Estilo para enlaces no visitados */
+a:link {
+    color: inherit;
+    /* Mantén el color original */
+}
+
+/* Estilo para enlaces visitados */
+a:visited {
+    color: inherit;
+    /* Mantén el color original */
+}
+
+/* .navbar-nav .nav-item {
+    border-right: 1px solid #ccc;
+   
+}
+
 .navbar-nav .nav-item:last-child {
     border-right: none;
 }
+
+.custom-toggler .navbar-toggler-icon {
+    background-color: black;
+} */
 
 /* .navBar{
     background-color: #fff !important;
