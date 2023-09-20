@@ -20,6 +20,13 @@ a:visited {
     /* Mantén el color original */
 }
 
+.img-thumbnail {
+    width: 100px; /* Ancho fijo */
+    height: 100px; /* Alto fijo */
+    object-fit: cover; /* Escalar y recortar para que encaje */
+    object-position: center; /* Centrar la parte visible de la imagen */
+  }
+
 /* .navbar-nav .nav-item {
     border-right: 1px solid #ccc;
    

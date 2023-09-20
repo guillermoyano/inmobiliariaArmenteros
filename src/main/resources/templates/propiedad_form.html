@@ -27,92 +27,223 @@
       <input hidden th:value="${propietario.idPropietario}" name="idPropietario">
 
       <div class="mb-3 d-flex align-items-center">
-
-        <input name="tipoVivienda" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-          style="width: 200px;">
-        <label for="exampleInputEmail1" class="form-label ms-3">Tipo de vivienda</label>
+        <select name="tipoVivienda" class="form-select" id="tipoVivienda" style="width: 300px;">
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <label for="tipoVivienda" class="form-label ms-3">Tipo de vivienda</label>
       </div>
 
       <div class="mb-3 d-flex align-items-center">
         <input type="number" name="mts2Totales" class="form-control" id="exampleInputEmail1"
-          aria-describedby="emailHelp" style="width: 200px;">
+          aria-describedby="emailHelp" style="width: 300px;">
         <label for="exampleInputEmail1" class="form-label ms-3">Metros cuadrados totales</label>
       </div>
 
       <div class="mb-3 d-flex align-items-center">
         <input name="mts2Cubiertos" type="number" class="form-control" id="exampleInputEmail1"
-          aria-describedby="emailHelp" style="width: 200px;">
+          aria-describedby="emailHelp" style="width: 300px;">
         <label for="exampleInputEmail1" class="form-label ms-3">Metros cuadrados cubiertos</label>
       </div>
 
       <div class="mb-3 d-flex align-items-center">
         <input name="mts2Descubiertos" type="number" class="form-control" id="exampleInputEmail1"
-          aria-describedby="emailHelp" style="width: 200px;">
+          aria-describedby="emailHelp" style="width: 300px;">
         <label for="exampleInputEmail1" class="form-label ms-3">Metros cuadrados descubiertos</label>
       </div>
 
       <div class="mb-3 d-flex align-items-center">
         <input name="localidad" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-          style="width: 200px;">
+          style="width: 300px;">
         <label for="exampleInputEmail1" class="form-label  ms-3"> Localidad</label>
       </div>
 
       <div class="mb-3 d-flex align-items-center">
         <input name="barrio" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-          style="width: 200px;">
+          style="width: 300px;">
         <label for="exampleInputEmail1" class="form-label ms-3">Barrio</label>
       </div>
 
       <div class="mb-3 d-flex align-items-center">
         <input name="calle" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-          style="width: 200px;">
+          style="width: 300px;">
         <label for="exampleInputEmail1" class="form-label ms-3">Calle</label>
       </div>
 
       <div class="mb-3 d-flex align-items-center">
         <input name="altura" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-          style="width: 200px;">
+          style="width: 300px;">
         <label for="exampleInputEmail1" class="form-label ms-3">Altura</label>
       </div>
 
       <div class="mb-3 d-flex align-items-center">
         <input name="descripcion" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-          style="width: 200px;">
+          style="width: 300px;">
         <label for="exampleInputEmail1" class="form-label ms-3">Piso / Timbre</label>
       </div>
 
       <div class="mb-3 d-flex align-items-center">
         <input name="cantBanios" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-          style="width: 200px;">
+          style="width: 300px;">
         <label for="exampleInputEmail1" class="form-label ms-3">Cantidad de Baños</label>
       </div>
 
       <div class="mb-3 d-flex align-items-center">
         <input name="cantHabitaciones" type="number" class="form-control" id="exampleInputEmail1"
-          aria-describedby="emailHelp" style="width: 200px;">
+          aria-describedby="emailHelp" style="width: 300px;">
         <label for="exampleInputEmail1" class="form-label ms-3">Cantidad Habitaciones</label>
       </div>
 
       <div class="mb-3 d-flex align-items-center">
-        <input name="estado" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-          style="width: 200px;">
-        <label for="exampleInputEmail1" class="form-label ms-3">Estado</label>
+        <select name="tipoVivienda" class="form-select" id="tipoVivienda" style="width: 300px;">
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="1">Venta</option>
+          <option value="2">Alquiler</option>
+          <option value="3">Alquiler temporario</option>
+          <option value="4">Permuta</option>
+          <option value="5">5</option>
+        </select>
+        <label for="tipoVivienda" class="form-label ms-3">Estado</label>
       </div>
 
 
 
       <div class="row">
-        <div class="col-4">
+        <div class="col-3">
           <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Verificado</label>
+            <input type="checkbox" class="form-check-input" name="aguaCorriente" id="verificar1">
+            <label class="form-check-label" for="verificar1">Agua Corriente</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="aireAcondicionado" id="verificar2">
+            <label class="form-check-label" for="verificar2">Aire Acondicionado</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="aptoCredito" id="verificar3">
+            <label class="form-check-label" for="verificar3">Apto Credito</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="balcon" id="verificar4">
+            <label class="form-check-label" for="verificar4">Balcón</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="aptoProfesional" id="verificar4">
+            <label class="form-check-label" for="verificar4">Apto Profesional</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="banio" id="verificar4">
+            <label class="form-check-label" for="verificar4">Baño</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="cloacas" id="verificar4">
+            <label class="form-check-label" for="verificar4">Cloacas</label>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-3">
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="gasNatural" id="verificar5">
+            <label class="form-check-label" for="verificar5">Gas Natural</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="permiteMascotas" id="verificar6">
+            <label class="form-check-label" for="verificar6">Permite Mascotas</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="salonJuegos" id="verificar7">
+            <label class="form-check-label" for="verificar7">Salón de Juegos</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="gimnasio" id="verificar8">
+            <label class="form-check-label" for="verificar8">Gimnasio</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="luz" id="verificar4">
+            <label class="form-check-label" for="verificar4">Luz</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="pavimento" id="verificar4">
+            <label class="form-check-label" for="verificar4">Pavimento</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="cocina" id="verificar4">
+            <label class="form-check-label" for="verificar4">Cocina</label>
+          </div>
         </div>
-        <div class="col-4">
+        <div class="col-3">
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="toillete" id="verificar9">
+            <label class="form-check-label" for="verificar9">Toillete</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="patio" id="verificar10">
+            <label class="form-check-label" for="verificar10">Patio</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="quincho" id="verificar11">
+            <label class="form-check-label" for="verificar11">Quincho</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="expensas" id="verificar12">
+            <label class="form-check-label" for="verificar12">Expensas</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="sum" id="verificar4">
+            <label class="form-check-label" for="verificar4">Sum</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="terraza" id="verificar4">
+            <label class="form-check-label" for="verificar4">Terraza</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="baulera" id="verificar4">
+            <label class="form-check-label" for="verificar4">Baulera</label>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="parrilla" id="verificar13">
+            <label class="form-check-label" for="verificar13">Parrilla</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="cochera" id="verificar14">
+            <label class="form-check-label" for="verificar14">Cochera</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="pileta" id="verificar15">
+            <label class="form-check-label" for="verificar15">Pileta</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="ascensor" id="verificar16">
+            <label class="form-check-label" for="verificar16">Ascensor</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="lavadero" id="verificar4">
+            <label class="form-check-label" for="verificar4">Lavadero</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="suite" id="verificar4">
+            <label class="form-check-label" for="verificar4">Suite</label>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="vestidor" id="verificar4">
+            <label class="form-check-label" for="verificar4">Vestidor</label>
+          </div>
         </div>
       </div>
+
+      <div class="mb-3 d-flex align-items-center">
+        <input name="archivo" type="file" class="form-control" id="inputImagenes" aria-describedby="emailHelp"
+          style="width: 300px;" multiple>
+        <label for="inputImagenes" class="form-label ms-3">Carga de Imágenes (Máximo 10)</label>
+      </div>
+      <div id="imagenPrevia" class="mb-3">
+        <!-- La previsualización de imágenes se mostrará aquí -->
+      </div>
+
       <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
   </div>
@@ -125,7 +256,7 @@
 
 
 
-
+  <!-- 
   <div class="contenedorForm"
     style="margin-top: 50px; background-color: bisque; opacity: 0.7; border-radius: 10px; margin-top: 13px;">
 
@@ -227,173 +358,173 @@
             style="text-align: center; font-size: 18px; font-style: oblique; font-weight: 1000;">
 
             <div class="form-group">
-              <input name="aguaCorriente" type="checkbox" class="inputForm" />
-
-              <span>Agua Corriente</span>
+              <label>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="aireAcondicionado" type="checkbox" class="inputForm" />
-                <span>Aire Acondicionado</span>
-              </label>
-            </div>
-
-            <div class="form-group">
-              <label>
-                <input name="aptoCredito" type="checkbox" class="inputForm" />
-                <span>Apto Credito</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
 
             <div class="form-group">
               <label>
-                <input name="balcon" type="checkbox" class="inputForm" />
-                <span>Balcon</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="banio" type="checkbox" class="inputForm" />
-                <span>Baño</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="aptoProfesional" type="checkbox" class="inputForm" />
-                <span>Apto Profesional</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="cloacas" type="checkbox" class="inputForm" />
-                <span>Cloacas</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="gasNatural" type="checkbox" class="inputForm" />
-                <span>Gas Natural</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="permiteMascotas" type="checkbox" class="inputForm" />
-                <span>Permite Mascotas</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="salonJuegos" type="checkbox" class="inputForm" />
-                <span>Salon Juegos</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="gimnasio" type="checkbox" class="inputForm" />
-                <span>Gimnasio</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="luz" type="checkbox" class="inputForm" />
-                <span>Luz</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="pavimento" type="checkbox" class="inputForm" />
-                <span>Pavimento</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="cocina" type="checkbox" class="inputForm" />
-                <span>Cocina</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="patio" type="checkbox" class="inputForm" />
-                <span>Patio</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="quincho" type="checkbox" class="inputForm" />
-                <span>Quincho</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="sum" type="checkbox" class="inputForm" />
-                <span>Sum</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="terraza" type="checkbox" class="inputForm" />
-                <span>terraza</span>
+                <input type="checkbox" class="inputForm" />
+                <span>t</span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="baulera" type="checkbox" class="inputForm" />
-                <span>Baulera</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="parrilla" type="checkbox" class="inputForm" />
-                <span>Parrilla</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="cochera" type="checkbox" class="inputForm" />
-                <span>Cochera</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="pileta" type="checkbox" class="inputForm" />
-                <span>Pileta</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="ascensor" type="checkbox" class="inputForm" />
-                <span>Ascensor</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="lavadero" type="checkbox" class="inputForm" />
-                <span>Lavadero</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="suite" type="checkbox" class="inputForm" />
-                <span>Suite</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="vestidor" type="checkbox" class="inputForm" />
-                <span>Vestidor</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="toillete" type="checkbox" class="inputForm" />
-                <span>Toillete</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
             <div class="form-group">
               <label>
-                <input name="expensas" type="checkbox" class="inputForm" />
-                <span>Expensas</span>
+                <input type="checkbox" class="inputForm" />
+                <span></span>
               </label>
             </div>
           </div>
@@ -411,14 +542,40 @@
 
         <div class="cointainer" style="text-align: center;">
           <div class="form-group">
-            <input value="CARGAR" type="submit" class="btn btn-primary" />
+            <input value="CARddddddddddGAR" type="submit" class="btn btn-primary" />
           </div>
         </div>
       </form>
     </div>
-  </div>
+  </div> -->
 
 
+  <script>
+    const inputImagenes = document.getElementById("inputImagenes");
+    const imagenPrevia = document.getElementById("imagenPrevia");
+
+    inputImagenes.addEventListener("change", (event) => {
+      imagenPrevia.innerHTML = ""; // Limpia la previsualización anterior
+
+      const files = event.target.files;
+      if (files.length > 0) {
+        for (let i = 0; i < Math.min(files.length, 10); i++) {
+          const imagen = document.createElement("img");
+          imagen.classList.add("img-thumbnail");
+          imagen.width = 100;
+          imagen.height = 100;
+
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            imagen.src = e.target.result;
+          };
+          reader.readAsDataURL(files[i]);
+
+          imagenPrevia.appendChild(imagen);
+        }
+      }
+    });
+  </script>
 
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js"
