@@ -27,6 +27,12 @@
       <input hidden th:value="${propietario.idPropietario}" name="idPropietario">
 
       <div class="mb-3 d-flex align-items-center">
+        <input type="text"  class="form-control" th:value="${propietario.nombreApellido}" readonly
+          aria-describedby="emailHelp" style="width: 300px;">
+        <label for="exampleInputEmail1" class="form-label ms-3">Propietario</label>
+      </div>
+
+      <div class="mb-3 d-flex align-items-center">
         <select name="tipoVivienda" class="form-select" id="tipoVivienda" style="width: 300px;">
           <option value="" disabled selected>Selecciona una opción</option>
           <option value="1">1</option>
