@@ -29,7 +29,7 @@
             <form onsubmit="return validarBusqueda()" action="/propietario/buscarPropietario" method="POST"
               class="d-flex" role="search">
               <input class="form-control me-2" type="text" id="dniInput" name="dni" required pattern="\d*"
-                placeholder="Ingrese DNI" aria-label="Ingrese DNI">
+                placeholder="Ingrese DNI">
               <button class="btn btn-outline-success" type="submit">Buscar</button>
             </form>
           </div>
@@ -37,65 +37,8 @@
       </nav>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   <!-- <h2 class="titulo">Verificacion de DNI</h2>
-
-  <div class="contenedorInput">
-    <form onsubmit="return validarBusqueda()" action="/propietario/buscarPropietario" method="POST">
-      <input type="text" id="dniInput" name="dni" required pattern="\d*" class="coolinput" placeholder="Ingrese DNI"
-        style="text-align: center" />
-      <div class="divBoton">
-        <button type="submit" id="buscar" class="botonSearch" style="
-              width: 100px;
-              height: 40px;
-              background-color: black;
-              color: white;
-              border-radius: 10px;
-            ">
-          <b>Buscar</b>
-        </button>
-      </div>
-    </form>
-  </div>
-  <span id="error" style="display: none; color: red; margin-left: 630px; font-size: 20px">Debe ingresar entre 7 y 8
-    números</span>  -->
+  <span id="error" style="display: none; color: red; margin-left: 590px; font-size: 20px">Debe ingresar entre 7 y 8
+    números</span>  
 
 
   <script>
@@ -127,7 +70,7 @@
         /^\d*$/.test(inputValue)
       ) {
         // Redirigir a la página "tutor_form.html" solo si el valor es válido
-        window.location.href = "tutor_form.html";
+        window.location.href = "propietario_form.html";
       } else {
         // Si el valor no es válido, eliminar cualquier valor almacenado en localStorage
         localStorage.removeItem("valor");
