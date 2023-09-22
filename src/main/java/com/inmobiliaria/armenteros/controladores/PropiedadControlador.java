@@ -48,7 +48,7 @@ public class PropiedadControlador {
     }
 
     @GetMapping("/registrarUno")
-    public String registrarUno(ModelMap modelo, Long idPropietario) {
+    public String registrarUno(ModelMap modelo) {
 
         modelo.put("propietario", propietarioRepositorio.buscarPropietarioPorId());
         return "propiedad_form.html";
@@ -100,7 +100,7 @@ public class PropiedadControlador {
 
         }
         System.out.println("3sssss");
-        return "index.html";
+        return "redirect:/";
     }
 
     @GetMapping("/lista")
