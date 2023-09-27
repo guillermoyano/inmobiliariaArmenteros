@@ -21,12 +21,22 @@ a:visited {
 }
 
 .img-thumbnail {
-    width: 100px; /* Ancho fijo */
-    height: 100px; /* Alto fijo */
-    object-fit: cover; /* Escalar y recortar para que encaje */
-    object-position: center; /* Centrar la parte visible de la imagen */
-  }
+    width: 100px;
+    /* Ancho fijo */
+    height: 100px;
+    /* Alto fijo */
+    object-fit: cover;
+    /* Escalar y recortar para que encaje */
+    object-position: center;
+    /* Centrar la parte visible de la imagen */
+}
 
+.hache3, .hache4 {
+    margin-bottom: 20px; /* Puedes ajustar el valor según tus preferencias de espaciado */
+}
+
+/* Puedes agregar estilos adicionales aquí */
+</style>
 /* .navbar-nav .nav-item {
     border-right: 1px solid #ccc;
    
