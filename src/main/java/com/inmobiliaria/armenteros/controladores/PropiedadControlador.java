@@ -75,7 +75,7 @@ public class PropiedadControlador {
             @RequestParam(required = false) Boolean lavadero, @RequestParam(required = false) Boolean suite,
             @RequestParam(required = false) Boolean vestidor, @RequestParam(required = false) Boolean toillete,
             @RequestParam(required = false) Boolean expensas, @RequestParam(required = false) String tipoVivienda,
-            @RequestParam(required = false) Long idPropietario, List <MultipartFile> archivo,
+            @RequestParam(required = false) Long idPropietario, List <MultipartFile> archivo, @RequestParam(required = false) Long precioPropiedad,
             RedirectAttributes redirect, ModelMap modelo) {
         System.out.println("sssss");
         try {
@@ -84,7 +84,7 @@ public class PropiedadControlador {
                     estado, aguaCorriente, aireAcondicionado, aptoCredito, balcon, banio, aptoProfesional,
                     cloacas, gasNatural, permiteMascotas, salonJuegos, gimnasio, luz, pavimento, cocina,
                     patio, quincho, sum, terraza, baulera, parrilla, cochera, pileta, ascensor, lavadero, suite,
-                    vestidor, toillete, expensas, tipoVivienda, idPropietario, archivo);
+                    vestidor, toillete, expensas, tipoVivienda, idPropietario, archivo, precioPropiedad);
 //            List<Propietario> propietarios = propietarioServicio.listarPropietarios();
 //            redirect.addAttribute("propietarios", propietarios);
             redirect.addFlashAttribute("exito", "La propiedad fue cargada correctamente");

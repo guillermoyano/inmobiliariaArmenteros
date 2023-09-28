@@ -33,6 +33,7 @@ public class Propiedad {
 //    @GenericGenerator(name = "uuid", strategy = "uuid2")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPropiedad;
+    private Long precioPropiedad;
     private Double mts2Totales;
     private Double mts2Cubiertos;
     private Double mts2Descubiertos;
@@ -91,8 +92,9 @@ public class Propiedad {
     public Propiedad() {
     }
 
-    public Propiedad(Integer idPropiedad, Double mts2Totales, Double mts2Cubiertos, Double mts2Descubiertos, String localidad, String barrio, String calle, Integer altura, String estado, String descripcion, Date fechaPublicacion, Integer cantHabitaciones, Integer cantBanios, String tipoVivienda, Propietario propietario, List<Imagen> imagenes) {
+    public Propiedad(Integer idPropiedad, Long precioPropiedad, Double mts2Totales, Double mts2Cubiertos, Double mts2Descubiertos, String localidad, String barrio, String calle, Integer altura, String estado, String descripcion, Date fechaPublicacion, Integer cantHabitaciones, Integer cantBanios, String tipoVivienda, Propietario propietario, List<Imagen> imagenes) {
         this.idPropiedad = idPropiedad;
+        this.precioPropiedad = precioPropiedad;
         this.mts2Totales = mts2Totales;
         this.mts2Cubiertos = mts2Cubiertos;
         this.mts2Descubiertos = mts2Descubiertos;
@@ -116,6 +118,14 @@ public class Propiedad {
 
     public void setIdPropiedad(Integer idPropiedad) {
         this.idPropiedad = idPropiedad;
+    }
+
+    public Long getPrecioPropiedad() {
+        return precioPropiedad;
+    }
+
+    public void setPrecioPropiedad(Long precioPropiedad) {
+        this.precioPropiedad = precioPropiedad;
     }
 
     public Double getMts2Totales() {
@@ -461,7 +471,5 @@ public class Propiedad {
     public void setImagenes(List<Imagen> imagenes) {
         this.imagenes = imagenes;
     }
-    
-    
-    
+
 }

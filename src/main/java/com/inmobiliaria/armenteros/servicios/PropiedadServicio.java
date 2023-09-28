@@ -37,9 +37,9 @@ public class PropiedadServicio {
             Boolean aptoCredito, Boolean balcon, Boolean banio, Boolean aptoProfesional, Boolean cloacas, Boolean gasNatural, Boolean permiteMascotas, Boolean salonJuegos,
             Boolean gimnasio, Boolean luz, Boolean pavimento, Boolean cocina, Boolean patio, Boolean quincho, Boolean sum, Boolean terraza, Boolean baulera, Boolean parrilla,
             Boolean cochera, Boolean pileta, Boolean ascensor, Boolean lavadero, Boolean suite, Boolean vestidor, Boolean toillete, Boolean expensas, String tipoVivienda, Long idPropietario,
-            List <MultipartFile> archivo) throws Exception {
+            List <MultipartFile> archivo, Long precioPropiedad) throws Exception {
 
-        validar(localidad, barrio, calle, descripcion, mts2Totales, mts2Cubiertos, mts2Descubiertos, altura, cantBanios, cantHabitaciones, estado, tipoVivienda);
+        validar(localidad, barrio, calle, descripcion, mts2Totales, mts2Cubiertos, mts2Descubiertos, altura, cantBanios, cantHabitaciones, estado, tipoVivienda, precioPropiedad);
 
         Optional<Propietario> respuestaPropietario = propietarioRepositorio.findById(idPropietario);
 
@@ -65,6 +65,7 @@ public class PropiedadServicio {
         propiedad.setCantHabitaciones(cantHabitaciones);
         propiedad.setFechaPublicacion(new Date());
         propiedad.setTipoVivienda(tipoVivienda);
+        propiedad.setPrecioPropiedad(precioPropiedad);
 
         if (aguaCorriente != null) {
             propiedad.setAguaCorriente(true);
@@ -185,7 +186,7 @@ public class PropiedadServicio {
             Boolean gimnasio, Boolean luz, Boolean pavimento, Boolean cocina, Boolean patio, Boolean quincho, Boolean sum, Boolean terraza, Boolean baulera, Boolean parrilla,
             Boolean cochera, Boolean pileta, Boolean ascensor, Boolean lavadero, Boolean suite, Boolean vestidor, Boolean toillete, Boolean expensas, String tipoVivienda) throws Exception {
 
-        validar(localidad, barrio, calle, descripcion, mts2Totales, mts2Cubiertos, mts2Descubiertos, altura, cantBanios, cantHabitaciones, estado, tipoVivienda);
+        validar(localidad, barrio, calle, descripcion, mts2Totales, mts2Cubiertos, mts2Descubiertos, altura, cantBanios, cantHabitaciones, estado, tipoVivienda, Long.MIN_VALUE);
 
         Optional<Propiedad> respuesta = propiedadRepositorio.findById(idPropiedad);
 
@@ -257,8 +258,11 @@ public class PropiedadServicio {
     }
 
     private void validar(String localidad, String barrio, String calle, String descripcion, Double mts2Totales, Double mts2Cubiertos, Double mts2Descubiertos, Integer altura, Integer cantBanios,
-            Integer cantHabitaciones, String estado, String tipoVivienda) throws Exception {
+            Integer cantHabitaciones, String estado, String tipoVivienda, Long precioPropiedad) throws Exception {
 
+        if (precioPropiedad == null || precioPropiedad < 0) {
+            throw new Exception("El precio de la propiedad no puede ser nula o ser menor a cero");
+        }
         if (localidad.isEmpty() || localidad == null) {
             throw new Exception("La localidad no puede estar vacia");
         }
