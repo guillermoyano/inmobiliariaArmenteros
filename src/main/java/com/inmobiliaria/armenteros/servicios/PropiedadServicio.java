@@ -32,11 +32,11 @@ public class PropiedadServicio {
     private ImagenServicio imagenServicio;
 
     @Transactional
-    public void crearPropiedad(Double mts2Totales, Double mts2Cubiertos, Double mts2Descubiertos, String localidad, String barrio, String calle,
+    public void crearPropiedad(Double mts2Totales, Double mts2Cubiertos, Double mts2Descubiertos, String localidad, String barrio, String calle, 
             String descripcion, Integer altura, Integer cantBanios, Integer cantHabitaciones, String estado, Boolean aguaCorriente, Boolean aireAcondicionado,
             Boolean aptoCredito, Boolean balcon, Boolean banio, Boolean aptoProfesional, Boolean cloacas, Boolean gasNatural, Boolean permiteMascotas, Boolean salonJuegos,
             Boolean gimnasio, Boolean luz, Boolean pavimento, Boolean cocina, Boolean patio, Boolean quincho, Boolean sum, Boolean terraza, Boolean baulera, Boolean parrilla,
-            Boolean cochera, Boolean pileta, Boolean ascensor, Boolean lavadero, Boolean suite, Boolean vestidor, Boolean toillete, Boolean expensas, String tipoVivienda, Long idPropietario,
+            Boolean cochera, Boolean pileta, Boolean ascensor, Boolean lavadero, Boolean suite, Boolean vestidor, Boolean toillete, Boolean expensas, String tipoVivienda, String moneda, Long idPropietario,
             List <MultipartFile> archivo, Long precioPropiedad) throws Exception {
 
         validar(localidad, barrio, calle, descripcion, mts2Totales, mts2Cubiertos, mts2Descubiertos, altura, cantBanios, cantHabitaciones, estado, tipoVivienda, precioPropiedad);
@@ -66,7 +66,8 @@ public class PropiedadServicio {
         propiedad.setFechaPublicacion(new Date());
         propiedad.setTipoVivienda(tipoVivienda);
         propiedad.setPrecioPropiedad(precioPropiedad);
-
+        propiedad.setMoneda(moneda);
+        
         if (aguaCorriente != null) {
             propiedad.setAguaCorriente(true);
         }
@@ -301,4 +302,35 @@ public class PropiedadServicio {
         }
 
     }
+    
+    
+ 
+//    public static <T> List<T> filtrarBusqueda(List<T> list, String localidad, String barrio, Long precio, String tipo, String estado, String moneda) {
+//        return list.stream()
+//                   .filter(item -> {
+//                       boolean localidadMatch =  propiedad.getLocalidad() == null || criteria.getLocalidad().isEmpty() ||
+//                               item.getLocalidad().equalsIgnoreCase(criteria.getLocalidad());
+//
+//                       boolean barrioMatch = criteria.getBarrio() == null || criteria.getBarrio().isEmpty() ||
+//                               item.getBarrio().equalsIgnoreCase(criteria.getBarrio());
+//
+//                       boolean precioMatch = (criteria.getPrecioMin() <= item.getPrecio()) &&
+//                               (criteria.getPrecioMax() >= item.getPrecio());
+//
+//                       boolean tipoMatch = criteria.getTipo() == null || criteria.getTipo().isEmpty() ||
+//                               item.getTipo().equalsIgnoreCase(criteria.getTipo());
+//
+//                       boolean estadoMatch = criteria.getEstado() == null || criteria.getEstado().isEmpty() ||
+//                               item.getEstado().equalsIgnoreCase(criteria.getEstado());
+//
+//                       boolean monedaMatch = criteria.getMoneda() == null || criteria.getMoneda().isEmpty() ||
+//                               item.getMoneda().equalsIgnoreCase(criteria.getMoneda());
+//
+//                       return localidadMatch && barrioMatch && precioMatch && tipoMatch && estadoMatch && monedaMatch;
+//                   })
+//                   .collect(Collectors.toList());
+//    }
+//}
+    
+    
 }

@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,31 +49,72 @@ public class PortalControlador {
         return "index.html";
     }
 
+//    @GetMapping("/casasPrincipal")
+//    public String casasPrincipal(ModelMap modelo) {
+//
+//        List<Propiedad> propiedades = propiedadRepositorio.findAll();
+//        List<Imagen> imagenes = imagenRepositorio.findAll();
+//
+//        Map<Integer, List<String>> imagenesPorPropiedad = new HashMap<>();
+//
+//        for (Propiedad aux : propiedades) {
+//            Integer idPropiedad = aux.getIdPropiedad();
+//            List<String> imagen1 = new ArrayList<>();
+//
+//            for (Imagen aux1 : imagenes) {
+//                if (aux1.getPropiedad().getIdPropiedad() == idPropiedad) {
+//                    byte[] foto = aux1.getContenido();
+//                    String base = Base64.getEncoder().encodeToString(foto);
+//                    imagen1.add(base);
+//                }
+//            }
+//            imagenesPorPropiedad.put(idPropiedad, imagen1);
+//        }
+//        modelo.addAttribute("propiedades", propiedades);
+//        modelo.addAttribute("imagenesPorPropiedad", imagenesPorPropiedad);
+//        return "casasPrincipal.html";
+//    }
+    
     @GetMapping("/casasPrincipal")
-    public String casasPrincipal(ModelMap modelo) {
-
-        List<Propiedad> propiedades = propiedadRepositorio.findAll();
-        List<Imagen> imagenes = imagenRepositorio.findAll();
-
-        Map<Integer, List<String>> imagenesPorPropiedad = new HashMap<>();
-
-        for (Propiedad aux : propiedades) {
-            Integer idPropiedad = aux.getIdPropiedad();
-            List<String> imagen1 = new ArrayList<>();
-
-            for (Imagen aux1 : imagenes) {
-                if (aux1.getPropiedad().getIdPropiedad() == idPropiedad) {
-                    byte[] foto = aux1.getContenido();
-                    String base = Base64.getEncoder().encodeToString(foto);
-                    imagen1.add(base);
-                }
-            }
-            imagenesPorPropiedad.put(idPropiedad, imagen1);
-        }
-        modelo.addAttribute("propiedades", propiedades);
-        modelo.addAttribute("imagenesPorPropiedad", imagenesPorPropiedad);
+    public String casasPrincipal() {
         return "casasPrincipal.html";
     }
+
+    @PostMapping("casasPrincipal")
+    public String casasPrincipal(@RequestParam("localidad") String localidad,
+                                  @RequestParam("barrio") String barrio,
+                                  @RequestParam("precioMin") Double precioMin,
+                                  @RequestParam("precioMax") Double precioMax,
+                                  @RequestParam("tipo") String tipo,
+                                  @RequestParam("estado") String estado,
+                                  @RequestParam("moneda") String moneda,
+                                  Model model) {
+        List<Propiedad> resultados = propiedadRepositorio.searchInmuebles(localidad, barrio, precioMin, precioMax, tipo, estado, moneda);
+        model.addAttribute("resultados", resultados);
+        return "casasPrincipal.html";
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     @GetMapping("/registrar")
     public String registrar() {

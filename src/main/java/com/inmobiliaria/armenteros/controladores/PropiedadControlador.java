@@ -76,15 +76,14 @@ public class PropiedadControlador {
             @RequestParam(required = false) Boolean vestidor, @RequestParam(required = false) Boolean toillete,
             @RequestParam(required = false) Boolean expensas, @RequestParam(required = false) String tipoVivienda,
             @RequestParam(required = false) Long idPropietario, List <MultipartFile> archivo, @RequestParam(required = false) Long precioPropiedad,
+            @RequestParam(required = false) String moneda,
             RedirectAttributes redirect, ModelMap modelo) {
         System.out.println("sssss");
         try {
-            propiedadServicio.crearPropiedad(mts2Totales, mts2Cubiertos, mts2Descubiertos,
-                    localidad, barrio, calle, descripcion, altura, cantBanios, cantHabitaciones,
-                    estado, aguaCorriente, aireAcondicionado, aptoCredito, balcon, banio, aptoProfesional,
-                    cloacas, gasNatural, permiteMascotas, salonJuegos, gimnasio, luz, pavimento, cocina,
-                    patio, quincho, sum, terraza, baulera, parrilla, cochera, pileta, ascensor, lavadero, suite,
-                    vestidor, toillete, expensas, tipoVivienda, idPropietario, archivo, precioPropiedad);
+            propiedadServicio.crearPropiedad(mts2Totales, mts2Cubiertos, mts2Descubiertos, localidad, barrio, calle, descripcion, altura, cantBanios,
+                    cantHabitaciones, estado, aguaCorriente, aireAcondicionado, aptoCredito, balcon, banio, aptoProfesional, cloacas, gasNatural,
+                    permiteMascotas, salonJuegos, gimnasio, luz, pavimento, cocina, patio, quincho, sum, terraza, baulera, parrilla, cochera, pileta,
+                    ascensor, lavadero, suite, vestidor, toillete, expensas, tipoVivienda, moneda, idPropietario, archivo, precioPropiedad);
 //            List<Propietario> propietarios = propietarioServicio.listarPropietarios();
 //            redirect.addAttribute("propietarios", propietarios);
             redirect.addFlashAttribute("exito", "La propiedad fue cargada correctamente");

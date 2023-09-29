@@ -43,6 +43,7 @@ public class Propiedad {
     private Integer altura;
     private String estado;
     private String descripcion;
+    private String moneda;
     private Boolean aguaCorriente = false;
     private Boolean aireAcondicionado = false;
     private Boolean aptoCredito = false;
@@ -92,7 +93,7 @@ public class Propiedad {
     public Propiedad() {
     }
 
-    public Propiedad(Integer idPropiedad, Long precioPropiedad, Double mts2Totales, Double mts2Cubiertos, Double mts2Descubiertos, String localidad, String barrio, String calle, Integer altura, String estado, String descripcion, Date fechaPublicacion, Integer cantHabitaciones, Integer cantBanios, String tipoVivienda, Propietario propietario, List<Imagen> imagenes) {
+    public Propiedad(Integer idPropiedad, Long precioPropiedad, Double mts2Totales, Double mts2Cubiertos, Double mts2Descubiertos, String localidad, String barrio, String calle, Integer altura, String estado, String descripcion, String moneda, Date fechaPublicacion, Integer cantHabitaciones, Integer cantBanios, String tipoVivienda, Propietario propietario, List<Imagen> imagenes) {
         this.idPropiedad = idPropiedad;
         this.precioPropiedad = precioPropiedad;
         this.mts2Totales = mts2Totales;
@@ -104,6 +105,7 @@ public class Propiedad {
         this.altura = altura;
         this.estado = estado;
         this.descripcion = descripcion;
+        this.moneda = moneda;
         this.fechaPublicacion = fechaPublicacion;
         this.cantHabitaciones = cantHabitaciones;
         this.cantBanios = cantBanios;
@@ -198,6 +200,14 @@ public class Propiedad {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getMoneda() {
+        return moneda;
+    }
+
+    public void setMoneda(String moneda) {
+        this.moneda = moneda;
     }
 
     public Boolean getAguaCorriente() {
@@ -472,4 +482,6 @@ public class Propiedad {
         this.imagenes = imagenes;
     }
 
+    
+    
 }
