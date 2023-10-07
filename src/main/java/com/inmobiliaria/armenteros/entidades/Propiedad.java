@@ -34,9 +34,9 @@ public class Propiedad {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPropiedad;
     private Long precioPropiedad;
-    private Double mts2Totales;
-    private Double mts2Cubiertos;
-    private Double mts2Descubiertos;
+    private Long mts2Totales;
+    private Long mts2Cubiertos;
+    private Long mts2Descubiertos;
     private String localidad;
     private String barrio;
     private String calle;
@@ -93,7 +93,7 @@ public class Propiedad {
     public Propiedad() {
     }
 
-    public Propiedad(Integer idPropiedad, Long precioPropiedad, Double mts2Totales, Double mts2Cubiertos, Double mts2Descubiertos, String localidad, String barrio, String calle, Integer altura, String estado, String descripcion, String moneda, Date fechaPublicacion, Integer cantHabitaciones, Integer cantBanios, String tipoVivienda, Propietario propietario, List<Imagen> imagenes) {
+    public Propiedad(Integer idPropiedad, Long precioPropiedad, Long mts2Totales, Long mts2Cubiertos, Long mts2Descubiertos, String localidad, String barrio, String calle, Integer altura, String estado, String descripcion, String moneda, Date fechaPublicacion, Integer cantHabitaciones, Integer cantBanios, String tipoVivienda, Propietario propietario, List<Imagen> imagenes) {
         this.idPropiedad = idPropiedad;
         this.precioPropiedad = precioPropiedad;
         this.mts2Totales = mts2Totales;
@@ -130,27 +130,27 @@ public class Propiedad {
         this.precioPropiedad = precioPropiedad;
     }
 
-    public Double getMts2Totales() {
+    public Long getMts2Totales() {
         return mts2Totales;
     }
 
-    public void setMts2Totales(Double mts2Totales) {
+    public void setMts2Totales(Long mts2Totales) {
         this.mts2Totales = mts2Totales;
     }
 
-    public Double getMts2Cubiertos() {
+    public Long getMts2Cubiertos() {
         return mts2Cubiertos;
     }
 
-    public void setMts2Cubiertos(Double mts2Cubiertos) {
+    public void setMts2Cubiertos(Long mts2Cubiertos) {
         this.mts2Cubiertos = mts2Cubiertos;
     }
 
-    public Double getMts2Descubiertos() {
+    public Long getMts2Descubiertos() {
         return mts2Descubiertos;
     }
 
-    public void setMts2Descubiertos(Double mts2Descubiertos) {
+    public void setMts2Descubiertos(Long mts2Descubiertos) {
         this.mts2Descubiertos = mts2Descubiertos;
     }
 

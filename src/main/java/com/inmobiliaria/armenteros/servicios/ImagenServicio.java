@@ -3,7 +3,6 @@ package com.inmobiliaria.armenteros.servicios;
 import com.inmobiliaria.armenteros.entidades.Imagen;
 import com.inmobiliaria.armenteros.excepciones.MiException;
 import com.inmobiliaria.armenteros.repositorios.ImagenRepositorio;
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
@@ -43,7 +42,7 @@ public class ImagenServicio {
     }
 
     @Transactional
-    public Imagen modificar(MultipartFile archivo, Integer idImagen) throws MiException {
+    public Imagen modificarImagen(MultipartFile archivo, Integer idImagen) throws MiException {
 
         if (archivo != null) {
             try {
@@ -68,17 +67,19 @@ public class ImagenServicio {
 
                 System.err.println(e.getMessage());
             }
-        } else {
-            System.err.println("Error");
         }
         return null;
     }
 
+    public Imagen getone(Integer idImagen) {
+        return imagenRepositorio.getOne(idImagen);
+    }
+
     @Transactional
     public List<byte[]> listarTodos() {
-        
-        List<byte[]>imagenes = imagenRepositorio.listaContenido();
-        
+
+        List<byte[]> imagenes = imagenRepositorio.listaContenido();
+
         return imagenes;
     }
 }

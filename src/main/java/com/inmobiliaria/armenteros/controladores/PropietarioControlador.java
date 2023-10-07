@@ -1,6 +1,7 @@
 package com.inmobiliaria.armenteros.controladores;
 
 import com.inmobiliaria.armenteros.entidades.Propietario;
+import com.inmobiliaria.armenteros.excepciones.MiException;
 import com.inmobiliaria.armenteros.repositorios.PropietarioRepositorio;
 import com.inmobiliaria.armenteros.servicios.PropietarioServicio;
 import java.util.ArrayList;
@@ -66,15 +67,17 @@ public class PropietarioControlador {
         try {
             if(propietarioServicio.buscarPorDni(dni)==null){
                 propietarioServicio.crearPropietario(dni, nombreApellido, telefono, email, direccion);
-                
+                redirect.addFlashAttribute("exito", "salió todo bien");
             }
                            
             System.out.println("1");
             
-        } catch (Exception ex) {
-            List<Propietario>propietario = propietarioServicio.listarPropietarios();
-            modelo.addAttribute("propietarios", propietario);
-            Logger.getLogger(PropietarioControlador.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MiException ex) {
+            modelo.put("error", ex.getMessage());
+            modelo.put("nombreApellido", nombreApellido);
+            modelo.put("telefono", telefono);
+            modelo.put("email", email);
+            modelo.put("direccion", direccion);
             System.out.println("2");
             return "propietario_form.html";
         }

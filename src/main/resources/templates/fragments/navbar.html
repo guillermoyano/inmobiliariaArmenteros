@@ -2,35 +2,72 @@
     <div class="container d-flex justify-content-center">
         <nav class="navbar navbar-expand-lg navbar-light" style="width: 80%;">
             <div class="container-fluid">
-                <a class="navbar-brand mx-auto" href="#">
+                <a class="navbar-brand mx-auto" href="/">
                     <img src="/img/armenteros_1-removebg-preview.png" alt="" width="180" height="65">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav" th:if="${session.usuariosession != null}">
-                    <ul class="navbar-nav mx-auto">
+                <div class="collapse navbar-collapse" id="navbarNav" >
+                    <ul class="navbar-nav mx-auto" th:if="${session.usuariosession != null}">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="propietariosDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                               data-bs-toggle="dropdown" aria-expanded="false">
                                 Propietarios
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="propietariosDropdown">
-                                <li><a class="dropdown-item" href="../propietario/buscarPropietario">Cargar Propietarios</a></li>
+                                <li><a class="dropdown-item" href="../propietario/buscarPropietario">Buscar Propietarios</a></li>
                                 <!-- Agrega más opciones si es necesario -->
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Propiedades</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Tasaciones</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Logueo</a>
+                    </ul>
+                    <ul class="navbar-nav mx-auto" th:if="${session.usuariosession != null}">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="propiedadesDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Propiedades
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="propiedadesDropdown" th:if="${session.usuariosession != null}">
+                                <li><a class="dropdown-item" href="/propiedad/lista">Lista Propiedades</a></li>
+                                <!-- Agrega más opciones si es necesario -->
+                            </ul>
                         </li>
                     </ul>
+                    <ul class="navbar-nav mx-auto" th:if="${session.usuariosession != null}">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="perfilDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Usuarios
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="propiedadesDropdown">
+                                <li><a class="dropdown-item" href="/registrar">Nuevo Usuario </a></li>
+                                <li><a class="dropdown-item" href="/usuario/listarUsuarios">Listar Usuario </a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav mx-auto" th:if="${session.usuariosession != null}">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="perfilDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Mi perfil
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="propiedadesDropdown">
+                                <li><a class="dropdown-item" href="">Modificar Datos </a></li>
+                                <li><a class="dropdown-item" href="/logout">Cerrar Sesion</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Tasaciones</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-primary" style="" href="/">Volver</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>

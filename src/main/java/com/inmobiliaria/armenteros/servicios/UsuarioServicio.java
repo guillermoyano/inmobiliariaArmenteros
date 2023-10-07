@@ -38,7 +38,7 @@ public class UsuarioServicio implements UserDetailsService {
     private ImagenServicio imagenServicio;
 
     @Transactional
-    public void registrar(String nombre, String email, String password, String password2, MultipartFile archivo) throws MiException, IOException {
+    public void registrar(String nombre, String email, String password, String password2) throws MiException, IOException {
 
         validar(nombre, email, password, password2);
 
@@ -56,7 +56,7 @@ public class UsuarioServicio implements UserDetailsService {
     }
 
     @Transactional
-    public void actualizar(MultipartFile archivo, String idUsuario, String nombre, String email, String password, String password2) throws MiException {
+    public void actualizar(String idUsuario, String nombre, String email, String password, String password2) throws MiException {
 
         validar(nombre, email, password, password2);
 
@@ -127,7 +127,26 @@ public class UsuarioServicio implements UserDetailsService {
 
     }
 
-    public List<Usuario> listarUsuarios() {
+    @Transactional
+    public void cambiarRol(String id) throws MiException {
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+
+        if (respuesta.isPresent()) {
+            Usuario usuario = respuesta.get();
+
+            if (usuario.getRol().equals(Rol.ADMIN)) {
+                usuario.setRol(Rol.USER);
+                usuarioRepositorio.save(usuario);
+            } else if (!usuario.getRol().equals(Rol.ADMIN)){
+                usuario.setRol(Rol.ADMIN);
+                usuarioRepositorio.save(usuario);
+
+            }
+        }
+    }
+
+
+public List<Usuario> listarUsuarios() {
 
         List<Usuario> usuario = new ArrayList();
 
@@ -135,6 +154,8 @@ public class UsuarioServicio implements UserDetailsService {
 
         return usuario;
     }
+    
+    
 
     public void eliminarUsuario(String id) throws MiException {
 

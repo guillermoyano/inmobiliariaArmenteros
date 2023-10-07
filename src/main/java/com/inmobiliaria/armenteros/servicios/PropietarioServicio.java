@@ -1,7 +1,6 @@
 package com.inmobiliaria.armenteros.servicios;
 import com.inmobiliaria.armenteros.entidades.Propietario;
 import com.inmobiliaria.armenteros.excepciones.MiException;
-import com.inmobiliaria.armenteros.repositorios.PropiedadRepositorio;
 import com.inmobiliaria.armenteros.repositorios.PropietarioRepositorio;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +22,7 @@ public class PropietarioServicio {
     @Transactional
     public void crearPropietario(Long dni, String nombreApellido, Long telefono, String email, String direccion) throws MiException{
 
-        if(dni == null){
-            throw new MiException ("El DNI debe ser ingresado");
-        }
+        validar(dni, nombreApellido, telefono, email, direccion);
         
         Propietario propietario = new Propietario();
 
@@ -91,15 +88,15 @@ public class PropietarioServicio {
     }
 
     private void validar(Long dni, String nombreApellido, Long telefono, String email, String direccion) throws MiException {
-
-        if (dni == null || dni < 1000000) {
+        
+        if (dni == null || Long.toString(dni).length()<7) {
             throw new MiException("El DNI no puede ser nulo o estar vacío o tener menos de 7 dígitos");
         }
         if (nombreApellido.isEmpty() || nombreApellido == null) {
             throw new MiException("Debe completar correctamente el nombre");
         }
-        if (telefono == null || telefono < 1120000000) {
-            throw new MiException("El DNI no puede ser nulo o estar vacío o tener menos de 7 dígitos");
+        if (telefono == null || Long.toString(telefono).length()<10) {
+            throw new MiException("El Telefono no puede ser nulo o estar vacio");
         }
         if (email.isEmpty() || email == null) {
             throw new MiException("Debe completar correctamente el correo electrónico");
@@ -107,7 +104,6 @@ public class PropietarioServicio {
         if (direccion.isEmpty() || direccion == null) {
             throw new MiException("Debe completar correctamente la dirección");
         }
-
     }
     
     public Propietario buscarPorDni(Long dni){
