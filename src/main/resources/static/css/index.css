@@ -37,6 +37,20 @@ a:visited {
     /* Puedes ajustar el valor según tus preferencias de espaciado */
 }
 
+
+/* Cambiar el tamaño de la fuente para el párrafo dentro del bloque de cita */
+.blockquote p {
+    font-size: 16px;
+    /* Puedes ajustar el valor del tamaño de fuente según tus preferencias */
+}
+
+/* Cambiar el tamaño de la fuente para el texto del número de teléfono */
+.blockquote-footer {
+    font-size: 14px;
+    /* Puedes ajustar el valor del tamaño de fuente según tus preferencias */
+}
+
+
 /* Puedes agregar estilos adicionales aquí */
 /* .navbar-nav .nav-item {
     border-right: 1px solid #ccc;
