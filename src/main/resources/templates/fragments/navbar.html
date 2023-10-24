@@ -1,4 +1,85 @@
-<div class="container">
+<header class="p-3 bg-dark text-white">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                    <use xlink:href="#bootstrap"></use>
+                </svg>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="#" class="nav-link px-2 text-secondary">Inicio</a></li>
+                <li><a href="../propietario/buscarPropietario" class="nav-link px-2 text-white">Propietarios</a></li>
+                <li><a href="/propiedad/lista" class="nav-link px-2 text-white">Propiedades</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link px-2 text-white dropdown-toggle" id="faqsDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Usuarios
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="faqsDropdown">
+                        <a class="dropdown-item" href="/registrar">Nuevo Usuario</a>
+                        <a class="dropdown-item" href="/usuario/listarUsuarios">Listar Usuario</a>
+                    </div>
+                </li>
+                <li><a href="#" class="nav-link px-2 text-white">Nosotros</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                    <use xlink:href="#bootstrap"></use>
+                </svg>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="#" class="nav-link px-2 text-secondary"></a></li>
+                <li><a href="#" class="nav-link px-2 text-white"></a></li>
+                <li><a href="#" class="nav-link px-2 text-white"></a></li>
+            </ul>
+
+            <div class="text-end">
+                <!-- <div class="btn btn-outline-light me-2">15-5051-3333</div>
+                <button type="button" class="btn btn-warning">Cañada de Gómez 4509, CABA</button> -->
+                <figure class="text-end">
+                    <blockquote class="blockquote">
+                        <p>Cañada de Gómez 4509, CABA</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                        Teléfono: <cite title="Source Title">11-5051-3333</cite>
+                    </figcaption>
+                    <figcaption class="blockquote-footer">
+                        armenterospropiedades@<cite title="Source Title">gmail.com</cite>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container">
     <div class="container d-flex justify-content-center">
         <nav class="navbar navbar-expand-lg navbar-light" style="width: 80%;">
             <div class="container-fluid">
@@ -18,8 +99,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="propietariosDropdown">
                                 <li><a class="dropdown-item" href="../propietario/buscarPropietario">Buscar
-                                        Propietarios</a></li>
-                                <!-- Agrega más opciones si es necesario -->
+                                        Propietarios</a></li> 
                             </ul>
                         </li>
                     </ul>
@@ -32,7 +112,7 @@
                             <ul class="dropdown-menu" aria-labelledby="propiedadesDropdown"
                                 th:if="${session.usuariosession != null}">
                                 <li><a class="dropdown-item" href="/propiedad/lista">Lista Propiedades</a></li>
-                                <!-- Agrega más opciones si es necesario -->
+                                
                             </ul>
                         </li>
                     </ul>
@@ -74,4 +154,4 @@
             </div>
         </nav>
     </div>
-</div>
+</div> -->
