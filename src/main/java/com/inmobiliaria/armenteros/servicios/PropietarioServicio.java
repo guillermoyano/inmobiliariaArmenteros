@@ -25,14 +25,46 @@ public class PropietarioServicio {
         validar(dni, nombreApellido, telefono, email, direccion);
         
         Propietario propietario = new Propietario();
-
+        
+               
         propietario.setDni(dni);
-        propietario.setNombreApellido(nombreApellido);
-        propietario.setEmail(email);
+        propietario.setNombreApellido(cambiarPrimeraLetraCadaPalabra(nombreApellido));
+        propietario.setEmail(email.toLowerCase());
         propietario.setTelefono(telefono);
-        propietario.setDireccion(direccion);
+        propietario.setDireccion(cambiarPrimeraLetraCadaPalabra(direccion));
         propietarioRepositorio.save(propietario);
     }
+    
+    public static String cambiarPrimeraLetraCadaPalabra(String texto) {
+        if (texto == null || texto.isEmpty()) {
+            return texto;
+        }
+
+        String[] palabras = texto.split(" ");
+        StringBuilder resultado = new StringBuilder();
+
+     
+        for (int i = 0; i < palabras.length; i++) {
+            String palabra = palabras[i];
+            if (!palabra.isEmpty()) {
+                if (i == 0) {
+                    resultado.append(palabra.substring(0, 1).toUpperCase());
+                    resultado.append(palabra.substring(1).toLowerCase());
+                } else if (palabra.length() == 2) {
+                    resultado.append(palabra.toLowerCase());
+                } else {
+                    resultado.append(palabra.substring(0, 1).toUpperCase());
+                    resultado.append(palabra.substring(1).toLowerCase());
+                }
+                resultado.append(" ");
+            }
+        }
+
+        return resultado.toString().trim(); // Elimina el espacio en blanco al final.
+    }
+    
+    
+    
 
     public List<Propietario> listarPropietarios() {
 

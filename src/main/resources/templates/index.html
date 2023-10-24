@@ -34,7 +34,7 @@
 
 
 
-<body>
+<body style="background-image: url('../img/inmobiliaria.jpg'); background-size: cover"> 
 
     <header class="p-3 bg-dark text-white">
         <div class="container">
@@ -117,10 +117,10 @@
 
         <section class="py-5 text-center container">
             <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light"><img src="/img/armenteros_1-removebg-preview.png" alt="" style="width: 350px;">
+                <div class="col-lg-6 col-md-8 mx-auto" >
+                    <h1 class="fw-light"><img src="/img/fotoramio.png" alt="" style="width: 350px; ">
                     </h1>
-                    <p class="lead text-muted">Ventas, Alquileres y tasaciones.</p>
+                    <p class="lead text" style="color: black"><b>Ventas, Alquileres y tasaciones.</b></p>
 
                     <form role="search" th:action="@{/propiedad/listarPropiedades}">
                         <div class="row mb-3"> <!-- Agregamos un margen inferior (gap) -->
@@ -212,7 +212,7 @@
                             <div class="card-body">
                                 <p th:text="'Tipo de propiedad: '+${propiedades.tipoVivienda}" class="card-text"></p>
                                 <p th:text="'Estado: '+${propiedades.estado}" class="card-text"></p>
-                                <p th:text="'Mts Cuadrados: '+${propiedades.mts2Totales}" class="card-text"></p>
+                                <p th:text="'Barrio: '+${propiedades.barrio}" class="card-text"></p>
                                 <p th:text="'Localidad: '+${propiedades.localidad}" class="card-text"></p>
                                 <p th:text="'Moneda: '+${propiedades.moneda}" class="card-text"></p>
                                 <p th:text="'Precio: '+${propiedades.precioPropiedad}" class="card-text"></p>
@@ -234,7 +234,7 @@
     </main>
 
     <div class="container">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" style="background-color: white">
             <div class="col-md-4 d-flex align-items-center">
                 <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
                     <svg class="bi" width="30" height="24">
@@ -246,7 +246,7 @@
             </div>
             <div class="col-md-4 d-flex align-items-center justify-content-center">
                 <!-- Agrega la clase justify-content-center para centrar el contenido -->
-                <img src="/img/armenteros_1-removebg-preview.png" alt="Logo" width="40%" height="55">
+                <img src="/img/armenteros_1-sinfondo.png" alt="Logo" width="40%" height="55">
             </div>
 
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
