@@ -115,7 +115,7 @@
             });
         </script>-->
 
-  <div class="container">
+<!--  <div class="container">
     <h2 class="titulo">Verificacion de DNI</h2>
     <div class="container d-flex justify-content-center">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -132,7 +132,34 @@
         </div>
       </nav>
     </div>
-  </div>
+  </div>-->
+<div class="px-4 pt-5 my-5 text-center border-bottom" style="background: rgba(255, 255, 255, 0.7); border: none;">
+    <h1 class="display-4 fw-bold text-body-emphasis">Verificación de DNI</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4 custom-text"><b>Ingresá el DNI para verificar que esté en la base de datos ya cargado.</b></p>
+      <p class="lead mb-4"><b>En caso de que no esté, serás redirigido al formulario para cargar un nuevo cliente.</b>
+      </p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+        <form onsubmit="return validarBusqueda()" action="/propietario/buscarPropietario" method="POST" class="d-flex"
+          role="search">
+          <div class="row">
+            <div class="col-sm-10">
+              <input type="text" class="form-control form-control-lg" id="dniInput" name="dni" required pattern="\d*"
+                placeholder="DNI">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg px-4 me-sm-3">Buscar</button>
+
+        </form>
+      </div>
+    </div>
+    <div class="overflow-hidden" style="max-height: 30vh;">
+
+    </div>
+  </div>
+
+
+
   <span id="error" style="display: none; color: red; margin-left: 590px; font-size: 20px">Debe ingresar entre 7 y 8
     números</span>  
   <script>
