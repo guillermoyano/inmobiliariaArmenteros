@@ -5,65 +5,49 @@
 
 a {
     text-decoration: none;
-    /* Elimina el subrayado */
 }
 
-/* Estilo para enlaces no visitados */
 a:link {
     color: inherit;
-    /* Mantén el color original */
 }
 
-/* Estilo para enlaces visitados */
 a:visited {
     color: inherit;
-    /* Mantén el color original */
 }
 
 .img-thumbnail {
     width: 100px;
-    /* Ancho fijo */
     height: 100px;
-    /* Alto fijo */
     object-fit: cover;
-    /* Escalar y recortar para que encaje */
     object-position: center;
-    /* Centrar la parte visible de la imagen */
 }
 
 .hache3,
 .hache4 {
     margin-bottom: 20px;
-    /* Puedes ajustar el valor según tus preferencias de espaciado */
 }
 
-
-/* Cambiar el tamaño de la fuente para el párrafo dentro del bloque de cita */
 .blockquote p {
     font-size: 16px;
-    /* Puedes ajustar el valor del tamaño de fuente según tus preferencias */
 }
 
-/* Cambiar el tamaño de la fuente para el texto del número de teléfono */
 .blockquote-footer {
     font-size: 14px;
-    /* Puedes ajustar el valor del tamaño de fuente según tus preferencias */
 }
 
 .image-box {
     margin: 20px;
-    padding: 10px; 
+    padding: 10px;
     background: rgba(33, 37, 41, 0.3);
 }
 
 .custom-text {
-    color: #333; /* Cambia el color al que desees */
+    color: #333;
 }
 
-/* Establece la imagen de fondo y la opacidad solo al fondo */
 body::before {
     content: "";
-    background-image: url('../img/inmobiliaria.jpg'); /* Reemplaza 'tu-imagen-de-fondo.jpg' con la ruta de tu imagen */
+    background-image: url('../img/inmobiliaria.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -72,108 +56,25 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.; /* Establece la opacidad al 70% */
-    z-index: -1; /* Coloca el fondo detrás de todo el contenido */
+    opacity: 0.;
+    z-index: -1;
 }
 
-/* Ajusta el contenido para que sea legible en el fondo */
-/* Puedes cambiar los colores de texto y otros estilos según tus preferencias */
-body, p, h1, h2, h3, h4, h5, h6 {
-    color: #000; /* Color de texto */
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #000;
 }
 
-
-/* Puedes agregar estilos adicionales aquí */
-/* .navbar-nav .nav-item {
-    border-right: 1px solid #ccc;
-
-}
-
-.navbar-nav .nav-item:last-child {
-    border-right: none;
-}
-
-.custom-toggler .navbar-toggler-icon {
-    background-color: black;
-} */
-
-/* .navBar{
-    background-color: #fff !important;
-}
-
-.elementosNav{
-    display: flex;
-    width: 30%;
-    justify-content: space-around;
-    color: #37474f;
-    font-weight: 700;
-}
-
-.elementos{
-    margin-right: 50px;
-}
-
-.containerImg{
-    width: 20%;
-}
-
-.logo{
-    width: 40%;
-    margin: auto;
-}
-
-.tituloBiblioteca{
-    width: 80%;
-    text-align: center;
-    font-size: 40px;
-    margin-top: 80px;
-    font-weight: 500;
-}
-
-.header{
-    background-image: url(../img/FondoZoom_2.jpg);
-    background-size: cover;
-    height: 550px;
-    display: flex;
-    justify-content: end;
-}
-
-.contenedorLibros{
-    margin-top: 80px;
-    display: flex;
-    flex-direction: column;
+.d-flex.justify-content-center {
     justify-content: center;
-    align-items: center;
 }
 
-.tituloLibros{
-    font-size: 22px;
-    font-weight: 500;
+.btn-outline-success {
+    margin: 0 auto;
 }
-
-.contenedorMain{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.containerFooter{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.boton{
-    background-color: #ffcb00;
-    box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
-    -webkit-box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
-    -moz-box-shadow: 0px 2px 16px 4px rgba(0,0,0,0.36);
-}
-
-.boton:hover{
-    background-color: #ffcb00;
-}
-.boton:active{
-    box-shadow: none;
-} */

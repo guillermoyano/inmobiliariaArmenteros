@@ -13,12 +13,12 @@
 </head>
 
 <body>
-  <div th:replace="/fragments/casa" :: div></div>
+
 
   <nav th:replace="/fragments/navbar" :: nav> </nav>
 
 
-<!--        <h2 class="titulo">Verificacion de DNI</h2>
+  <!--        <h2 class="titulo">Verificacion de DNI</h2>
 
         <div class="contenedorInput">
             <form
@@ -72,7 +72,7 @@
                 </p>
                 <p class="float-end mb-1">
                     <a href="#" style="text-decoration: none"
-                       ><span>â¬ï¸</span> Back to top</a
+                      ><span>â¬ï¸</span> Back to top</a
                     >
                 </p>
             </div>
@@ -115,7 +115,7 @@
             });
         </script>-->
 
-<!--  <div class="container">
+  <!--  <div class="container">
     <h2 class="titulo">Verificacion de DNI</h2>
     <div class="container d-flex justify-content-center">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -133,7 +133,7 @@
       </nav>
     </div>
   </div>-->
-<div class="px-4 pt-5 my-5 text-center border-bottom" style="background: rgba(255, 255, 255, 0.7); border: none;">
+  <div class="px-4 pt-5 my-5 text-center border-bottom" style="background: rgba(255, 255, 255, 0.7); border: none;">
     <h1 class="display-4 fw-bold text-body-emphasis">Verificación de DNI</h1>
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4 custom-text"><b>Ingresá el DNI para verificar que esté en la base de datos ya cargado.</b></p>
@@ -155,13 +155,15 @@
     </div>
     <div class="overflow-hidden" style="max-height: 30vh;">
 
-    </div>
-  </div>
+    </div>
+  </div>
+
+  <div th:replace="/fragments/footer" :: div></div>
 
 
 
   <span id="error" style="display: none; color: red; margin-left: 590px; font-size: 20px">Debe ingresar entre 7 y 8
-    números</span>  
+    números</span>
   <script>
     function validarBusqueda() {
       var busqueda = document.getElementById("dniInput");
@@ -203,6 +205,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
     integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
     crossorigin="anonymous"></script>
-</<body>
+</body>
 
 </html>
