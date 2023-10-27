@@ -209,6 +209,18 @@ public class PropiedadControlador {
             redirect.addFlashAttribute("error", ex.getMessage());
             return "propiedad_modificar.html";
         }
-    }    
+    }
+
+    @GetMapping("eliminar/{idPropiedad}")
+    public String eliminarPropiedad(@PathVariable Integer idPropiedad, RedirectAttributes redirect) throws MiException{
+        propiedadServicio.eliminarPropiedad(idPropiedad);
+        return "redirect:../lista";
+    }
+    
+    @GetMapping("darDeBaja/{idPropiedad}")
+    public String cambiarPropiedad(@PathVariable Integer idPropiedad, RedirectAttributes redirect) throws MiException{
+        propiedadServicio.estadoPropiedad(idPropiedad);
+        return "redirect:../lista";
+    }
     
 }
