@@ -75,6 +75,12 @@ public class ImagenServicio {
         return imagenRepositorio.getOne(idImagen);
     }
 
+    public void eliminarImagen(Integer idPropiedad){
+        List<Imagen> imagenes = imagenRepositorio.listaImagenes(idPropiedad);
+        imagenRepositorio.deleteAll(imagenes);
+    }
+    
+    
     @Transactional
     public List<byte[]> listarTodos() {
 

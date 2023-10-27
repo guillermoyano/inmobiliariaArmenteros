@@ -44,6 +44,7 @@ public class Propiedad {
     private String estado;
     private String descripcion;
     private String moneda;
+    private Boolean estadoComercial = true;
     private Boolean aguaCorriente = false;
     private Boolean aireAcondicionado = false;
     private Boolean aptoCredito = false;
@@ -480,6 +481,14 @@ public class Propiedad {
 
     public void setImagenes(List<Imagen> imagenes) {
         this.imagenes = imagenes;
+    }
+
+    public Boolean getEstadoComercial() {
+        return estadoComercial;
+    }
+
+    public void setEstadoComercial(Boolean estadoComercial) {
+        this.estadoComercial = estadoComercial;
     }
 
     

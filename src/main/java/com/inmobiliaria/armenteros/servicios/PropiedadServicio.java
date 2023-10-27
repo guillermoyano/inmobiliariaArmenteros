@@ -178,7 +178,6 @@ public class PropiedadServicio {
         String[] palabras = texto.split(" ");
         StringBuilder resultado = new StringBuilder();
 
-     
         for (int i = 0; i < palabras.length; i++) {
             String palabra = palabras[i];
             if (!palabra.isEmpty()) {
@@ -197,6 +196,7 @@ public class PropiedadServicio {
 
         return resultado.toString().trim(); // Elimina el espacio en blanco al final.
     }
+
     public List<Propiedad> listarPropiedades() {
 
         List<Propiedad> propiedades = new ArrayList();
@@ -386,10 +386,30 @@ public class PropiedadServicio {
         Optional<Propiedad> respuesta = propiedadRepositorio.findById(idPropiedad);
 
         if (respuesta.isPresent()) {
+            imagenServicio.eliminarImagen(idPropiedad);
             Propiedad propiedad = respuesta.get();
             propiedadRepositorio.delete(propiedad);
         }
     }
+
+    public void estadoPropiedad(Integer idPropiedad) throws MiException {
+
+        Optional<Propiedad> respuesta = propiedadRepositorio.findById(idPropiedad);
+
+        if (respuesta.isPresent()) {
+
+            Propiedad propiedad = respuesta.get();
+            if (propiedad.getEstadoComercial() != null) {
+                if (propiedad.getEstadoComercial() == true) {
+                    propiedad.setEstadoComercial(false);
+                } else {
+                    propiedad.setEstadoComercial(true);
+                }
+                propiedadRepositorio.save(propiedad);
+            }
+        }
+    }
+    
 
     public Propiedad getone(Integer idPropiedad) {
         return propiedadRepositorio.getOne(idPropiedad);
