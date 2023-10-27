@@ -14,27 +14,28 @@
 </head>
 
 <body>
-    <div th:replace="/fragments/casa" :: div></div>
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 
-    <div class='container' style='text-align: center;'>
-        <h2 class="titulo">Lista de Propiedades</h2>
-        <div class="contenedorInput">
+
+    <div class="px-4 pt-5 my-5 text-center border-bottom">
+        <h1 class="display-4 fw-bold text-body-emphasis">Lista de propiedades</h1>
+        <div class="col-lg-6 mx-auto">
             <form th:action="@{/propiedad/lista}">
                 <input type="text" id="keyword" name="keyword" class="coolinput" th:value="${keyword}"
                     placeholder="Ingrese el nombre de la Calle"
-                    style="text-align: center; width: 300px; margin-bottom: 4px">
-                <div class="divBoton">
+                    style="text-align: center; width: 300px; margin-bottom: 4px; border-radius:10px; border: 2px black solid;">
+                <div class="divBoton" style="padding: 10px;">
                     <button type="submit" class="btn btn-outline-primary btn-sm" style="width: 100px; height: 30px;color: blue;
                                     border-radius: 10px"><b>Buscar</b></button>
                     <button onclick="limpiar()" class="btn btn-outline-primary btn-sm" style="width: 100px; height: 30px; background-color: black; color: white;
                                     border-radius: 10px"><b>Limpiar</b></button>
                 </div>
             </form>
-            <div class="table-wrapper">
+
+            <!-- <div class="table table-dark table-striped">
                 <table class="fl-table" style='width: 100%; margin-top: 10px'>
                     <thead>
-                        <tr style="background-color: grey;">
+                        <tr>
                             <th>Imagen</th>
                             <th>Tipo de Vivienda</th>
                             <th>Calle</th>
@@ -52,32 +53,116 @@
 
                             <td><img style="width: 90px; height: 50px; border-radius: 20px;"
                                     th:src="@{/imagen/propiedad1/__${propiedad.idPropiedad}__}"></td>
-                            <td th:text="${propiedad.tipoVivienda}" style="background-color: white;"></td>
-                            <td th:text="${propiedad.calle}" style="background-color: white;"></td>
-                            <td th:text="${propiedad.altura}" style="background-color: white;"></td>
-                            <td th:text="${propiedad.barrio}" style="background-color: white;"></td>
-                            <td th:text="${propiedad.localidad}" style="background-color: white;"></td>
-                            <td style="background-color: white;">
+                            <td th:text="${propiedad.tipoVivienda}"></td>
+                            <td th:text="${propiedad.calle}"></td>
+                            <td th:text="${propiedad.altura}"></td>
+                            <td th:text="${propiedad.barrio}"></td>
+                            <td th:text="${propiedad.localidad}"></td>
+                            <td>
                                 <button class="btn btn-outline-primary btn-sm">
                                     <a class="modificar" style='text-decoration: none'
                                         th:href="@{/propiedad/modificar/__${propiedad.idPropiedad}__}">Modificar
                                     </a>
                                 </button>
-                            <td style="background-color: white;">
+                            <td>
                                 <button class="btn btn-outline-success btn-sm">
                                     <a style='text-decoration: none' class="modificar"
                                         th:href="@{/imagen/modificar/__${propiedad.idPropiedad}__}">Modificar
                                     </a>
                                 </button>
-                            <td style="background-color: white;">
+                            <td>
                                 <button class="btn btn-outline-danger btn-sm">
                                     <a style='text-decoration: none' class="modificar"
                                         th:href="@{/propiedad/eliminar/__${propiedad.idPropiedad}__}">Eliminar
                                     </a>
                                 </button>
-                            <td style="background-color: white;">
+                            <td>
                                 <button class="btn btn-outline-warning btn-sm">
                                     <a style='text-decoration: none' class="modificar"
+                                        th:href="@{/propiedad/darDeBaja/__${propiedad.idPropiedad}__}">Dar de Baja
+                                    </a>
+                                </button>
+                        </tr>
+                    <tbody>
+                </table>
+            </div> -->
+        </div>
+    </div>
+    <div class="overflow-hidden" style="max-height: 30vh;">
+
+
+
+    </div>
+    </div>
+
+
+
+
+
+
+
+    <div class='container' style='text-align: center;'>
+        <!-- <h2 class="titulo">Lista de Propiedades</h2>
+        <div class="contenedorInput">
+            <form th:action="@{/propiedad/lista}">
+                <input type="text" id="keyword" name="keyword" class="coolinput" th:value="${keyword}"
+                    placeholder="Ingrese el nombre de la Calle"
+                    style="text-align: center; width: 300px; margin-bottom: 4px">
+                <div class="divBoton">
+                    <button type="submit" class="btn btn-outline-primary btn-sm" style="width: 100px; height: 30px;color: blue;
+                                    border-radius: 10px"><b>Buscar</b></button>
+                    <button onclick="limpiar()" class="btn btn-outline-primary btn-sm" style="width: 100px; height: 30px; background-color: black; color: white;
+                                    border-radius: 10px"><b>Limpiar</b></button>
+                </div>
+            </form> -->
+
+            <div class="table table-dark table-striped">
+                <table class="fl-table" style='width: 100%; margin-top: 10px'>
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Tipo de Vivienda</th>
+                            <th>Calle</th>
+                            <th>Altura</th>
+                            <th>Barrio</th>
+                            <th>Localidad</th>
+                            <th>Datos</th>
+                            <th>Imagenes</th>
+                            <th>Accion</th>
+                            <th>Accion</th>
+                        </tr>
+                    </thead>
+                    <tbody th:each="propiedad : ${propiedades}" style="margin-top: 115px">
+                        <tr>
+
+                            <td><img style="width: 90px; height: 50px; border-radius: 20px; object-fit: cover;"
+                                    th:src="@{/imagen/propiedad1/__${propiedad.idPropiedad}__}"></td>
+                            <td th:text="${propiedad.tipoVivienda}"></td>
+                            <td th:text="${propiedad.calle}"></td>
+                            <td th:text="${propiedad.altura}"></td>
+                            <td th:text="${propiedad.barrio}"></td>
+                            <td th:text="${propiedad.localidad}"></td>
+                            <td>
+                                <button class="btn btn-outline-primary btn-sm">
+                                    <a class="modificar" style='text-decoration: none'
+                                        th:href="@{/propiedad/modificar/__${propiedad.idPropiedad}__}">Modificar
+                                    </a>
+                                </button>
+                            <td>
+                                <button class="btn btn-outline-success btn-sm">
+                                    <a style='text-decoration: none' class="modificar"
+                                        th:href="@{/imagen/modificar/__${propiedad.idPropiedad}__}">Modificar
+                                    </a>
+                                </button>
+                            <td>
+                                <button class="btn btn-outline-danger btn-sm">
+                                    <a style='text-decoration: none' class="modificar"
+                                        th:href="@{/propiedad/eliminar/__${propiedad.idPropiedad}__}">Eliminar
+                                    </a>
+                                </button>
+                            <td>
+                                <button class="btn btn-outline-warning btn-sm">
+                                    <a style='text-decoration: none; white-space: nowrap' class="modificar"
                                         th:href="@{/propiedad/darDeBaja/__${propiedad.idPropiedad}__}">Dar de Baja
                                     </a>
                                 </button>
