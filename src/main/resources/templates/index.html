@@ -1,449 +1,466 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://www.thymelead.org/extras/spring-security">
+      xmlns:sec="http://www.thymelead.org/extras/spring-security">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Propiedades</title>
-    <link rel="icon" href="/img/home_243.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/css/formulariodos.css" />
-    <link rel="stylesheet" href="/css/index.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Propiedades</title>
+        <link rel="icon" href="/img/home_243.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="/css/formulariodos.css" />
+        <link rel="stylesheet" href="/css/index.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+            <style>
+                .bd-placeholder-img {
+                    font-size: 1.125rem;
+                    text-anchor: middle;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    user-select: none;
+                }
 
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
+                @media (min-width: 768px) {
+                    .bd-placeholder-img-lg {
+                        font-size: 3.5rem;
+                    }
+                }
+            </style>
 
-</head>
+    </head>
 
-<!-- HAY QUE CORREGIR EL INGRESO PARA QUE SEA ESTANDAR ENTRE MAYÚSCULAS Y MINÚSCULAS -->
+    <!-- HAY QUE CORREGIR EL INGRESO PARA QUE SEA ESTANDAR ENTRE MAYÚSCULAS Y MINÚSCULAS -->
 
-<body style="background-image: url('../img/inmobiliaria.jpg'); background-size: cover">
+    <body style="background-image: url('../img/inmobiliaria.jpg'); background-size: cover">
 
-    <header th:replace="/fragments/navbar" :: header> </header>
+        <header th:replace="/fragments/navbar" :: header> </header>
 
-    <main>
+        <main>
 
-        <section class="py-5 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <!-- <div class="image-box"> -->
-                    <div>
-                        <h1 class="fw-light"><img src="/img/armenteros original.png" alt="" style="width: 350px; ">
-                        </h1>
-                    </div>
-                    <p class="lead text" style="color: black"><b>Ventas, Alquileres y tasaciones.</b></p>
-
-                    <form role="search" th:action="@{/propiedad/listarPropiedades}">
-                        <div class="row mb-3"> <!-- Agregamos un margen inferior (gap) -->
-                            <div class="col-lg-4">
-                                <div class="input-group">
-                                    <select style="border-radius:10px; border: 2px black solid;" class="form-select"
-                                        aria-label="Select" name="keyword" id="keyword" th:value="${keyword}">
-                                        <option value="" disiable selected>Tipo de Vivienda</option>
-                                        <option value="CASA">Casa</option>
-                                        <option value="CASA_QUINTA">Casa Quinta</option>
-                                        <option value="COCHERA">Cochera</option>
-                                        <option value="DEPTO">Departamento</option>
-                                        <option value="GALPON">Galpón</option>
-                                        <option value="PH">Propiedad Horizontal</option>
-                                        <option value="TERRENO">Terreno</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="input-group">
-                                    <select style="border-radius:10px; border: 2px black solid;" class="form-select"
-                                        aria-label="Select" name="keyword1" id="keyword1" th:value="${keyword1}">
-                                        <option value="" disiable selected>Estado</option>
-                                        <option value="VENTA">Venta</option>
-                                        <option value="ALQUILER">Alquiler</option>
-                                        <option value="ALQUILER_TEMPORARIO">Alquiler temporario</option>
-                                        <option value="PERMUTA">Permuta</option>
-                                        <option value="OTROS">Otros</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="input-group">
-                                    <select style="border-radius:10px; border: 2px black solid;" class="form-select"
-                                        aria-label="Select" name="keyword2" id="keyword2" th:value="${keyword2}">
-                                        <option value="" disiable selected>Moneda</option>
-                                        <option value="Dolares">Dólares</option>
-                                        <option value="Pesos">Pesos</option>
-                                    </select>
-                                </div>
-                            </div>
+            <section class="py-5 text-center container">
+                <div class="row py-lg-5">
+                    <div class="col-lg-6 col-md-8 mx-auto">
+                        <!-- <div class="image-box"> -->
+                        <div>
+                            <h1 class="fw-light"><img src="/img/armenteros original.png" alt="" style="width: 350px; ">
+                            </h1>
                         </div>
+                        <p class="lead text" style="color: black"><b>Ventas, Alquileres y tasaciones.</b></p>
 
-                        <div class="row mb-3"> <!-- Agregamos un margen inferior (gap) -->
-                            <div class="col-lg-4">
-                                <input style="border-radius:10px; border: 2px black solid;" class="form-control me-2"
-                                    type="search" placeholder="Localidad 🔍" aria-label="Search" name="keyword3"
-                                    id="keyword3" th:value="${keyword3}">
-                            </div>
-                            <div class="col-lg-4">
-                                <input style="border-radius:10px; border: 2px black solid;" class="form-control me-2"
-                                    type="search" placeholder="Precio Minimo 🔍" aria-label="Search" name="keyword4"
-                                    id="keyword4" th:value="${keyword4}">
-                            </div>
-                            <div class="col-lg-4">
-                                <input style="border-radius:10px; border: 2px black solid;" class="form-control me-2"
-                                    type="search" placeholder="Precio Maximo 🔍" aria-label="Search" name="keyword5"
-                                    id="keyword5" th:value="${keyword4}">
-                            </div>
-                        </div>
-
-                        <div class="row text-center"> <!-- Centramos los botones -->
-                            <div class="col-lg-12">
-                                <button onclick="limpiar()" class="btn btn-secondary">Limpiar</button>
-                                <button class="btn btn-primary" type="submit">Buscar</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <div class="album py-5">
-            <div class="container">
-
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <div th:each="propiedades : ${propiedades}" class="col">
-                        <div class="card shadow-sm bg-dark text-white" style="border-radius: 10px;">
-                            <img class="bd-placeholder-img card-img-top"
-                                style="width: 100%; height: 250px; object-fit: cover; border-radius: 10px;"
-                                th:src="@{/imagen/propiedad1/__${propiedades.idPropiedad}__}" role="img"
-                                aria-label="Placeholder: Imagen" preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                                dy=".3em"></text>
-                            </img>
-
-                            <div class="card-body">
-                                <p th:text="'Tipo de propiedad: '+${propiedades.tipoVivienda}"
-                                    class="card-text text-white"></p>
-                                <p th:text="'Estado: '+${propiedades.estado}" class="card-text text-white"></p>
-                                <p th:text="'Barrio: '+${propiedades.barrio}" class="card-text text-white"></p>
-                                <p th:text="'Localidad: '+${propiedades.localidad}" class="card-text text-white"></p>
-                                <!-- <p th:text="'Moneda: '+${propiedades.moneda}" class="card-text text-white"></p> -->
-                                <p th:text="'Precio: '+${propiedades.precioPropiedad}+ ' ' +${propiedades.moneda}" class="card-text text-white"></p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a th:href="@{/imagen/propiedad/__${propiedades.idPropiedad}__}"
-                                            class="btn btn-sm btn-outline-secondary"> Detalles </a>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary"
-                                            data-toggle="modal" data-target="#contactModal">Contacto</button>
+                        <form role="search" th:action="@{/propiedad/listarPropiedades}">
+                            <div class="row mb-3"> <!-- Agregamos un margen inferior (gap) -->
+                                <div class="col-lg-4">
+                                    <div class="input-group">
+                                        <select style="border-radius:10px; border: 2px black solid;" class="form-select"
+                                                aria-label="Select" name="keyword" id="keyword" th:value="${keyword}">
+                                            <option value="" disiable selected>Tipo de Vivienda</option>
+                                            <option value="CASA">Casa</option>
+                                            <option value="CASA_QUINTA">Casa Quinta</option>
+                                            <option value="COCHERA">Cochera</option>
+                                            <option value="DEPTO">Departamento</option>
+                                            <option value="GALPON">Galpón</option>
+                                            <option value="PH">Propiedad Horizontal</option>
+                                            <option value="TERRENO">Terreno</option>
+                                        </select>
                                     </div>
-                                    <small class="text-muted">id Propiedad:</small>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="input-group">
+                                        <select style="border-radius:10px; border: 2px black solid;" class="form-select"
+                                                aria-label="Select" name="keyword1" id="keyword1" th:value="${keyword1}">
+                                            <option value="" disiable selected>Estado</option>
+                                            <option value="VENTA">Venta</option>
+                                            <option value="ALQUILER">Alquiler</option>
+                                            <option value="ALQUILER_TEMPORARIO">Alquiler temporario</option>
+                                            <option value="PERMUTA">Permuta</option>
+                                            <option value="OTROS">Otros</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="input-group">
+                                        <select style="border-radius:10px; border: 2px black solid;" class="form-select"
+                                                aria-label="Select" name="keyword2" id="keyword2" th:value="${keyword2}">
+                                            <option value="" disiable selected>Moneda</option>
+                                            <option value="Dolares">Dólares</option>
+                                            <option value="Pesos">Pesos</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="contactModalLabel">Formulario de contacto</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container button-container">
-                            <div class="mb-3">
-                                <label for="contactEmail" class="form-label">Tu Correo Electrónico</label>
-                                <input type="email" class="form-control" id="contactEmail"
-                                    placeholder="name@example.com">
+                            <div class="row mb-3"> <!-- Agregamos un margen inferior (gap) -->
+                                <div class="col-lg-4">
+                                    <input style="border-radius:10px; border: 2px black solid;" class="form-control me-2"
+                                           type="search" placeholder="Localidad 🔍" aria-label="Search" name="keyword3"
+                                           id="keyword3" th:value="${keyword3}">
+                                </div>
+                                <div class="col-lg-4">
+                                    <input style="border-radius:10px; border: 2px black solid;" class="form-control me-2"
+                                           type="search" placeholder="Precio Minimo 🔍" aria-label="Search" name="keyword4"
+                                           id="keyword4" th:value="${keyword4}">
+                                </div>
+                                <div class="col-lg-4">
+                                    <input style="border-radius:10px; border: 2px black solid;" class="form-control me-2"
+                                           type="search" placeholder="Precio Maximo 🔍" aria-label="Search" name="keyword5"
+                                           id="keyword5" th:value="${keyword4}">
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="contactMessage" class="form-label">Dejá tú consulta</label>
-                                <textarea class="form-control" id="contactMessage" rows="3"></textarea>
+
+                            <div class="row text-center"> <!-- Centramos los botones -->
+                                <div class="col-lg-12">
+                                    <button onclick="limpiar()" class="btn btn-secondary">Limpiar</button>
+                                    <button class="btn btn-primary" type="submit">Buscar</button>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary">Enviar</button>
+                        </form>
                     </div>
                 </div>
-            </div>
-        </div>
-    </main>
+            </section>
 
-    <div th:replace="/fragments/footer" :: div></div>
+            <div class="album py-5">
+                <div class="container">
 
-    <script>
-        // Función para cargar y guardar los valores de los campos de búsqueda desde el localStorage
-        function cargarValoresGuardados() {
-            const keywordField = document.getElementById("keyword");
-            const keyword1Field = document.getElementById("keyword1");
-            const keyword2Field = document.getElementById("keyword2");
-            const keyword3Field = document.getElementById("keyword3");
-            const keyword4Field = document.getElementById("keyword4");
-            const keyword5Field = document.getElementById("keyword5");
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        <div th:each="propiedades : ${propiedades}" class="col">
+                            <div class="card shadow-sm bg-dark text-white" style="border-radius: 10px;">
+                                <img class="bd-placeholder-img card-img-top"
+                                     style="width: 100%; height: 250px; object-fit: cover; border-radius: 10px;"
+                                     th:src="@{/imagen/propiedad1/__${propiedades.idPropiedad}__}" role="img"
+                                     aria-label="Placeholder: Imagen" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <title>Placeholder</title>
+                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+                                                                                            dy=".3em"></text>
+                                </img>
 
-            // Cargar valores desde el localStorage y establecer los campos
-            keywordField.value = localStorage.getItem("keyword") || "";
-            keyword1Field.value = localStorage.getItem("keyword1") || "";
-            keyword2Field.value = localStorage.getItem("keyword2") || "";
-            keyword3Field.value = localStorage.getItem("keyword3") || "";
-            keyword4Field.value = localStorage.getItem("keyword4") || "";
-            keyword5Field.value = localStorage.getItem("keyword5") || "";
-        }
-
-        // Función para guardar los valores de los campos de búsqueda en el localStorage
-        function guardarValores() {
-            localStorage.setItem("keyword", document.getElementById("keyword").value);
-            localStorage.setItem("keyword1", document.getElementById("keyword1").value);
-            localStorage.setItem("keyword2", document.getElementById("keyword2").value);
-            localStorage.setItem("keyword3", document.getElementById("keyword3").value);
-            localStorage.setItem("keyword4", document.getElementById("keyword4").value);
-            localStorage.setItem("keyword5", document.getElementById("keyword5").value);
-        }
-
-        // Cargar valores guardados cuando la página se carga
-        cargarValoresGuardados();
-
-        // Guardar valores cuando se envía el formulario
-        document.querySelector("form").addEventListener("submit", guardarValores);
-    </script>
-
-
-
-    <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-
-    <!-- 
-    
-    
-    <body>
-        <div th:replace="/fragments/casa" :: div></div>
-        <nav th:replace="/fragments/navbar" :: nav> </nav>
-        <h2 class="titulo" style="text-align: center">Lista de Propiedades</h2>
-    
-    
-        <div class="contenedorInput" style="text-align: center">
-            <form th:action="@{/propiedad/listarPropiedades}">
-    
-                <select name="keyword" id="keyword" class="coolinput" th:value="${keyword}" style="width: 200px">
-                    <option value="" disiable selected>Tipo de Vivienda</option>
-                    <option value="CASA">Casa</option>
-                    <option value="CASA_QUINTA">Casa Quinta</option>
-                    <option value="COCHERA">Cochera</option>
-                    <option value="DEPTO">Departamento</option>
-                    <option value="GALPON">Galpon</option>
-                    <option value="PH">Propiedad Horizontal</option>
-                    <option value="TERRENO">Terreno</option>
-                </select>
-    
-                <select name="keyword1" id="keyword1" class="coolinput" th:value="${keyword1}" style="width: 200px">
-                    <option value="" disiable selected>Estado de la Vivienda</option>
-                    <option value="VENTA">Venta</option>
-                    <option value="ALQUILER">Alquiler</option>
-                    <option value="ALQUILER_TEMPORARIO">Alquiler temporario</option>
-                    <option value="PERMUTA">Permuta</option>
-                    <option value="OTROS">Otros</option>
-                </select>
-    
-                <select name="keyword2" id="keyword2" class="coolinput" th:value="${keyword2}" style="width: 200px">
-                    <option value="" disiable selected>Moneda</option>
-                    <option value="Dolares">Dolares</option>
-                    <option value="Pesos">Pesos</option>
-                </select>
-                <input name="keyword3" id="keyword3" class="coolinput" placeholder="Localidad 🔍" th:value="${keyword3}"
-                    style="width: 200px; text-align: end">
-                <input name="keyword4" id="keyword4" class="coolinput" placeholder="Precio 🔍" th:value="${keyword4}"
-                    style="width: 200px; text-align: end">
-                <input name="keyword5" id="keyword5" class="coolinput" placeholder="Mts² Totales 🔍" th:value="${keyword4}"
-                    style="width: 200px; text-align: end">
-    
-                <br>
-                <div class="divBoton" style="margin-top: 10px; text-align: center; margin-bottom: 10px">
-                    <button type="submit" class="btn-success" style="width: 100px; height: 30px; color: white;
-                                                border-radius: 10px"><b>Buscar</b></button>
-                    <button onclick="limpiar()" class="btn-dark" style="width: 100px; height: 30px; background-color: black; color: white;
-                                                border-radius: 10px"><b>Limpiar</b></button>
-                </div>
-            </form>
-        </div>
-    
-        <div class="container" style="border-color: red">
-            <div class="row row-cols-3 row-cols-md-3 g-3">
-                <div th:each="propiedades : ${propiedades}" class="col">
-                    <div style="background-color: lightblue; border-radius: 10px;">
-                        <h5 th:text="${propiedades.tipoVivienda}" style="text-align: center"></h5>
-                        <p th:text="${propiedades.estado}" style="text-align: center"></p>
-                        <div class="card mb-3"
-                            style="width: 400px; height: 100px; background-color: bisque; margin-left: 10px; border-color: black;">
-                            <div class="row g-0" style="display: inline-flex">
-                                <div class="col-md-6">
-                                    <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
-                                        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel"
-                                            data-bs-interval="3000">
-    
-                                            <div class="carousel-inner" style="border-radius: 5%">
-                                                <div th:each="imagenesPorPropiedad, iterStat : ${imagenesPorPropiedad[propiedades.idPropiedad]}"
-                                                    th:class="${iterStat.index == 0} ? 'carousel-item active' : 'carousel-item'">
-                                                    <img style="width: 200px; height: 100px"
-                                                        th:src="'data:image/jpeg;base64,' + ${#strings.toString(imagenesPorPropiedad)}"
-                                                        alt="Imagen">
-                                                </div>
-                                                <a class="carousel-control-prev" href="#carouselExample" role="button"
-                                                    data-bs-slide="prev">
-                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                    <span class="visually-hidden">Anterior</span>
-                                                </a>
-                                                <a class="carousel-control-next" href="#carouselExample" role="button"
-                                                    data-bs-slide="next">
-                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                    <span class="visually-hidden">Siguiente</span>
-                                                </a>
-                                            </div>
-                                            <button class="carousel-control-prev" type="button"
-                                                data-bs-target="#imageCarousel" data-bs-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Previous</span>
-                                            </button>
-                                            <button class="carousel-control-next" type="button"
-                                                data-bs-target="#imageCarousel" data-bs-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Next</span>
-                                            </button>
+                                <div class="card-body">
+                                    <p th:text="'Tipo de propiedad: '+${propiedades.tipoVivienda}"
+                                       class="card-text text-white"></p>
+                                    <p th:text="'Estado: '+${propiedades.estado}" class="card-text text-white"></p>
+                                    <p th:text="'Barrio: '+${propiedades.barrio}" class="card-text text-white"></p>
+                                    <p th:text="'Localidad: '+${propiedades.localidad}" class="card-text text-white"></p>
+                                    <!-- <p th:text="'Moneda: '+${propiedades.moneda}" class="card-text text-white"></p> -->
+                                    <p th:text="'Precio: '+${propiedades.precioPropiedad}+ ' ' +${propiedades.moneda}" class="card-text text-white"></p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a th:href="@{/imagen/propiedad/__${propiedades.idPropiedad}__}"
+                                               class="btn btn-sm btn-outline-secondary"> Detalles </a>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                    data-toggle="modal" data-target="#contactModal">Contacto</button>
                                         </div>
+                                        <small class="text-muted" th:text="${propiedades.idPropiedad}"></small>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <h5 style="margin-left: 10px; margin-bottom: 0; ">
-                                        <strong th:text="${propiedades.mts2Totales}"></strong>
-                                        <span style="color: red;"> Mts² Totales</span>
-                                    </h5>
-    
-                                    <p th:text="'Localidad: '+${propiedades.localidad}"
-                                        style="margin-left: 10px; margin-bottom: 0; font-style: italic"></p>
-                                    <p th:text="'Moneda: '+${propiedades.moneda}"
-                                        style="margin-left: 10px; margin-bottom: 0">
-                                    </p>
-                                    <p th:text="'Precio: '+${propiedades.precioPropiedad}"
-                                        style="margin-left: 10px; margin-bottom: 0"></p>
                                 </div>
                             </div>
                         </div>
-                        <div style="margin-left: 150px; margin-top: 0px; margin-bottom: 5px">
-                            <a th:href="@{/imagen/propiedad/__${propiedades.idPropiedad}__}" class="btn btn-success">Detalle
-                                Propiedad</a>
-                        </div>
-                        <br>
                     </div>
-    
                 </div>
             </div>
-        </div>
-    
-        <div id="successPopup" class="popup">
-            <div th:if="${error != null}" class="card1">
-                <div class="card_image"> <img src="/img/sadDog.jpg" /> </div>
-                <div class="card_title title-white">
-                    <h5 style="color: red">** ERROR **</h5>
-                    <h5 th:text="${error}"></h5>
-                </div>
-            </div>
-        </div>
-        <div id="errorPopup" class="popup">
-            <div th:if="${exito != null}" class="card1">
-                <div class="card_image"> <img src="/img/perrofeliz.jpg" /> </div>
-                <div class="card_title title-white">
-                    <h5>** EXITO **</h5>
-                    <p th:text="${exito}"></p>
-                </div>
-            </div>
-        </div> -->
 
-    <!--        <script>
-                                        // Variables para almacenar la selección del usuario
-                                                var seleccionGuardada = null;
-                                    
-                                        // Función para guardar la selección actual
-                                                function guardarSeleccion() {
-                                                    var select = document.getElementById("keyword");
-                                                    seleccionGuardada = select.value;
-                                                }
-                                    
-                                        // Función para restaurar la selección guardada
-                                                function restaurarSeleccion() {
-                                                    var select = document.getElementById("keyword");
-                                                    if (seleccionGuardada) {
-                                                        select.value = seleccionGuardada;
-                                                    }
-                                                }
-                                            </script>-->
+            <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="contactModalLabel">Formulario de contacto</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="/mail/enviar-correo" method="POST">
+                            <div class="modal-body">
+                                <div class="container button-container">
 
-    <script>
-        function limpiar() {
-            document.getElementById("keyword").value = "";
-            document.getElementById("keyword1").value = "";
-            document.getElementById("keyword2").value = "";
-            document.getElementById("keyword3").value = "";
-            document.getElementById("keyword4").value = "";
-            document.getElementById("keyword5").value = "";
-        }
-    </script>
+                                    <div class="mb-3">
 
-    <!-- <script>
-            function showSuccessPopup() {
-                var successPopup = document.getElementById("successPopup");
-                successPopup.style.display = "block";
-    
-                // Ocultar el popup después de 5 segundos
-                setTimeout(function () {
-                    successPopup.style.display = "none";
-                }, 5000);
-            }
-    
-            // Función para mostrar el popup de error
-            function showErrorPopup() {
-                var errorPopup = document.getElementById("errorPopup");
-                errorPopup.style.display = "block";
-    
-                // Ocultar el popup después de 5 segundos
-                setTimeout(function () {
-                    errorPopup.style.display = "none";
-                }, 5000);
-            }
-    
-            // Ejemplo de uso: Mostrar popup de éxito después de un evento exitoso
-            showSuccessPopup();
-    
-            // Ejemplo de uso: Mostrar popup de error después de un evento fallido
-            showErrorPopup();
-        </script> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+                                        <label for="contactEmail" class="form-label">Tu Correo Electrónico</label>
+                                        <input type="email" class="form-control" id="email" name="email"
+                                               placeholder="name@example.com">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="nombre" class="form-label">Nombre:</label>
+                                        <input type="text" id="nombre" name="nombre" class="form-control" required><br>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="asunto" class="form-label">Asunto:</label>
+                                                    <input type="text" id="asunto" name="asunto" class="form-control" required><br>
+                                                            </div>
+
+                                                            <div class="mb-3">
+                                                                <label for="contactMessage" class="form-label">Dejá tú consulta</label>
+                                                                <textarea class="form-control" id="contactMessage" name="mensaje" rows="3">
+                                                                   
+                                                                </textarea>
+                                                            </div>
+                                                            </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                                <button type="button" class="btn btn-primary"><input type="submit" value="Enviar"></button>
+                                                            </div>
+                                                            </form>
+                                                            </div>
+                                                            </div>
+                                                            </div>
+                                                            </main>
+
+                                                            <div th:replace="/fragments/footer" :: div></div>
+
+                                                            <script>
+                                                                // Función para cargar y guardar los valores de los campos de búsqueda desde el localStorage
+                                                                function cargarValoresGuardados() {
+                                                                    const keywordField = document.getElementById("keyword");
+                                                                    const keyword1Field = document.getElementById("keyword1");
+                                                                    const keyword2Field = document.getElementById("keyword2");
+                                                                    const keyword3Field = document.getElementById("keyword3");
+                                                                    const keyword4Field = document.getElementById("keyword4");
+                                                                    const keyword5Field = document.getElementById("keyword5");
+
+                                                                    // Cargar valores desde el localStorage y establecer los campos
+                                                                    keywordField.value = localStorage.getItem("keyword") || "";
+                                                                    keyword1Field.value = localStorage.getItem("keyword1") || "";
+                                                                    keyword2Field.value = localStorage.getItem("keyword2") || "";
+                                                                    keyword3Field.value = localStorage.getItem("keyword3") || "";
+                                                                    keyword4Field.value = localStorage.getItem("keyword4") || "";
+                                                                    keyword5Field.value = localStorage.getItem("keyword5") || "";
+                                                                }
+
+                                                                // Función para guardar los valores de los campos de búsqueda en el localStorage
+                                                                function guardarValores() {
+                                                                    localStorage.setItem("keyword", document.getElementById("keyword").value);
+                                                                    localStorage.setItem("keyword1", document.getElementById("keyword1").value);
+                                                                    localStorage.setItem("keyword2", document.getElementById("keyword2").value);
+                                                                    localStorage.setItem("keyword3", document.getElementById("keyword3").value);
+                                                                    localStorage.setItem("keyword4", document.getElementById("keyword4").value);
+                                                                    localStorage.setItem("keyword5", document.getElementById("keyword5").value);
+                                                                }
+
+                                                                // Cargar valores guardados cuando la página se carga
+                                                                cargarValoresGuardados();
+
+                                                                // Guardar valores cuando se envía el formulario
+                                                                document.querySelector("form").addEventListener("submit", guardarValores);
+                                                            </script>
 
 
-</html>
+
+                                                            <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js"
+                                                                    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                                                            crossorigin="anonymous"></script>
+
+                                                            <!-- 
+                                                            
+                                                            
+                                                            <body>
+                                                                <div th:replace="/fragments/casa" :: div></div>
+                                                                <nav th:replace="/fragments/navbar" :: nav> </nav>
+                                                                <h2 class="titulo" style="text-align: center">Lista de Propiedades</h2>
+                                                            
+                                                            
+                                                                <div class="contenedorInput" style="text-align: center">
+                                                                    <form th:action="@{/propiedad/listarPropiedades}">
+                                                            
+                                                                        <select name="keyword" id="keyword" class="coolinput" th:value="${keyword}" style="width: 200px">
+                                                                            <option value="" disiable selected>Tipo de Vivienda</option>
+                                                                            <option value="CASA">Casa</option>
+                                                                            <option value="CASA_QUINTA">Casa Quinta</option>
+                                                                            <option value="COCHERA">Cochera</option>
+                                                                            <option value="DEPTO">Departamento</option>
+                                                                            <option value="GALPON">Galpon</option>
+                                                                            <option value="PH">Propiedad Horizontal</option>
+                                                                            <option value="TERRENO">Terreno</option>
+                                                                        </select>
+                                                            
+                                                                        <select name="keyword1" id="keyword1" class="coolinput" th:value="${keyword1}" style="width: 200px">
+                                                                            <option value="" disiable selected>Estado de la Vivienda</option>
+                                                                            <option value="VENTA">Venta</option>
+                                                                            <option value="ALQUILER">Alquiler</option>
+                                                                            <option value="ALQUILER_TEMPORARIO">Alquiler temporario</option>
+                                                                            <option value="PERMUTA">Permuta</option>
+                                                                            <option value="OTROS">Otros</option>
+                                                                        </select>
+                                                            
+                                                                        <select name="keyword2" id="keyword2" class="coolinput" th:value="${keyword2}" style="width: 200px">
+                                                                            <option value="" disiable selected>Moneda</option>
+                                                                            <option value="Dolares">Dolares</option>
+                                                                            <option value="Pesos">Pesos</option>
+                                                                        </select>
+                                                                        <input name="keyword3" id="keyword3" class="coolinput" placeholder="Localidad 🔍" th:value="${keyword3}"
+                                                                            style="width: 200px; text-align: end">
+                                                                        <input name="keyword4" id="keyword4" class="coolinput" placeholder="Precio 🔍" th:value="${keyword4}"
+                                                                            style="width: 200px; text-align: end">
+                                                                        <input name="keyword5" id="keyword5" class="coolinput" placeholder="Mts² Totales 🔍" th:value="${keyword4}"
+                                                                            style="width: 200px; text-align: end">
+                                                            
+                                                                        <br>
+                                                                        <div class="divBoton" style="margin-top: 10px; text-align: center; margin-bottom: 10px">
+                                                                            <button type="submit" class="btn-success" style="width: 100px; height: 30px; color: white;
+                                                                                                        border-radius: 10px"><b>Buscar</b></button>
+                                                                            <button onclick="limpiar()" class="btn-dark" style="width: 100px; height: 30px; background-color: black; color: white;
+                                                                                                        border-radius: 10px"><b>Limpiar</b></button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            
+                                                                <div class="container" style="border-color: red">
+                                                                    <div class="row row-cols-3 row-cols-md-3 g-3">
+                                                                        <div th:each="propiedades : ${propiedades}" class="col">
+                                                                            <div style="background-color: lightblue; border-radius: 10px;">
+                                                                                <h5 th:text="${propiedades.tipoVivienda}" style="text-align: center"></h5>
+                                                                                <p th:text="${propiedades.estado}" style="text-align: center"></p>
+                                                                                <div class="card mb-3"
+                                                                                    style="width: 400px; height: 100px; background-color: bisque; margin-left: 10px; border-color: black;">
+                                                                                    <div class="row g-0" style="display: inline-flex">
+                                                                                        <div class="col-md-6">
+                                                                                            <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+                                                                                                <div id="carouselExample" class="carousel slide" data-bs-ride="carousel"
+                                                                                                    data-bs-interval="3000">
+                                                            
+                                                                                                    <div class="carousel-inner" style="border-radius: 5%">
+                                                                                                        <div th:each="imagenesPorPropiedad, iterStat : ${imagenesPorPropiedad[propiedades.idPropiedad]}"
+                                                                                                            th:class="${iterStat.index == 0} ? 'carousel-item active' : 'carousel-item'">
+                                                                                                            <img style="width: 200px; height: 100px"
+                                                                                                                th:src="'data:image/jpeg;base64,' + ${#strings.toString(imagenesPorPropiedad)}"
+                                                                                                                alt="Imagen">
+                                                                                                        </div>
+                                                                                                        <a class="carousel-control-prev" href="#carouselExample" role="button"
+                                                                                                            data-bs-slide="prev">
+                                                                                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                                                            <span class="visually-hidden">Anterior</span>
+                                                                                                        </a>
+                                                                                                        <a class="carousel-control-next" href="#carouselExample" role="button"
+                                                                                                            data-bs-slide="next">
+                                                                                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                                                                            <span class="visually-hidden">Siguiente</span>
+                                                                                                        </a>
+                                                                                                    </div>
+                                                                                                    <button class="carousel-control-prev" type="button"
+                                                                                                        data-bs-target="#imageCarousel" data-bs-slide="prev">
+                                                                                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                                                        <span class="visually-hidden">Previous</span>
+                                                                                                    </button>
+                                                                                                    <button class="carousel-control-next" type="button"
+                                                                                                        data-bs-target="#imageCarousel" data-bs-slide="next">
+                                                                                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                                                                        <span class="visually-hidden">Next</span>
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-md-6">
+                                                                                            <h5 style="margin-left: 10px; margin-bottom: 0; ">
+                                                                                                <strong th:text="${propiedades.mts2Totales}"></strong>
+                                                                                                <span style="color: red;"> Mts² Totales</span>
+                                                                                            </h5>
+                                                            
+                                                                                            <p th:text="'Localidad: '+${propiedades.localidad}"
+                                                                                                style="margin-left: 10px; margin-bottom: 0; font-style: italic"></p>
+                                                                                            <p th:text="'Moneda: '+${propiedades.moneda}"
+                                                                                                style="margin-left: 10px; margin-bottom: 0">
+                                                                                            </p>
+                                                                                            <p th:text="'Precio: '+${propiedades.precioPropiedad}"
+                                                                                                style="margin-left: 10px; margin-bottom: 0"></p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div style="margin-left: 150px; margin-top: 0px; margin-bottom: 5px">
+                                                                                    <a th:href="@{/imagen/propiedad/__${propiedades.idPropiedad}__}" class="btn btn-success">Detalle
+                                                                                        Propiedad</a>
+                                                                                </div>
+                                                                                <br>
+                                                                            </div>
+                                                            
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            
+                                                                <div id="successPopup" class="popup">
+                                                                    <div th:if="${error != null}" class="card1">
+                                                                        <div class="card_image"> <img src="/img/sadDog.jpg" /> </div>
+                                                                        <div class="card_title title-white">
+                                                                            <h5 style="color: red">** ERROR **</h5>
+                                                                            <h5 th:text="${error}"></h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="errorPopup" class="popup">
+                                                                    <div th:if="${exito != null}" class="card1">
+                                                                        <div class="card_image"> <img src="/img/perrofeliz.jpg" /> </div>
+                                                                        <div class="card_title title-white">
+                                                                            <h5>** EXITO **</h5>
+                                                                            <p th:text="${exito}"></p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div> -->
+
+                                                            <!--        <script>
+                                                                                                // Variables para almacenar la selección del usuario
+                                                                                                        var seleccionGuardada = null;
+                                                                                            
+                                                                                                // Función para guardar la selección actual
+                                                                                                        function guardarSeleccion() {
+                                                                                                            var select = document.getElementById("keyword");
+                                                                                                            seleccionGuardada = select.value;
+                                                                                                        }
+                                                                                            
+                                                                                                // Función para restaurar la selección guardada
+                                                                                                        function restaurarSeleccion() {
+                                                                                                            var select = document.getElementById("keyword");
+                                                                                                            if (seleccionGuardada) {
+                                                                                                                select.value = seleccionGuardada;
+                                                                                                            }
+                                                                                                        }
+                                                                                                    </script>-->
+
+                                                            <script>
+                                                                function limpiar() {
+                                                                    document.getElementById("keyword").value = "";
+                                                                    document.getElementById("keyword1").value = "";
+                                                                    document.getElementById("keyword2").value = "";
+                                                                    document.getElementById("keyword3").value = "";
+                                                                    document.getElementById("keyword4").value = "";
+                                                                    document.getElementById("keyword5").value = "";
+                                                                }
+                                                            </script>
+
+                                                            <!-- <script>
+                                                                    function showSuccessPopup() {
+                                                                        var successPopup = document.getElementById("successPopup");
+                                                                        successPopup.style.display = "block";
+                                                            
+                                                                        // Ocultar el popup después de 5 segundos
+                                                                        setTimeout(function () {
+                                                                            successPopup.style.display = "none";
+                                                                        }, 5000);
+                                                                    }
+                                                            
+                                                                    // Función para mostrar el popup de error
+                                                                    function showErrorPopup() {
+                                                                        var errorPopup = document.getElementById("errorPopup");
+                                                                        errorPopup.style.display = "block";
+                                                            
+                                                                        // Ocultar el popup después de 5 segundos
+                                                                        setTimeout(function () {
+                                                                            errorPopup.style.display = "none";
+                                                                        }, 5000);
+                                                                    }
+                                                            
+                                                                    // Ejemplo de uso: Mostrar popup de éxito después de un evento exitoso
+                                                                    showSuccessPopup();
+                                                            
+                                                                    // Ejemplo de uso: Mostrar popup de error después de un evento fallido
+                                                                    showErrorPopup();
+                                                                </script> -->
+                                                            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                                                                    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                                                            crossorigin="anonymous"></script>
+                                                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                                                            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+                                                            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                                                            </body>
+
+
+                                                            </html>

@@ -3,6 +3,7 @@ package com.inmobiliaria.armenteros.controladores;
 import com.inmobiliaria.armenteros.entidades.Propietario;
 import com.inmobiliaria.armenteros.excepciones.MiException;
 import com.inmobiliaria.armenteros.repositorios.PropietarioRepositorio;
+import com.inmobiliaria.armenteros.servicios.MailServicio;
 import com.inmobiliaria.armenteros.servicios.PropietarioServicio;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,10 @@ public class PropietarioControlador {
     PropietarioServicio propietarioServicio;
     @Autowired
     PropietarioRepositorio propietarioRepositorio;
+    
+    @Autowired
+    MailServicio mailServicio;
+    
     
     @GetMapping("/buscarPropietario")
     public String buscarPropietario(ModelMap modelo){
@@ -67,6 +72,7 @@ public class PropietarioControlador {
         try {
             if(propietarioServicio.buscarPorDni(dni)==null){
                 propietarioServicio.crearPropietario(dni, nombreApellido, telefono, email, direccion);
+                mailServicio.sendEmail(email);
                 redirect.addFlashAttribute("exito", "salió todo bien");
             }
                            
