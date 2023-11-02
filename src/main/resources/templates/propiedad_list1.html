@@ -34,24 +34,24 @@
                 <table class="fl-table" style="width: 100%; margin-top: 10px; border-top: none;">
                     <thead>
                         <tr>
-                            <th style="padding: 5px;">Imagen</th>
+                            <!-- <th style="padding: 5px;">Imagen</th> -->
                             <th>Tipo de Vivienda</th>
                             <th>Calle</th>
                             <th>Altura</th>
                             <th>Barrio</th>
                             <th>Localidad</th>
                             <th>E/Comercial</th>
-                            <th>Datos</th>
+                            <!-- <th>Datos</th>
                             <th>Imagenes</th>
                             <th>Accion</th>
-                            <th>Accion</th>
+                            <th>Accion</th> -->
                         </tr>
                     </thead>
                     <tbody th:each="propiedad : ${propiedades}" style="margin-top: 115px">
                         <tr>
 
-                            <td><img style="width: 100%; height: 50px; border-radius: 20px; object-fit: cover; padding: 5px;"
-                                    th:src="@{/imagen/propiedad1/__${propiedad.idPropiedad}__}"></td>
+                            <!-- <td><img style="width: 100%; height: 50px; border-radius: 20px; object-fit: cover; padding: 5px;"
+                                    th:src="@{/imagen/propiedad1/__${propiedad.idPropiedad}__}"></td> -->
                             <td th:text="${propiedad.tipoVivienda}"></td>
                             <td th:text="${propiedad.calle}"></td>
                             <td th:text="${propiedad.altura}"></td>
@@ -62,7 +62,7 @@
                                 <span th:unless="${propiedad.estadoComercial}">Inactiva</span>
                             </td>
 
-                            <td>
+                            <!-- <td>
                                 <button class="btn btn-outline-primary btn-sm">
                                     <a class="modificar" style='text-decoration: none'
                                         th:href="@{/propiedad/modificar/__${propiedad.idPropiedad}__}">Modificar
@@ -79,7 +79,7 @@
                                     data-target="#confirmDeleteModal">
                                     Eliminar
                                 </button>
-                            </td>
+                            </td> -->
 
                             <!-- Modal de confirmación -->
                             <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog"
@@ -106,12 +106,12 @@
                                 </div>
                             </div>
 
-                            <td>
-                                <button class="btn btn-outline-warning btn-sm">
+
+                            <!-- <button class="btn btn-outline-warning btn-sm">
                                     <a style='text-decoration: none; white-space: nowrap;' class="modificar"
                                         th:href="@{/propiedad/darDeBaja/__${propiedad.idPropiedad}__}">Dar de Baja
                                     </a>
-                                </button>
+                                </button> -->
                         </tr>
                     <tbody>
                 </table>

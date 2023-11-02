@@ -28,7 +28,7 @@
             <h1 style="text-align: center">Detalles de la Propiedad</h1>
 
             <div class="container">
-                <div class="card mb-3" style="max-width: 1280px; border-radius: 5%">
+                <div class="card mb-3 bg-dark text-white" style="max-width: 1280px; border-radius: 5%">
                     <div class="row g-0">
                         <div class="col-md-4" style="width: 65%;">
                             <div id="carouselExample" class="carousel slide carousel-fade" data-bs-interval="false">
@@ -56,40 +56,87 @@
                             <div class="card-body" th:each="propiedad : ${propiedad}">
 
                                 <h3 th:text="${propiedad.tipoVivienda}"
-                                    style="font-family: 'Sometype Mono', sans-serif;"></h3>
+                                    style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
+                                </h3>
                                 <h5 th:text="'Localidad: ' + ${propiedad.localidad}"
-                                    style="font-family: 'Sometype Mono', sans-serif;"></h5>
+                                    style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
+                                </h5>
                                 <h5 th:text="'Calle: ' + ${propiedad.calle}+' '+${propiedad.altura}"
-                                    style="font-family: 'Sometype Mono', sans-serif;"></h5>
+                                    style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
+                                </h5>
                                 <h5 th:text="'Mts² Totales: ' + ${propiedad.mts2Totales}"
-                                    style="font-family: 'Sometype Mono', sans-serif;"></h5>
+                                    style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
+                                </h5>
                                 <h5 th:text="'Estado: ' + ${propiedad.estado}"
-                                    style="font-family: 'Sometype Mono', sans-serif;"></h5>
+                                    style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
+                                </h5>
                                 <h5 th:text="'Precio: ' + ${propiedad.precioPropiedad}+' '+${propiedad.moneda}"
-                                    style="font-family: 'Sometype Mono', sans-serif;"></h5>
+                                    style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
+                                </h5>
 
                             </div>
 
 
-                            <div class="container button-container" style="padding: 10px;">
-                                <div class="button-group d-flex justify-content-center">
-                                    <div class="mb-2">
-                                        <button type="button" class="btn btn-primary">Botón 1</button>
+                            <div class="container button-container">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary mb-2">
+                                            <a th:href="@{/propiedad/modificar/__${propiedad.idPropiedad}__}">Modificar
+                                                Datos</a>
+                                        </button>
                                     </div>
-                                    <div class="mb-2">
-                                        <button type="button" class="btn btn-primary">Botón 2</button>
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary mb-2">
+                                            <a th:href="@{/imagen/modificar/__${propiedad.idPropiedad}__}"> Modificar
+                                                Imágenes</a>
+                                        </button>
                                     </div>
                                 </div>
-                                <div class="button-group d-flex justify-content-center">
-                                    <div class="mb-2">
-                                        <button type="button" class="btn btn-primary">Botón 3</button>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary mb-2"
+                                            data-toggle="modal" data-target="#confirmDeleteModal">Eliminar
+                                            Propiedad</button>
                                     </div>
-                                    <div class="mb-2">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#contactModal">
-                                            Contacto
-                                        </button>
 
+                                    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Confirmar Eliminación
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    ¿Estás seguro de que deseas eliminar definitivamente esta propiedad?
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Cancelar</button>
+                                                    <a class="btn btn-danger"
+                                                        th:href="@{/propiedad/eliminar/__${propiedad.idPropiedad}__}">Eliminar</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary mb-2">
+                                            <a th:href="@{/propiedad/darDeBaja/__${propiedad.idPropiedad}__}"> Activar /
+                                                Desactivar</a>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"
+                                            data-toggle="modal" data-target="#contactModal">Contacto</button>
                                     </div>
                                 </div>
                             </div>
