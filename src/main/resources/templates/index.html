@@ -147,10 +147,10 @@
                                     <div class="btn-group">
                                         <a th:href="@{/imagen/propiedad/__${propiedades.idPropiedad}__}"
                                             class="btn btn-sm btn-outline-secondary"> Detalles </a>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary"
-                                            data-toggle="modal" data-target="#contactModal">Contacto</button>
+                                        <!-- <button type="button" class="btn btn-sm btn-outline-secondary"
+                                            data-toggle="modal" data-target="#contactModal">Contacto</button> -->
                                     </div>
-                                    <small class="text-muted" th:text="${propiedades.idPropiedad}"></small>
+                                    <small class="text-muted" th:text="'ID propiedad: '+${propiedades.idPropiedad}"></small>
                                 </div>
                             </div>
                         </div>
@@ -159,7 +159,7 @@
             </div>
         </div>
 
-        <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel"
+        <!-- <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -205,7 +205,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
     </main>
 
     <div th:replace="/fragments/footer" :: div></div>

@@ -78,3 +78,15 @@ h6 {
 .btn-outline-success {
     margin: 0 auto;
 }
+
+/* Estilo para enlaces no visitados */
+a:link {
+    text-decoration: none;
+    /* Elimina el subrayado */
+}
+
+/* Estilo para enlaces visitados */
+a:visited {
+    text-decoration: none;
+    /* Elimina el subrayado */
+}
