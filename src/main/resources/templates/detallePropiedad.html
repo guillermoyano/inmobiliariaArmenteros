@@ -28,16 +28,16 @@
             <h1 style="text-align: center">Detalles de la Propiedad</h1>
 
             <div class="container">
-                <div class="card mb-3 bg-dark text-white" style="max-width: 1280px; border-radius: 5%">
+                <div class="card mb-3 bg-dark text-white" style="max-width: 1280px; border-radius: 15px">
                     <div class="row g-0">
-                        <div class="col-md-4" style="width: 65%;">
-                            <div id="carouselExample" class="carousel slide carousel-fade" data-bs-interval="false">
-                                <div class="carousel-inner" style="border-radius: 5%">
+                        <div class="col-md-4" style="width: 50%;">
+                            <div id="carouselExample" class="carousel slide carousel-fade">
+                                <div class="carousel-inner">
                                     <div th:each="imagen1, iterStat : ${imagen1}"
                                         th:class="${iterStat.index == 0} ? 'carousel-item active' : 'carousel-item'">
-                                        <img style="width: 100%; height: 750px; object-fit: cover;"
+                                        <img style="width: 100%; height: 550px; object-fit: cover; border-radius: 15px;"
                                             th:src="'data:image/jpeg;base64,' + ${#strings.toString(imagen1)}"
-                                            alt="Imagen">
+                                            alt="Imagen" data-bs-toggle="modal" data-bs-target="#imageModal">
                                     </div>
                                 </div>
                                 <a class="carousel-control-prev" href="#carouselExample" role="button"
@@ -52,7 +52,12 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-md-8" style="width: 35%;">
+
+                        
+
+
+
+                        <div class="col-md-8" style="width: 50%;">
                             <div class="card-body" th:each="propiedad : ${propiedad}">
 
                                 <h3 th:text="${propiedad.tipoVivienda}"
@@ -80,13 +85,14 @@
                             <div class="container button-container">
                                 <div class="row">
                                     <div class="col-6">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary mb-2">
+                                        <button type="button" class="btn btn-block btn-outline-secondary mb-2">
                                             <a th:href="@{/propiedad/modificar/__${propiedad.idPropiedad}__}">Modificar
+                                                los
                                                 Datos</a>
                                         </button>
                                     </div>
                                     <div class="col-6">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary mb-2">
+                                        <button type="button" class="btn btn-block btn-outline-secondary mb-2">
                                             <a th:href="@{/imagen/modificar/__${propiedad.idPropiedad}__}"> Modificar
                                                 Imágenes</a>
                                         </button>
@@ -94,7 +100,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary mb-2"
+                                        <button type="button" class="btn btn-block btn-outline-secondary mb-2"
                                             data-toggle="modal" data-target="#confirmDeleteModal">Eliminar
                                             Propiedad</button>
                                     </div>
@@ -127,7 +133,7 @@
 
 
                                     <div class="col-6">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary mb-2">
+                                        <button type="button" class="btn btn-block btn-outline-secondary mb-2">
                                             <a th:href="@{/propiedad/darDeBaja/__${propiedad.idPropiedad}__}"> Activar /
                                                 Desactivar</a>
                                         </button>
@@ -135,7 +141,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary"
+                                        <button type="button" class="btn btn-block btn-outline-secondary"
                                             data-toggle="modal" data-target="#contactModal">Contacto</button>
                                     </div>
                                 </div>
