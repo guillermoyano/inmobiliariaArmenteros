@@ -142,7 +142,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <button type="button" class="btn btn-block btn-outline-secondary"
-                                            data-toggle="modal" data-target="#contactModal">Contacto</button>
+                                            data-toggle="modal" data-target="#contactModal1">Contacto</button>
                                     </div>
                                 </div>
                             </div>
@@ -152,76 +152,62 @@
                 </div>
             </div>
 
-            <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="contactModalLabel">Formulario de contacto</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="container button-container">
-                                <div class="mb-3">
-                                    <label for="contactEmail" class="form-label">Tu Correo Electrónico</label>
-                                    <input type="email" class="form-control" id="contactEmail"
-                                        placeholder="name@example.com">
+            <div class="modal fade" id="contactModal1" tabindex="-1" role="dialog"
+                        aria-labelledby="contactModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="contactModalLabel">Formulario de contacto</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="contactMessage" class="form-label">Dejá tú consulta</label>
-                                    <textarea class="form-control" id="contactMessage" rows="3"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Enviar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                <form action="/mail/enviar-correo" method="POST">
+                                    <div class="modal-body bg-dark text-white">
+                                        <div class="container button-container">
 
+                                            <div class="mb-3">
 
-            <!--                                    <div class="container d-flex justify-content-center" style="margin-bottom: 15px;">
-                                        <div class="card" style="width: 18rem;">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Formulario de contacto</h5>
-                                                <div class="container button-container" style="padding: 10px; margin-bottom: 10px;">
-                                                    <div class="mb-3">
-                                                        <label for="exampleFormControlInput1" class="form-label">Correo Electrónico</label>
-                                                        <input type="email" class="form-control" id="exampleFormControlInput1"
-                                                               placeholder="name@example.com">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="exampleFormControlTextarea1" class="form-label">Dejá tú consulta</label>
-                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="btn btn-primary">Enviar</a>
+                                                <label for="contactEmail" class="form-label">Tu Correo
+                                                    Electrónico</label>
+                                                <input type="email" class="form-control" id="email" name="email"
+                                                    placeholder="name@example.com">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="nombre" class="form-label">Nombre:</label>
+                                                <input type="text" id="nombre" name="nombre" class="form-control"
+                                                    required><br>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="asunto" class="form-label">Asunto:</label>
+                                                <text type="text" id="asunto" name="asunto" class="form-control"
+                                                  th:text="${propiedad.estado}+' '+${propiedad.tipoVivienda}+' / idPropiedad N°: '+${propiedad.idPropiedad}"><br>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="contactMessage" class="form-label">Dejá tú consulta</label>
+                                                <textarea class="form-control" id="contactMessage" name="mensaje"
+                                                    rows="3" th:text="'Quisiera consultar por la propiedad de la localidad de '+${propiedad.localidad}+' situada en la calle '+${propiedad.calle}+' al '+${propiedad.altura}"></textarea>
                                             </div>
                                         </div>
                                     </div>
-
-
-                                </div>-->
-
-
+                                    <div class="modal-footer bg-dark text-white">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-secondary">Enviar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
     </main>
 
 
 
 
 
-
-    <!-- <td>
-                                <button class="btn btn-outline-primary btn-sm">
-                                    <a class="modificar" style='text-decoration: none'
-                                        th:href="@{/propiedad/modificar/__${propiedad.idPropiedad}__}">Modificar
-                                    </a>
-                                </button>
-                            <td>  -->
 
     <div th:replace="/fragments/footer" :: div></div>
 
