@@ -14,38 +14,37 @@
     </head>
 
     <body>
-        <div th:replace="/fragments/casa" :: div></div>
         <nav th:replace="/fragments/navbar" :: nav> </nav>
         <br>
             <br>
                 <div class="container" style="text-align: center">
                     <img style="width: 400px; height: 200px; border-radius: 15px; margin-top: 0px"
-                       th:src="'data:image/jpeg;base64,' + ${#strings.toString(base)}" alt="Imagen">
-                   <form th:action="@{/imagen/modificar1/__${idImagen}__}" method="POST" enctype="multipart/form-data"> 
-                        <div id="successPopup" class="popup">
-                            <div th:if="${error != null}" class="card1">
-                                <div class="card_image"> <img src="/img/deptoPrincipal.png" /> </div>
-                                <div class="card_title title-white">
-                                    <h5 style="color: red">** ERROR **</h5>
-                                    <h5 th:text="${error}"></h5>
+                         th:src="'data:image/jpeg;base64,' + ${#strings.toString(base)}" alt="Imagen">
+                        <form th:action="@{/imagen/modificar1/__${idImagen}__}" method="POST" enctype="multipart/form-data"> 
+                            <div id="successPopup" class="popup">
+                                <div th:if="${error != null}" class="card1">
+                                    <div class="card_image"> <img src="/img/deptoPrincipal.png" /> </div>
+                                    <div class="card_title title-white">
+                                        <h5 style="color: red">** ERROR **</h5>
+                                        <h5 th:text="${error}"></h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div id="errorPopup" class="popup">
-                            <div th:if="${exito != null}" class="card1">
-                                <div class="card_image"> <img src="/img/casaPrincipal.png" /> </div>
-                                <div class="card_title title-white">
-                                    <h5>** EXITO **</h5>
-                                    <p th:text="${exito}"></p>
+                            <div id="errorPopup" class="popup">
+                                <div th:if="${exito != null}" class="card1">
+                                    <div class="card_image"> <img src="/img/casaPrincipal.png" /> </div>
+                                    <div class="card_title title-white">
+                                        <h5>** EXITO **</h5>
+                                        <p th:text="${exito}"></p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                       <input name="archivo" type="file" class="form-label" id="inputImagenes" style="width: 310px; text-align: center; margin-top: 5px" required>
-                            <div id="imagenPrevia" class="mb-3">
-                                La previsualización de imágenes se mostrará aquí 
-                            </div>
-                            <input  value="Cargar "type="submit" class="btn btn-primary"/>
-                    </form>
+                            <input name="archivo" type="file" class="form-label" id="inputImagenes" style="width: 310px; text-align: center; margin-top: 5px" required>
+                                <div id="imagenPrevia" class="mb-3">
+                                    La previsualización de imágenes se mostrará aquí 
+                                </div>
+                                <input  value="Cargar "type="submit" class="btn btn-primary"/>
+                        </form>
                 </div> 
 
 
@@ -132,16 +131,12 @@
                     var valor = localStorage.getItem('valor');
                     document.getElementById('campo').value = valor;
                 </script>
-
-                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js"
-                        integrity="sha384-q9CRHqZndzlxGLOj+xrdLDJa9ittGte1NksRmgJKeCV9DrM7Kz868XYqsKWPpAmn"
-                        crossorigin="anonymous">
-                </script>
-
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-                        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-                        crossorigin="anonymous">
-                </script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                crossorigin="anonymous"></script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
                 </body>
                 </html>
