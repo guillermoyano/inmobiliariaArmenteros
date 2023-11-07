@@ -35,12 +35,13 @@
                     <thead>
                         <tr>
                             <!-- <th style="padding: 5px;">Imagen</th> -->
+                            <th>ID Propiedad</th>
                             <th>Tipo de Vivienda</th>
                             <th>Calle</th>
-                            <th>Altura</th>
                             <th>Barrio</th>
                             <th>Localidad</th>
                             <th>E/Comercial</th>
+                            <th>Detalles</th>
                             <!-- <th>Datos</th>
                             <th>Imagenes</th>
                             <th>Accion</th>
@@ -52,14 +53,22 @@
 
                             <!-- <td><img style="width: 100%; height: 50px; border-radius: 20px; object-fit: cover; padding: 5px;"
                                     th:src="@{/imagen/propiedad1/__${propiedad.idPropiedad}__}"></td> -->
+                            <td th:text="${propiedad.idPropiedad}"></td>
                             <td th:text="${propiedad.tipoVivienda}"></td>
-                            <td th:text="${propiedad.calle}"></td>
-                            <td th:text="${propiedad.altura}"></td>
+                            <td th:text="${propiedad.calle + ' ' + propiedad.altura}"></td>
                             <td th:text="${propiedad.barrio}"></td>
                             <td th:text="${propiedad.localidad}"></td>
                             <td>
                                 <span th:if="${propiedad.estadoComercial}">Activa</span>
                                 <span th:unless="${propiedad.estadoComercial}">Inactiva</span>
+                            </td>
+                            <td><button class="btn btn-sm btn-outline-secondary" style="margin: 5px;">
+                                    <a th:href="@{/imagen/propiedad/__${propiedad.idPropiedad}__}">Detalles
+                                    </a>
+                                </button>
+
+
+                                <a> </a>
                             </td>
 
                             <!-- <td>
