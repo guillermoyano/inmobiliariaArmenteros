@@ -29,10 +29,11 @@
 
             <div class="container">
 
-                <div class="card bg-dark text-white" style="max-width: 1280px; border-radius: 15px">
+                <div class="card bg-dark text-white"
+                    style="max-width: 1280px; border-radius: 15px; margin-bottom: 20px;">
                     <div class="card mb-3 bg-dark text-white" style="max-width: 1280px; border-radius: 15px">
                         <div class="row g-0">
-                            <div class="col-md-4" style="width: 50%;">
+                            <div class="col-md-4" style="width: 55%;">
                                 <div id="carouselExample" class="carousel slide carousel-fade">
                                     <div class="carousel-inner">
                                         <div th:each="imagen1, iterStat : ${imagen1}"
@@ -54,24 +55,24 @@
                                     </a>
                                 </div>
                             </div>
-
-
-
-
-
-                            <div class="col-md-8" style="width: 50%;">
+                            <div class="col-md-8" style="width: 45%;">
                                 <div class="card-body" th:each="propiedad : ${propiedad}">
-
                                     <h3 th:text="${propiedad.tipoVivienda}"
                                         style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
                                     </h3>
-                                    <h5 th:text="'Localidad: ' + ${propiedad.localidad}"
+                                    <h5 th:text="'Localidad: ' + ${propiedad.localidad}+' - '+${propiedad.barrio}"
                                         style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
                                     </h5>
                                     <h5 th:text="'Calle: ' + ${propiedad.calle}+' '+${propiedad.altura}"
                                         style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
                                     </h5>
-                                    <h5 th:text="'Mts² Totales: ' + ${propiedad.mts2Totales}"
+                                    <h5 th:text="'Mts² Totales: ' + ${propiedad.mts2Totales} +' (Mts² cubiertos '+${propiedad.mts2Cubiertos}+')'"
+                                        style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
+                                    </h5>
+                                    <h5 th:text="'Habitaciones: ' + ${propiedad.cantHabitaciones}"
+                                        style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
+                                    </h5>
+                                    <h5 th:text="'Baños: ' + ${propiedad.cantBanios}"
                                         style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
                                     </h5>
                                     <h5 th:text="'Estado: ' + ${propiedad.estado}"
@@ -80,9 +81,6 @@
                                     <h5 th:text="'Precio: ' + ${propiedad.precioPropiedad}+' '+${propiedad.moneda}"
                                         style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
                                     </h5>
-
-
-
                                     <div class="container button-container">
                                         <div class="row">
                                             <div class="col-6">
@@ -106,7 +104,6 @@
                                                     data-toggle="modal" data-target="#confirmDeleteModal1">Eliminar
                                                     Propiedad</button>
                                             </div>
-
                                             <div class="modal fade" id="confirmDeleteModal1" tabindex="-1" role="dialog"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
@@ -124,7 +121,6 @@
                                                             ¿Estás seguro de que deseas eliminar definitivamente esta
                                                             propiedad?
                                                         </div>
-
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-dismiss="modal">Cancelar</button>
@@ -134,8 +130,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                             <div class="col-6">
                                                 <button type="button" class="btn btn-block btn-outline-secondary mb-2">
                                                     <a th:href="@{/propiedad/darDeBaja/__${propiedad.idPropiedad}__}">
@@ -165,8 +159,7 @@
                                         <label style="text-align: left; display: block;">
                                             <input type="checkbox" class="form-check-input" name="aguaCorriente"
                                                 style="border-radius:10px; border: 2px black solid;"
-                                                th:checked="${propiedad.aguaCorriente}"
-                                                disabled>
+                                                th:checked="${propiedad.aguaCorriente}" disabled>
                                             <span class="form-check-label">Agua Corriente </span>
                                         </label>
                                     </div>
@@ -174,8 +167,7 @@
                                         <label style="text-align: left; display: block;">
                                             <input type="checkbox" class="form-check-input" name="aireAcondicionado"
                                                 style="border-radius:10px; border: 2px black solid;"
-                                                th:checked="${propiedad.aireAcondicionado}"
-                                                disabled>
+                                                th:checked="${propiedad.aireAcondicionado}" disabled>
                                             <span class="form-check-label">Aire Acondicionado</span>
                                         </label>
                                     </div>
@@ -183,8 +175,7 @@
                                         <label style="text-align: left; display: block;">
                                             <input type="checkbox" class="form-check-input" name="aptoCredito"
                                                 style="border-radius:10px; border: 2px black solid;"
-                                                th:checked="${propiedad.aptoCredito}"
-                                                disabled>
+                                                th:checked="${propiedad.aptoCredito}" disabled>
                                             <span class="form-check-label">Apto Credito</span>
                                         </label>
                                     </div>
@@ -234,8 +225,7 @@
                                         <label style="text-align: left; display: block;">
                                             <input type="checkbox" class="form-check-input" name="permiteMascotas"
                                                 style="border-radius:10px; border: 2px black solid;"
-                                                th:checked="${propiedad.permiteMascotas}"
-                                                disabled>
+                                                th:checked="${propiedad.permiteMascotas}" disabled>
                                             <span class="form-check-label">Permite Mascotas</span>
                                         </label>
                                     </div>
@@ -243,8 +233,7 @@
                                         <label style="text-align: left; display: block;">
                                             <input type="checkbox" class="form-check-input" name="salonJuegos"
                                                 style="border-radius:10px; border: 2px black solid;"
-                                                th:checked="${propiedad.salonJuegos}"
-                                                disabled>
+                                                th:checked="${propiedad.salonJuegos}" disabled>
                                             <span class="form-check-label">Salón de Juegos</span>
                                         </label>
                                     </div>
