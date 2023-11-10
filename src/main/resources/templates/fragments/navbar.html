@@ -11,16 +11,17 @@
                 <li><a href="/" class="nav-link px-2 text-secondary"><img src="/img/armenteros blanco.png"
                             style="width: 100%; height: 30px;" alt=""></a></li>
                 <li><a href="/" class="nav-link px-2 text-secondary">Inicio</a></li>
-                <li><a href="/propietario/buscarPropietario" class="nav-link px-2 text-white">Propietarios</a></li>
-                <li><a href="/propiedad/lista" class="nav-link px-2 text-white">Propiedades</a></li>
-                <li class="nav-item dropdown">
+                <li><a href="/propietario/buscarPropietario" th:if="${session.usuariosession != null}" class="nav-link px-2 text-white">Propietarios</a></li>
+                <li><a href="/propiedad/lista" th:if="${session.usuariosession != null}" class="nav-link px-2 text-white">Propiedades</a></li>
+                <li class="nav-item dropdown" th:if="${session.usuariosession != null}">
                     <a href="#" class="nav-link px-2 text-white dropdown-toggle" id="faqsDropdown" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Usuarios
                     </a>
                     <div class="dropdown-menu" aria-labelledby="faqsDropdown">
-                        <a class="dropdown-item" href="/registrar">Nuevo Usuario</a>
+                        <a class="dropdown-item" href="/usuario/crearUsuario">Nuevo Usuario</a>
                         <a class="dropdown-item" href="/usuario/listarUsuarios">Listar Usuario</a>
+                        <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
                     </div>
                 </li>
                 <li><a href="#" class="nav-link px-2 text-white">Nosotros</a></li>
@@ -42,8 +43,6 @@
             </ul>
 
             <div class="text-end">
-                <!-- <div class="btn btn-outline-light me-2">15-5051-3333</div>
-                <button type="button" class="btn btn-warning">Cañada de Gómez 4509, CABA</button> -->
                 <figure class="text-end">
                     <blockquote class="blockquote">
                         <p style="color: white;">Cañada de Gómez 4509, CABA</p>
@@ -51,10 +50,10 @@
                     <figcaption class="blockquote-footer">
                         Teléfono: <cite title="Source Title">11-5051-3333</cite>
                     </figcaption>
-                    <figcaption class="blockquote-footer" data-toggle="modal" data-target="#contactModal" style="cursor: pointer;">
+                    <figcaption class="blockquote-footer" data-toggle="modal" data-target="#contactModal"
+                        style="cursor: pointer;">
                         propiedadesarmenteros@gmail.com<cite title="Source Title"></cite>
                     </figcaption>
-
                     <div class="modal fade" id="contactModal" tabindex="-1" role="dialog"
                         aria-labelledby="contactModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -68,33 +67,26 @@
                                 <form action="/mail/enviar-correo" method="POST">
                                     <div class="modal-body bg-dark text-white">
                                         <div class="container button-container">
-
                                             <div class="mb-3">
-
                                                 <label for="contactEmail" class="form-label">Tu Correo
                                                     Electrónico</label>
                                                 <input type="email" class="form-control" id="email" name="email"
                                                     placeholder="name@example.com">
                                             </div>
-
                                             <div class="mb-3">
                                                 <label for="nombre" class="form-label">Nombre:</label>
                                                 <input type="text" id="nombre" name="nombre" class="form-control"
                                                     required><br>
                                             </div>
-
                                             <div class="mb-3">
                                                 <label for="asunto" class="form-label">Asunto:</label>
                                                 <input type="text" id="asunto" name="asunto" class="form-control"
                                                     required><br>
                                             </div>
-
                                             <div class="mb-3">
                                                 <label for="contactMessage" class="form-label">Dejá tú consulta</label>
                                                 <textarea class="form-control" id="contactMessage" name="mensaje"
-                                                    rows="3">
-
-                                                                </textarea>
+                                                    rows="3"></textarea>
                                             </div>
                                         </div>
                                     </div>

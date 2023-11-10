@@ -6,6 +6,7 @@ import com.inmobiliaria.armenteros.enumeraciones.Rol;
 import com.inmobiliaria.armenteros.excepciones.MiException;
 import com.inmobiliaria.armenteros.repositorios.UsuarioRepositorio;
 import com.inmobiliaria.armenteros.servicios.UsuarioServicio;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -30,6 +32,26 @@ public class UsuarioControlador {
     UsuarioRepositorio usuarioRepositorio;
     @Autowired
     UsuarioServicio usuarioServicio;
+    
+    @GetMapping("/crearUsuario")
+    public String crearUsuario(){
+        
+        return "registro.html";
+    }
+    
+    @PostMapping("crearUsuario")
+    public String crearUsuario(String nombre, String email, String password, String password2, RedirectAttributes redirect) throws IOException{
+        
+        try {
+          usuarioServicio.registrar(nombre, email, password, password2);
+          
+          
+        } catch (MiException e) {
+           return "registro.html";
+        }
+        return "redirect:/";
+    }
+    
     
     @GetMapping("/listarUsuarios")
     public String listadoDeUsuarios (ModelMap modelo){

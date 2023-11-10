@@ -13,7 +13,8 @@
 </head>
 
 <body>
-    <nav th:replace="/fragments/navbar :: nav"> </nav>
+    <nav th:replace="/fragments/navbar" :: nav> </nav>
+
     <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
         <div class="card-body">
             <h5 class="card-title">Error!</h5>
@@ -27,7 +28,7 @@
         </div>
     </div>
     <div class="container-fluid m-5 contenedor ms-auto">
-        <form class="formulario" th:action="@{/registro}" method="POST">
+        <form class="formulario" th:action="@{/usuario/crearUsuario}" method="POST">
 
             <div>
                 <h3 class="card-title">Nuevo Usuario</h3>
