@@ -30,8 +30,6 @@
 
 </head>
 
-<!-- HAY QUE CORREGIR EL INGRESO PARA QUE SEA ESTANDAR ENTRE MAYÚSCULAS Y MINÚSCULAS -->
-
 <body style="background-image: url('../img/inmobiliaria.jpg'); background-size: cover">
 
     <header th:replace="/fragments/navbar" :: header> </header>
@@ -41,15 +39,13 @@
         <section class="py-5 text-center container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
-                    <!-- <div class="image-box"> -->
                     <div>
                         <h1 class="fw-light"><img src="/img/armenteros original.png" alt="" style="width: 350px; ">
                         </h1>
                     </div>
                     <p class="lead text" style="color: black"><b>Ventas, Alquileres y tasaciones.</b></p>
-
                     <form role="search" th:action="@{/propiedad/listarPropiedades}">
-                        <div class="row mb-3"> <!-- Agregamos un margen inferior (gap) -->
+                        <div class="row mb-3"> 
                             <div class="col-lg-4">
                                 <div class="input-group">
                                     <select style="border-radius:10px; border: 2px black solid;" class="form-select"
@@ -89,8 +85,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row mb-3"> <!-- Agregamos un margen inferior (gap) -->
+                        <div class="row mb-3">
                             <div class="col-lg-4">
                                 <input style="border-radius:10px; border: 2px black solid;" class="form-control me-2"
                                     type="search" placeholder="Localidad 🔍" aria-label="Search" name="keyword3"
@@ -107,8 +102,7 @@
                                     id="keyword5" th:value="${keyword4}">
                             </div>
                         </div>
-
-                        <div class="row text-center"> <!-- Centramos los botones -->
+                        <div class="row text-center">
                             <div class="col-lg-12">
                                 <button onclick="limpiar()" class="btn btn-secondary">Limpiar</button>
                                 <button class="btn btn-primary" type="submit">Buscar</button>
@@ -118,10 +112,8 @@
                 </div>
             </div>
         </section>
-
         <div class="album py-5">
             <div class="container">
-
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <div th:each="propiedades : ${propiedades}" class="col">
                         <div class="card shadow-sm bg-dark text-white" style="border-radius: 10px;">
@@ -133,7 +125,6 @@
                             <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
                                 dy=".3em"></text>
                             </img>
-
                             <div class="card-body">
                                 <p th:text="'Tipo de propiedad: '+${propiedades.tipoVivienda}"
                                     class="card-text text-white"></p>
