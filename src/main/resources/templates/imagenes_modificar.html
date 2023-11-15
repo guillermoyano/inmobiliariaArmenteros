@@ -16,13 +16,172 @@
 <body>
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 
+
+    <main>
+
+        <div class="px-0 pt-0 my-0 text-center">
+
+            <!-- style="background: rgba(255, 255, 255, 0.7); border: none;"
+            <h1 style="text-align: center">Detalles de la Propiedad</h1> -->
+            <div class="container">
+                <div class="card bg-dark text-white" style="border-radius: 15px; margin: 20px;">
+                    <div class="card-header" style="border-bottom: 0px solid rgba(0,0,0,.125);">
+                        <div class="row g-0">
+                            <div class="col-md-4" style="width: 50%;">
+
+
+                                <div class="container">
+                                    <table>
+                                        <tr th:each="imagen1, iterStat: ${imagen1}">
+                                            <img th:if="${iterStat.index == 0}"
+                                                style="width: 230px; border-radius: 20px; height: 120px; margin-left: 5px; margin-right: 5px; margin-bottom: 5px"
+                                                th:src="'data:image/jpeg;base64,' + ${#strings.toString(imagen1)}"
+                                                alt="Imagen">
+                                        </tr>
+                                        <tr th:each="imagen1, iterStat: ${imagen1}" th:if="${iterStat.index > 0}">
+                                            <img style="width: 115px; border-radius: 20px; height: 60px; margin-left: 5px; margin-right: 5px; margin-bottom: 5px"
+                                                th:src="'data:image/jpeg;base64,' + ${#strings.toString(imagen1)}"
+                                                alt="Imagen">
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="container">
+                                    <table>
+                                        <tr th:each="imagenes: ${imagenes}">
+                                            <button class="btn-primary"
+                                                style="width: 115px; height: 40px; margin-left: 5px; margin-right: 5px; border-radius: 12px">
+                                                <a class="modificar"
+                                                    style="color: white; text-decoration: none; font-size: 20px"
+                                                    th:href="@{/imagen/modificar1/__${imagenes.idImagen}__}">Modificar</a>
+                                            </button>
+                                        </tr>
+                                    </table>
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-md-8" style="width: 45%;">
+                                <div class="card-body" th:each="propiedad : ${propiedad}">
+                                    <h3
+                                        style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
+                                        Imágenes de la propiedad
+                                    </h3>
+                                    <!-- <h5  th:text="'Estado: '+$ ${propiedad.estado}"
+                                        style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
+                                    </h5> -->
+                                    <h5 th:text="'Calle: ' + ${propiedad.calle}+' '+${propiedad.altura}"
+                                        style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
+                                    </h5>
+                                    <h5 th:text="'Propietario: ' + ${propiedad.propietario.nombreApellido}"
+                                        style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
+                                    </h5>
+                                    <h5 th:text="'Id Propiedad: ' + ${propiedad.idPropiedad}"
+                                        style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="container">
+                            <table>
+                                <tr th:each="imagen1, iterStat: ${imagen1}" th:if="${iterStat.index > 0}">
+                                    <img style="width: 115px; border-radius: 20px; height: 60px; margin-left: 5px; margin-right: 5px; margin-bottom: 5px"
+                                        th:src="'data:image/jpeg;base64,' + ${#strings.toString(imagen1)}"
+                                        alt="Imagen">
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="container">
+                            <table>
+                                <tr th:each="imagenes: ${imagenes}">
+                                    <button class="btn-primary"
+                                        style="width: 115px; height: 40px; margin-left: 5px; margin-right: 5px; border-radius: 12px">
+                                        <a class="modificar"
+                                            style="color: white; text-decoration: none; font-size: 20px"
+                                            th:href="@{/imagen/modificar1/__${imagenes.idImagen}__}">Modificar</a>
+                                    </button>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+        <div class="modal fade" id="contactModal1" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel"
+            aria-hidden="true">
+
+        </div>
+        <div th:replace="/fragments/footer" :: div></div>
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="container" style="width: 1800px; height: 1000px">
         <div style="text-align: center; margin-bottom: 15px">
-            <h1>Imagenes de la Propiedad</h1>
-            <h4 th:text="${propiedad.tipoVivienda}"></h4>
-            <h4 th:text="${propiedad.estado}"></h4>
+            <h1>Imagensssssssssssses de la Propiedad</h1>
+            <h4></h4>
+            <h4></h4>
             <h5 th:text="'Calle: ' + ${propiedad.calle}"></h5>
-            <h5 th:text="'Propietario: ' + ${propiedad.propietario.nombreApellido}"></h5>
+            <h5></h5>
 
         </div>
         <div class="container">
