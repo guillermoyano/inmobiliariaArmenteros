@@ -35,7 +35,7 @@
                                     <table>
                                         <tr th:each="imagenes, iterStat: ${imagenes}" th:if="${iterStat.index == 0}">
                                             <button class="btn btn-sm btn-outline-secondary"
-                                    style="border-radius: 10px; margin-left: 20px; margin-right: 20px;">
+                                                style="border-radius: 10px; margin-left: 20px; margin-right: 20px;">
                                                 <a class="modificar"
                                                     style="color: white; text-decoration: none; font-size: 20px"
                                                     th:href="@{/imagen/modificar1/__${imagenes.idImagen}__}">Modificar</a>
@@ -81,7 +81,7 @@
                             <table>
                                 <tr th:each="imagenes, iterStat: ${imagenes}" th:if="${iterStat.index > 0}">
                                     <button class="btn btn-sm btn-outline-secondary"
-                                    style="border-radius: 5px; margin-left: 20px; margin-right: 20px;">
+                                        style="border-radius: 5px; margin-left: 20px; margin-right: 20px;">
                                         <a class="modificar"
                                             style="color: white; text-decoration: none; font-size: 14px"
                                             th:href="@{/imagen/modificar1/__${imagenes.idImagen}__}">Modificar</a>

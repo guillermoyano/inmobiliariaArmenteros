@@ -23,7 +23,7 @@
     <main>
 
         <div class="px-0 pt-0 my-0 text-center">
-            
+
             <!-- style="background: rgba(255, 255, 255, 0.7); border: none;"
             <h1 style="text-align: center">Detalles de la Propiedad</h1> -->
             <div class="container">
@@ -59,8 +59,8 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="modal fade bg-dark text-white" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel"
-                                aria-hidden="true">
+                            <div class="modal fade bg-dark text-white" id="imageModal" tabindex="-1"
+                                aria-labelledby="imageModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-xl">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -119,12 +119,12 @@
                                     <div class="container button-container">
                                         <div class="row">
                                             <div class="col-6">
-                                                <button type="button" class="btn btn-block btn-outline-secondary mb-2"
-                                                    th:if="${session.usuariosession != null}">
-                                                    <a th:href="@{/propiedad/modificar/__${propiedad.idPropiedad}__}">Modificar
-                                                        los
-                                                        Datos</a>
-                                                </button>
+                                                <a th:href="@{/propiedad/modificar/__${propiedad.idPropiedad}__}">
+                                                    <button type="button"
+                                                        class="btn btn-block btn-outline-secondary mb-2"
+                                                        th:if="${session.usuariosession != null}">
+                                                        Modificar los Datos
+                                                    </button></a>
                                             </div>
                                             <div class="col-6">
                                                 <button type="button" class="btn btn-block btn-outline-secondary mb-2"
