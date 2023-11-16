@@ -18,8 +18,6 @@
 
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 
-
-
     <div class="px-4 pt-5 my-5 text-center border-bottom"
         style="background: rgba(255, 255, 255, 0.7); border: none; padding-bottom: 40px;">
         <h4 class="display-4 fw-bold text-body-emphasis">Formulario nueva propiedad</h4>
@@ -419,7 +417,7 @@
         const inputImagenes = document.getElementById("inputImagenes");
         const imagenPrevia = document.getElementById("imagenPrevia");
         const maxFileSizeBytes = 1048576; // 1 megabyte en bytes
-        const maxFileCount = 10;
+        const maxFileCount = 21;
 
         inputImagenes.addEventListener("change", (event) => {
             imagenPrevia.innerHTML = ""; // Limpia la previsualización anterior
