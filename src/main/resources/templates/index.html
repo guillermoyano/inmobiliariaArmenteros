@@ -1,203 +1,246 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymelead.org/extras/spring-security">
+    xmlns:sec="http://www.thymelead.org/extras/spring-security">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Propiedades</title>
-        <link rel="icon" href="/img/home_243.ico" type="image/x-icon" />
-        <link rel="stylesheet" href="/css/formulariodos.css" />
-        <link rel="stylesheet" href="/css/index.css" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-              integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-            <style>
-                .bd-placeholder-img {
-                    font-size: 1.125rem;
-                    text-anchor: middle;
-                    -webkit-user-select: none;
-                    -moz-user-select: none;
-                    user-select: none;
-                }
-                @media (min-width: 768px) {
-                    .bd-placeholder-img-lg {
-                        font-size: 3.5rem;
-                    }
-                }
-            </style>
-    </head>
-    <body>
-        <header th:replace="/fragments/navbar" :: header> </header>
-        <main>
-            <section class="py-5 text-center container">
-                <div class="row py-lg-5">
-                    <div class="col-lg-6 col-md-8 mx-auto">
-                        <div>
-                            <h1 class="fw-light"><img src="/img/armenteros original.png" alt="" style="width: 350px; ">
-                            </h1>
-                        </div>
-                        <p class="lead text" style="color: black"><b>Ventas, Alquileres y tasaciones.</b></p>
-                        <form role="search" th:action="@{/propiedad/listarPropiedades}">
-                            <div class="row mb-3">
-                                <div class="col-lg-4">
-                                    <div class="input-group">
-                                        <select style="border-radius:10px; border: 2px black solid;" class="form-select"
-                                                aria-label="Select" name="keyword" id="keyword" th:value="${keyword}" onchange="guardarSeleccion('keyword')">
-                                            <option value="" disiable selected>Tipo de Vivienda</option>
-                                            <option value="CASA">Casa</option>
-                                            <option value="CASA_QUINTA">Casa Quinta</option>
-                                            <option value="COCHERA">Cochera</option>
-                                            <option value="DEPTO">Departamento</option>
-                                            <option value="GALPON">Galpón</option>
-                                            <option value="PH">Propiedad Horizontal</option>
-                                            <option value="TERRENO">Terreno</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="input-group">
-                                        <select style="border-radius:10px; border: 2px black solid;" class="form-select"
-                                                aria-label="Select" name="keyword1" id="keyword1" th:value="${keyword1}" onchange="guardarSeleccion('keyword1')">
-                                            <option value="" disiable selected>Estado</option>
-                                            <option value="VENTA">Venta</option>
-                                            <option value="ALQUILER">Alquiler</option>
-                                            <option value="ALQUILER_TEMPORARIO">Alquiler temporario</option>
-                                            <option value="PERMUTA">Permuta</option>
-                                            <option value="OTROS">Otros</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="input-group">
-                                        <select style="border-radius:10px; border: 2px black solid;" class="form-select"
-                                                aria-label="Select" name="keyword2" id="keyword2" th:value="${keyword2}" onchange="guardarSeleccion('keyword2')">
-                                            <option value="" disiable selected>Moneda</option>
-                                            <option value="Dolares">Dólares</option>
-                                            <option value="Pesos">Pesos</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-lg-4">
-                                    <input style="border-radius:10px; border: 2px black solid;" class="form-control me-2"
-                                           type="search" placeholder="Localidad 🔍" aria-label="Search" name="keyword3"
-                                           id="keyword3" th:value="${keyword3}" onchange="guardarSeleccion('keyword3')">
-                                </div>
-                                <div class="col-lg-4">
-                                    <input style="border-radius:10px; border: 2px black solid;" class="form-control me-2"
-                                           type="search" placeholder="Precio Minimo 🔍" aria-label="Search" name="keyword4"
-                                           id="keyword4" th:value="${keyword4}" onchange="guardarSeleccion('keyword4')">
-                                </div>
-                                <div class="col-lg-4">
-                                    <input style="border-radius:10px; border: 2px black solid;" class="form-control me-2"
-                                           type="search" placeholder="Precio Maximo 🔍" aria-label="Search" name="keyword5"
-                                           id="keyword5" th:value="${keyword5}" onchange="guardarSeleccion('keyword5')">
-                                </div>
-                            </div>
-                            <div class="row text-center">
-                                <div class="col-lg-12">
-                                    <button onclick="limpiar()" class="btn btn-secondary">Limpiar</button>
-                                    <button class="btn btn-primary" type="submit">Buscar</button>
-                                </div>
-                            </div>
-                        </form>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Propiedades</title>
+    <link rel="icon" href="/img/home_243.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/formulariodos.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header th:replace="/fragments/navbar" :: header> </header>
+
+
+    <div style="position: fixed; bottom: 200px; right: 20px; z-index: 1000;">
+        <a href="https://wa.me/+5491150513333" target="_blank">
+            <img src="/img/logowpp.png" alt="Logo de WhatsApp" width="100" height="100">
+        </a>
+    </div>
+
+
+
+
+    <main>
+
+        <section class="py-5 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <div>
+                        <h1 class="fw-light"><img src="/img/armenteros original.png" alt="" style="width: 350px; ">
+                        </h1>
                     </div>
-                </div>
-            </section>
-            <div class="album py-5">
-                <div class="container">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                        <div th:each="propiedades : ${propiedades}" class="col">
-                            <div class="card shadow-sm bg-dark text-white" style="border-radius: 10px;">
-                                <img class="bd-placeholder-img card-img-top"
-                                     style="width: 100%; object-fit: cover; border-radius: 10px; aspect-ratio: 1 / 1;"
-                                     th:src="@{/imagen/propiedad1/__${propiedades.idPropiedad}__}" role="img"
-                                     aria-label="Placeholder: Imagen" preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <title>Placeholder</title>
-                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text>
-                                </img>
-                                <div th:if="${propiedades.estadoComercial == false}" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;">
-                                    <div style="width: 450px; height: 90px; transform: rotate(-45deg); background: rgba(0, 0, 0, 0.8); position: absolute; top: 250px; border-radius: 10px;">
-                                        <p style="font-size: 70px; color: crimson; transform: rotate(45deg); font-family: 'Kanit', sans-serif; margin: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                                            <span th:if="${propiedades.estado == 'VENTA'}">VENDIDA</span>
-                                            <span th:if="${propiedades.estado == 'ALQUILER'}">ALQUILADA</span>
-                                        </p>
-                                    </div>
+                    <p class="lead text" style="color: black"><b>Ventas, Alquileres y tasaciones.</b></p>
+                    <form role="search" th:action="@{/propiedad/listarPropiedades}">
+                        <div class="row mb-3">
+                            <div class="col-lg-4">
+                                <div class="input-group">
+                                    <select style="border-radius:10px; border: 2px black solid;" class="form-select"
+                                        aria-label="Select" name="keyword" id="keyword" th:value="${keyword}"
+                                        onchange="guardarSeleccion('keyword')">
+                                        <option value="" disiable selected>Tipo de Vivienda</option>
+                                        <option value="CASA">Casa</option>
+                                        <option value="CASA_QUINTA">Casa Quinta</option>
+                                        <option value="COCHERA">Cochera</option>
+                                        <option value="DEPTO">Departamento</option>
+                                        <option value="GALPON">Galpón</option>
+                                        <option value="PH">Propiedad Horizontal</option>
+                                        <option value="TERRENO">Terreno</option>
+                                    </select>
                                 </div>
-                                <div class="card-body">
-                                    <p th:text="'Tipo de propiedad: '+${propiedades.tipoVivienda}"
-                                       class="card-text text-white"></p>
-                                    <p th:text="'Estado: '+${propiedades.estado}" class="card-text text-white"></p>
-                                    <p th:text="'Barrio: '+${propiedades.barrio}" class="card-text text-white"></p>
-                                    <p th:text="'Localidad: '+${propiedades.localidad}" class="card-text text-white"></p>
-                                    <p th:text="'Precio: '+${propiedades.precioPropiedad}+ ' ' +${propiedades.moneda}"
-                                       class="card-text text-white"></p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <a th:href="@{/imagen/propiedad/__${propiedades.idPropiedad}__}"
-                                               class="btn btn-sm btn-outline-secondary"> Detalles </a>
-                                        </div>
-                                        <small class="text-muted"
-                                               th:text="'ID propiedad: '+${propiedades.idPropiedad}"></small>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="input-group">
+                                    <select style="border-radius:10px; border: 2px black solid;" class="form-select"
+                                        aria-label="Select" name="keyword1" id="keyword1" th:value="${keyword1}"
+                                        onchange="guardarSeleccion('keyword1')">
+                                        <option value="" disiable selected>Estado</option>
+                                        <option value="VENTA">Venta</option>
+                                        <option value="ALQUILER">Alquiler</option>
+                                        <option value="ALQUILER_TEMPORARIO">Alquiler temporario</option>
+                                        <option value="PERMUTA">Permuta</option>
+                                        <option value="OTROS">Otros</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="input-group">
+                                    <select style="border-radius:10px; border: 2px black solid;" class="form-select"
+                                        aria-label="Select" name="keyword2" id="keyword2" th:value="${keyword2}"
+                                        onchange="guardarSeleccion('keyword2')">
+                                        <option value="" disiable selected>Moneda</option>
+                                        <option value="Dolares">Dólares</option>
+                                        <option value="Pesos">Pesos</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-4">
+                                <input style="border-radius:10px; border: 2px black solid;" class="form-control me-2"
+                                    type="search" placeholder="Localidad 🔍" aria-label="Search" name="keyword3"
+                                    id="keyword3" th:value="${keyword3}" onchange="guardarSeleccion('keyword3')">
+                            </div>
+                            <div class="col-lg-4">
+                                <input style="border-radius:10px; border: 2px black solid;" class="form-control me-2"
+                                    type="search" placeholder="Precio Minimo 🔍" aria-label="Search" name="keyword4"
+                                    id="keyword4" th:value="${keyword4}" onchange="guardarSeleccion('keyword4')">
+                            </div>
+                            <div class="col-lg-4">
+                                <input style="border-radius:10px; border: 2px black solid;" class="form-control me-2"
+                                    type="search" placeholder="Precio Maximo 🔍" aria-label="Search" name="keyword5"
+                                    id="keyword5" th:value="${keyword5}" onchange="guardarSeleccion('keyword5')">
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col-lg-12">
+                                <button onclick="limpiar()" class="btn btn-secondary">Limpiar</button>
+                                <button class="btn btn-primary" type="submit">Buscar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <div class="album py-5">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <div th:each="propiedades : ${propiedades}" class="col">
+                        <div class="card shadow-sm bg-dark text-white" style="border-radius: 10px;">
+                            <img class="bd-placeholder-img card-img-top"
+                                style="width: 100%; object-fit: cover; border-radius: 10px; aspect-ratio: 1 / 1;"
+                                th:src="@{/imagen/propiedad1/__${propiedades.idPropiedad}__}" role="img"
+                                aria-label="Placeholder: Imagen" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <title>Placeholder</title>
+                            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+                                dy=".3em"></text>
+                            </img>
+                            <div th:if="${propiedades.estadoComercial == false}"
+                                style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;">
+                                <div
+                                    style="width: 450px; height: 90px; transform: rotate(-45deg); background: rgba(0, 0, 0, 0.8); position: absolute; top: 250px; border-radius: 10px;">
+                                    <p
+                                        style="font-size: 70px; color: crimson; transform: rotate(45deg); font-family: 'Kanit', sans-serif; margin: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                        <span th:if="${propiedades.estado == 'VENTA'}">VENDIDA</span>
+                                        <span th:if="${propiedades.estado == 'ALQUILER'}">ALQUILADA</span>
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div th:if="${propiedades.reserva == false}"
+                                style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;">
+                                <div
+                                    style="width: 450px; height: 90px; transform: rotate(-45deg); background: rgba(0, 0, 0, 0.8); position: absolute; top: 250px; border-radius: 10px;">
+                                    <p
+                                        style="font-size: 70px; color: rgb(20, 220, 50); transform: rotate(45deg); font-family: 'Kanit', sans-serif; margin: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                        <span>RESERVADA</span>
+                                    </p>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+                            <div class="card-body">
+                                <p th:text="'Tipo de propiedad: '+${propiedades.tipoVivienda}"
+                                    class="card-text text-white"></p>
+                                <p th:text="'Estado: '+${propiedades.estado}" class="card-text text-white"></p>
+                                <p th:text="'Barrio: '+${propiedades.barrio}" class="card-text text-white"></p>
+                                <p th:text="'Localidad: '+${propiedades.localidad}" class="card-text text-white"></p>
+                                <p th:text="'Precio: '+${propiedades.precioPropiedad}+ ' ' +${propiedades.moneda}"
+                                    class="card-text text-white"></p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a th:href="@{/imagen/propiedad/__${propiedades.idPropiedad}__}"
+                                            class="btn btn-sm btn-outline-secondary"> Detalles </a>
                                     </div>
+                                    <small class="text-muted"
+                                        th:text="'ID propiedad: MA' + ${propiedades.idPropiedad}"></small>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </main>
-        <div th:replace="/fragments/footer" :: div></div>
+        </div>
+    </main>
+    <div th:replace="/fragments/footer" :: div></div>
 
-        <script>
-            // Función para cargar los valores almacenados en el localStorage al cargar la página
-            window.onload = function () {
-                document.getElementById('keyword').value = localStorage.getItem('keyword') || '';
-                document.getElementById('keyword1').value = localStorage.getItem('keyword1') || '';
-                document.getElementById('keyword2').value = localStorage.getItem('keyword2') || '';
-                document.getElementById('keyword3').value = localStorage.getItem('keyword3') || '';
-                document.getElementById('keyword4').value = localStorage.getItem('keyword4') || '';
-                document.getElementById('keyword5').value = localStorage.getItem('keyword5') || '';
-            };
+    <script>
+        // Función para cargar los valores almacenados en el localStorage al cargar la página
+        window.onload = function () {
+            document.getElementById('keyword').value = localStorage.getItem('keyword') || '';
+            document.getElementById('keyword1').value = localStorage.getItem('keyword1') || '';
+            document.getElementById('keyword2').value = localStorage.getItem('keyword2') || '';
+            document.getElementById('keyword3').value = localStorage.getItem('keyword3') || '';
+            document.getElementById('keyword4').value = localStorage.getItem('keyword4') || '';
+            document.getElementById('keyword5').value = localStorage.getItem('keyword5') || '';
+        };
 
-            // Función para guardar los valores seleccionados en el localStorage
-            function guardarSeleccion(id) {
-                var valor = document.getElementById(id).value;
-                localStorage.setItem(id, valor);
-            }
+        // Función para guardar los valores seleccionados en el localStorage
+        function guardarSeleccion(id) {
+            var valor = document.getElementById(id).value;
+            localStorage.setItem(id, valor);
+        }
 
-            // Función para limpiar y borrar los valores del localStorage
-            function limpiar() {
-                localStorage.removeItem('keyword');
-                localStorage.removeItem('keyword1');
-                localStorage.removeItem('keyword2');
-                localStorage.removeItem('keyword3');
-                localStorage.removeItem('keyword4');
-                localStorage.removeItem('keyword5');
+        // Función para limpiar y borrar los valores del localStorage
+        function limpiar() {
+            localStorage.removeItem('keyword');
+            localStorage.removeItem('keyword1');
+            localStorage.removeItem('keyword2');
+            localStorage.removeItem('keyword3');
+            localStorage.removeItem('keyword4');
+            localStorage.removeItem('keyword5');
 
-                // Limpiar los campos del formulario
-                document.getElementById('keyword').value = '';
-                document.getElementById('keyword1').value = '';
-                document.getElementById('keyword2').value = '';
-                document.getElementById('keyword3').value = '';
-                document.getElementById('keyword4').value = '';
-                document.getElementById('keyword5').value = '';
-            }
-        </script>
-        <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            // Limpiar los campos del formulario
+            document.getElementById('keyword').value = '';
+            document.getElementById('keyword1').value = '';
+            document.getElementById('keyword2').value = '';
+            document.getElementById('keyword3').value = '';
+            document.getElementById('keyword4').value = '';
+            document.getElementById('keyword5').value = '';
+        }
+    </script>
+    <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 
 
 </html>

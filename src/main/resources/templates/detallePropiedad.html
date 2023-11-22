@@ -23,9 +23,6 @@
     <main>
 
         <div class="px-0 pt-0 my-0 text-center">
-
-            <!-- style="background: rgba(255, 255, 255, 0.7); border: none;"
-            <h1 style="text-align: center">Detalles de la Propiedad</h1> -->
             <div class="container">
                 <div class="card bg-dark text-white" style="border-radius: 15px; margin: 20px;">
                     <div class="card-header" style="border-bottom: 0px solid rgba(0,0,0,.125);">
@@ -41,9 +38,11 @@
                                                     th:src="'data:image/jpeg;base64,' + ${#strings.toString(imagen1)}"
                                                     alt="Imagen" data-bs-toggle="modal" data-bs-target="#imageModal"
                                                     onclick="openModal(this)">
-                                                <img src="/img/armenteros verde blanco.png"
-                                                    style="position: absolute; bottom: 10px; right: 10px; width: 150px;"
-                                                    alt="Logo">
+                                                <div
+                                                    style="position: absolute; bottom: 10px; right: 10px; width: 150px; background-color: rgba(204, 204, 204, 0.4); padding: 5px; border-radius: 15px;">
+                                                    <img src="/img/armenteros original.png" style="width: 100%;"
+                                                        alt="Logo">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -73,10 +72,14 @@
                                         <div class="modal-body">
                                             <img id="modalImage" style="width: 100%; height: auto;" src=""
                                                 alt="Imagen Ampliada">
-                                            <img src="/img/armenteros verde blanco.png"
-                                                style="position: absolute; bottom: 100px; right: 100px; width: 350px;"
-                                                alt="Logo">
+
+                                            <div
+                                                style="position: absolute; bottom: 50px; right: 50px; width: 350px; background-color: rgba(204, 204, 204, 0.5); padding: 10px; border-radius: 15px;">
+                                                <img src="/img/armenteros original.png" style="width: 100%;" alt="Logo">
+                                            </div>
+
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -109,6 +112,13 @@
                                             Estado: ALQUILADA
                                         </span>
                                     </h5>
+                                    <h5 th:if="${propiedad.reserva == false}"
+                                        style="font-family: 'Sometype Mono', sans-serif; color: red; text-align: left; font-size: 26px">
+                                        <span>
+                                            RESERVADA
+                                        </span>
+                                        
+                                    </h5>
                                     <h5 th:unless="${propiedad.estadoComercial == false}"
                                         th:text="'Estado: ' + ${propiedad.estado}"
                                         style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
@@ -118,6 +128,88 @@
                                     </h5>
                                     <div class="container button-container">
                                         <div class="row">
+                                            <div class="col-6">
+                                                <a th:href="@{/propiedad/modificar/__${propiedad.idPropiedad}__}">
+                                                    <button type="button"
+                                                        class="btn btn-block btn-outline-secondary mb-2"
+                                                        th:if="${session.usuariosession != null}">
+                                                        Modificar los Datos
+                                                    </button>
+                                                </a>
+                                            </div>
+                                            <div class="col-6">
+                                                <button type="button" class="btn btn-block btn-outline-secondary mb-2"
+                                                    th:if="${session.usuariosession != null}">
+                                                    <a th:href="@{/imagen/modificar/__${propiedad.idPropiedad}__}">
+                                                        Modificar Imágenes
+                                                    </a>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <button type="button" class="btn btn-block btn-outline-secondary mb-2"
+                                                    th:if="${session.usuariosession != null}" data-toggle="modal"
+                                                    data-target="#confirmDeleteModal1">
+                                                    Eliminar Propiedad
+                                                </button>
+                                            </div>
+                                            <div class="modal fade" id="confirmDeleteModal1" tabindex="-1" role="dialog"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content bg-dark text-white">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel"
+                                                                style="color: white;">Confirmar Eliminación
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            ¿Estás seguro de que deseas eliminar definitivamente
+                                                            esta
+                                                            propiedad?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Cancelar</button>
+                                                            <a class="btn btn-danger"
+                                                                th:href="@{/propiedad/eliminar/__${propiedad.idPropiedad}__}">Eliminar</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <button type="button" class="btn btn-block btn-outline-secondary mb-2"
+                                                    th:if="${session.usuariosession != null}">
+                                                    <a th:href="@{/propiedad/darDeBaja/__${propiedad.idPropiedad}__}">
+                                                        Activar / Desactivar
+                                                    </a>
+                                                </button>
+                                            </div>
+                                            <div class="col-1">
+                                                <button type="button" class="btn btn-block btn-outline-secondary"
+                                                    th:if="${session.usuariosession != null}"
+                                                    style="margin-top: 20px; margin-left: 210px" data-toggle="modal"
+                                                    data-target="#contactModal2">
+                                                    <a th:href="@{/propiedad/reservar/__${propiedad.idPropiedad}__}">
+                                                        Reservar
+                                                    </a>
+                                                    
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-1">
+                                            <button type="button" class="btn btn-block btn-outline-secondary"
+                                                style="margin-top: 20px; margin-left: 210px" data-toggle="modal"
+                                                data-target="#contactModal1">
+                                                Contacto
+                                            </button>
+                                        </div>
+
+                                        <!-- <div class="row">
                                             <div class="col-6">
                                                 <a th:href="@{/propiedad/modificar/__${propiedad.idPropiedad}__}">
                                                     <button type="button"
@@ -179,11 +271,10 @@
                                             </div>
                                             <div class="col-1">
                                                 <button type="button" class="btn btn-block btn-outline-secondary"
-                                                    style="margin-top: 20px;
-                                                                                                            margin-left: 210px" data-toggle="modal"
+                                                    style="margin-top: 20px; margin-left: 210px" data-toggle="modal"
                                                     data-target="#contactModal1">Contacto</button>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -427,11 +518,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
-
-
 
         <div class="modal fade" id="contactModal1" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel"
             aria-hidden="true">
@@ -446,26 +533,21 @@
                     <form action="/mail/enviar-correo" method="POST">
                         <div class="modal-body bg-dark text-white">
                             <div class="container button-container">
-
                                 <div class="mb-3">
-
                                     <label for="contactEmail" class="form-label">Tu Correo
                                         Electrónico</label>
                                     <input type="email" class="form-control" id="email" name="email"
                                         placeholder="name@example.com">
                                 </div>
-
                                 <div class="mb-3">
                                     <label for="nombre" class="form-label">Nombre:</label>
                                     <input type="text" id="nombre" name="nombre" class="form-control" required><br>
                                 </div>
-
                                 <div class="mb-3">
                                     <label for="asunto" class="form-label">Asunto:</label>
                                     <text type="text" id="asunto" name="asunto" class="form-control"
                                         th:text="${propiedad.estado}+' '+${propiedad.tipoVivienda}+' / idPropiedad N°: '+${propiedad.idPropiedad}"><br>
                                 </div>
-
                                 <div class="mb-3">
                                     <label for="contactMessage" class="form-label">Dejá tú consulta</label>
                                     <textarea class="form-control" id="contactMessage" name="mensaje" rows="3"

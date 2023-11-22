@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -18,20 +19,11 @@ import javax.persistence.TemporalType;
  * @author Guillote
  */
 @Entity
-//@SequenceGenerator(name = "sec_generator", sequenceName = "secuencial_sequence", initialValue = 100, allocationSize = 1)
-//@Getter
-//@Setter
-//@ToString
-//@NoArgsConstructor(access = AccessLevel.PUBLIC)
-//@AllArgsConstructor
 public class Propiedad {
-    
+
     @Id
-//    @SequenceGenerator(name = "sec_generator", sequenceName = "secuencial_sequence", initialValue = 100, allocationSize = 1)
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sec_generator")
-//    @GeneratedValue(generator = "uuid")
-//    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "custom-id")
+    @TableGenerator(name = "custom-id", table = "id_generator", pkColumnName = "id_key", pkColumnValue = "propiedad", valueColumnName = "id_value", initialValue = 1000, allocationSize = 1)
     private Integer idPropiedad;
     private Long precioPropiedad;
     private Long mts2Totales;
@@ -45,6 +37,7 @@ public class Propiedad {
     private String descripcion;
     private String moneda;
     private Boolean estadoComercial = true;
+    private Boolean reserva = true;
     private Boolean aguaCorriente = false;
     private Boolean aireAcondicionado = false;
     private Boolean aptoCredito = false;
@@ -81,12 +74,12 @@ public class Propiedad {
     @OneToOne
     private Propietario propietario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "propiedad")
-    private List <Imagen> imagenes;
-    
-    public void agregarImagen(Imagen imagen){
-        if(imagenes == null){
+    private List<Imagen> imagenes;
+
+    public void agregarImagen(Imagen imagen) {
+        if (imagenes == null) {
             imagenes = new ArrayList();
-            
+
         }
         imagenes.add(imagen);
     }
@@ -209,6 +202,22 @@ public class Propiedad {
 
     public void setMoneda(String moneda) {
         this.moneda = moneda;
+    }
+
+    public Boolean getEstadoComercial() {
+        return estadoComercial;
+    }
+
+    public void setEstadoComercial(Boolean estadoComercial) {
+        this.estadoComercial = estadoComercial;
+    }
+
+    public Boolean getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(Boolean reserva) {
+        this.reserva = reserva;
     }
 
     public Boolean getAguaCorriente() {
@@ -483,14 +492,4 @@ public class Propiedad {
         this.imagenes = imagenes;
     }
 
-    public Boolean getEstadoComercial() {
-        return estadoComercial;
-    }
-
-    public void setEstadoComercial(Boolean estadoComercial) {
-        this.estadoComercial = estadoComercial;
-    }
-
-    
-    
 }

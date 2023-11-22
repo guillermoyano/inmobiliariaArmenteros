@@ -223,4 +223,10 @@ public class PropiedadControlador {
         return "redirect:../lista";
     }
     
+    @GetMapping("reservar/{idPropiedad}")
+    public String reservaPropiedad(@PathVariable Integer idPropiedad, RedirectAttributes redirect) throws MiException{
+        propiedadServicio.reservaPropiedad(idPropiedad);
+        return "redirect:../lista";
+    }
+    
 }

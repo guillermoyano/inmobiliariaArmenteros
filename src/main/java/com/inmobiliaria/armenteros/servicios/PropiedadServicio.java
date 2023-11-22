@@ -410,6 +410,24 @@ public class PropiedadServicio {
         }
     }
     
+     public void reservaPropiedad(Integer idPropiedad) throws MiException {
+
+        Optional<Propiedad> respuesta = propiedadRepositorio.findById(idPropiedad);
+
+        if (respuesta.isPresent()) {
+
+            Propiedad propiedad = respuesta.get();
+            if (propiedad.getReserva() != null) {
+                if (propiedad.getReserva() == true) {
+                    propiedad.setReserva(false);
+                } else {
+                    propiedad.setReserva(true);
+                }
+                propiedadRepositorio.save(propiedad);
+            }
+        }
+    }
+    
 
     public Propiedad getone(Integer idPropiedad) {
         return propiedadRepositorio.getOne(idPropiedad);
