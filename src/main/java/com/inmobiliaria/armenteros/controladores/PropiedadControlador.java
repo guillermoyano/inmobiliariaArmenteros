@@ -121,7 +121,7 @@ public class PropiedadControlador {
         try {
             List<Propiedad> propiedades = new ArrayList<>();
             if (keyword == null) {
-                propiedadRepositorio.findAll().forEach(propiedades::add);
+                propiedadRepositorio.ordenarPropiedadPorFechaDesc().forEach(propiedades::add);
             } else {
                 propiedadRepositorio.buscarPropiedadPorCalle(keyword).forEach(propiedades::add);
                 modelo.addAttribute("keyword", keyword);
@@ -142,7 +142,7 @@ public class PropiedadControlador {
             List<Propiedad> propiedades = new ArrayList<>();
 
             if (keyword == null) {
-                propiedadRepositorio.findAll().forEach(propiedades::add);
+                propiedadRepositorio.ordenarPropiedadPorFechaDesc().forEach(propiedades::add);
                 ImagenesPorPropiedad(modelo);
             } else {
                 propiedadRepositorio.buscarPropiedadPotTipoDeVivienda(keyword, keyword1, keyword2, keyword3, keyword4, keyword5).forEach(propiedades::add);

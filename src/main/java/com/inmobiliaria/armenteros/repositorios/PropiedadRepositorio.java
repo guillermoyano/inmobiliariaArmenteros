@@ -17,6 +17,15 @@ public interface PropiedadRepositorio extends JpaRepository <Propiedad, Integer>
 
     @Query(value="SELECT * FROM Propiedad WHERE calle like %:calle%", nativeQuery = true) 
    public List<Propiedad> buscarPropiedadPorCalle(@Param("calle") String calle);
+   
+   @Query(value="select * from propiedad order by id_propiedad desc;", nativeQuery = true) 
+   public List<Propiedad> ordenarPropiedadPorIdDesc();
+   
+   @Query(value="select * from propiedad order by id_propiedad asc;", nativeQuery = true) 
+   public List<Propiedad> ordenarPropiedadPorIdAsc();
+   
+   @Query(value="select * from propiedad order by fecha_publicacion desc;", nativeQuery = true) 
+   public List<Propiedad> ordenarPropiedadPorFechaDesc();
 
 //   @Query(value="select * from propiedad where (tipo_vivienda is null or tipo_vivienda like %:keyword%) "
 //           + "and (estado is null or estado like %:keyword1%) and (moneda is null or moneda like %:keyword2%) "
