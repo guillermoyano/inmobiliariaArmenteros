@@ -20,12 +20,12 @@
     <div class='container' style='text-align: center;'>
         <h2 class="titulo">Lista de Usuarios</h2>
         <div class="contenedorInput" style="padding: 10px;">
-            <div class="table table-dark table-striped-columns">
+            <div class="table table-dark table-striped-columns" style="overflow-x: scroll;">
                 <table class="fl-table" style="width: 100%; margin-top: 10px; border-top: none;">
                     <thead>
                         <tr>
-                            <th>Id Usuario</th>
-                            <th>Nombre Apellido</th>
+
+                            <th>Nombre Apellido / ID</th>
                             <th>Email</th>
                             <th>Rol</th>
                             <th>Cambiar Rol</th>
@@ -34,21 +34,27 @@
                     </thead>
                     <tbody th:each="usuarios : ${usuarios}" style="margin-top: 115px">
                         <tr>
-                            <td th:text="${usuarios.id}"></td>
-                            <td th:text="${usuarios.nombre}"></td>
+                            <td>
+                                <span th:text="${usuarios.nombre}"></span>
+                                <br />
+                                <span th:text="${usuarios.id}" style="font-size: 13px; color: gray;"></span>
+                            </td>
                             <td th:text="${usuarios.email}"></td>
                             <td th:text="${usuarios.rol}"></td>
                             <td>
-                                <button class="btn btn-sm btn-outline-secondary" style="margin: 5px;">
-                                    <a class="modificar" style='text-decoration: none'
-                                        th:href="@{/usuario/modificarRol/__${usuarios.id}__}">Rol
-                                    </a>
-                                </button>
+                                <a class="modificar" style='text-decoration: none'
+                                    th:href="@{/usuario/modificarRol/__${usuarios.id}__}">
+                                    <button class="btn btn-sm btn-outline-secondary" style="margin: 5px;">
+                                        Rol
+
+                                    </button></a>
                             </td>
-                            <td><button class="btn btn-sm btn-outline-secondary" style="margin: 5px;">
-                                    <a style='text-decoration: none' class="modificar">Modificar
-                                    </a>
-                                </button>
+                            <td>
+                                <a style='text-decoration: none' class="modificar">
+                                    <button class="btn btn-sm btn-outline-secondary" style="margin: 5px;">
+                                        Modificar
+
+                                    </button></a>
                             </td>
                     <tbody>
                 </table>
