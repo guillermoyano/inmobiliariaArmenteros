@@ -15,7 +15,11 @@
 <body>
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 
-
+    <div style="position: fixed; bottom: 79px; right: 15px; z-index: 1000;">
+        <a href="https://wa.me/+5491150513333" target="_blank">
+            <img src="/img/logowpp.svg" alt="Logo de WhatsApp" width="120">
+        </a>
+    </div>
 
     <div class="px-4 pt-5 my-5 text-center border-bottom"
         style="background: rgba(255, 255, 255, 0.7); border: none; padding-bottom: 40px;">
@@ -24,26 +28,30 @@
             <form action="/propietario/registro" method="POST" class="text-start">
                 <div class="mb-3 text-center">
                     <label for="campo" class="form-label">DNI</label>
-                    <input name="dni" type="text" id="campo" class="form-control" style="border-radius:10px; border: 2px black solid; width: 300px;" readonly/>
+                    <input name="dni" type="text" id="campo" class="form-control"
+                        style="border-radius:10px; border: 2px black solid; width: 300px;" readonly />
                 </div>
                 <div class="mb-3 text-center">
                     <label for="nombreApellido" class="form-label">Nombre y Apellido</label>
-                    <input type="text" name="nombreApellido" id="nombreApellido" th:value="${nombreApellido}" style="border-radius:10px; border: 2px black solid;"
-                        class="form-control" >
+                    <input type="text" name="nombreApellido" id="nombreApellido" th:value="${nombreApellido}"
+                        style="border-radius:10px; border: 2px black solid;" class="form-control">
                 </div>
                 <div class="mb-3 text-center">
                     <label for="telefono" class="form-label">Teléfono</label>
-                    <input type="text" name="telefono" class="form-control" th:value="${telefono}" style="border-radius:10px; border: 2px black solid;">
-                        
+                    <input type="text" name="telefono" class="form-control" th:value="${telefono}"
+                        style="border-radius:10px; border: 2px black solid;">
+
                 </div>
                 <div class="mb-3 text-center">
                     <label for="email" class="form-label">Correo Electrónico</label>
-                    <input type="email" name="email" class="form-control" th:value="${email}" style="border-radius:10px; border: 2px black solid;">
+                    <input type="email" name="email" class="form-control" th:value="${email}"
+                        style="border-radius:10px; border: 2px black solid;">
                 </div>
                 <div class="mb-3 text-center">
                     <label for="direccion" class="form-label">Dirección</label>
-                    <input type="text" name="direccion" class="form-control" th:value="${direccion}" style="border-radius:10px; border: 2px black solid; width: 300px;">
-                        
+                    <input type="text" name="direccion" class="form-control" th:value="${direccion}"
+                        style="border-radius:10px; border: 2px black solid; width: 300px;">
+
                 </div>
 
                 <div class="text-center">

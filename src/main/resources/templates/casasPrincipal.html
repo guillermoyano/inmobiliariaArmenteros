@@ -54,13 +54,14 @@
 
 <body>
 
-
-
-    <div th:replace="/fragments/preFoto" :: div> </div>
-
-    <div th:replace="/fragments/casa" :: div></div>
-
     <nav th:replace="/fragments/navbar" :: nav> </nav>
+
+    <div style="position: fixed; bottom: 79px; right: 15px; z-index: 1000;">
+        <a href="https://wa.me/+5491150513333" target="_blank">
+            <img src="/img/logowpp.svg" alt="Logo de WhatsApp" width="120">
+        </a>
+    </div>
+    
 <!--
     <form th:action="@{/casasPrincipal}" method="post">
         <div class="container">

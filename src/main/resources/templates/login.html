@@ -16,6 +16,12 @@
 <body>
   <nav th:replace="/fragments/navbar" :: nav> </nav>
 
+  <div style="position: fixed; bottom: 79px; right: 15px; z-index: 1000;">
+    <a href="https://wa.me/+5491150513333" target="_blank">
+      <img src="/img/logowpp.svg" alt="Logo de WhatsApp" width="120">
+    </a>
+  </div>
+
 
   <section class="py-5 text-center container">
     <form class="formulario mx-auto" th:action="@{/logincheck}" method="POST" style="width: 400px;">
@@ -34,8 +40,8 @@
     </form>
   </section>
 
-  
-  
+
+
   <footer class="footer d-flex justify-content-between align-items-center py-3 bg-dark text-white fixed-bottom">
     <div class="col-md-4 d-flex align-items-center">
       <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
@@ -70,49 +76,6 @@
     </ul>
   </footer>
 
-  <!-- <div class="container-fluid m-5 contenedor">
-    <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
-      <div class="card-body">
-        <h5 class="card-title">Error!</h5>
-        <p class="card-text" th:text="${error}"></p>
-      </div>
-    </div>
-    <div th:if="${exito != null}" class="card text-white bg-success mb-3 mt-3 mensajeExito">
-      <div class="card-body">
-        <h5 class="card-title">Exito!</h5>
-        <p class="card-text" th:text="${exito}"></p>
-      </div>
-    </div> -->
-
-  <!-- <form class="formulario" th:action="@{/logincheck}" method="POST">
-      <div class="form-group my-3">
-        <h3 class="card-title">Logueate</h3>
-      </div>
-
-      <div class="form-group my-3">
-        <input type="email" class="form-control" name="email" placeholder="EMAIL" />
-      </div>
-
-      <div class="form-group my-3">
-        <input type="password" class="form-control" name="password" placeholder="CONTRASEÑA" />
-      </div>
-
-      <button type="submit" class="btn btn-primary mt-3 botones">
-        Ingresar!
-      </button>
-    </form>
-
-    <section class="text-center container">
-      <div class="row mt-3">
-        <div class="divVolver">
-          <a th:href="@{/}" class="btn btn-secondary my-2 botonVolver botones">Volver</a>
-        </div>
-        <div class="divVolver">
-          <a th:href="@{/}" class="">Olvide mi contraseña</a>
-        </div>
-      </div>
-    </section>
-  </div> -->
 
 
 

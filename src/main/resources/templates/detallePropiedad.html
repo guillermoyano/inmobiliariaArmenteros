@@ -20,6 +20,12 @@
 
     <header th:replace="/fragments/navbar" :: header> </header>
 
+    <div style="position: fixed; bottom: 79px; right: 15px; z-index: 1000;">
+        <a href="https://wa.me/+5491150513333" target="_blank">
+            <img src="/img/logowpp.svg" alt="Logo de WhatsApp" width="120">
+        </a>
+    </div>
+
     <main>
 
         <div class="px-0 pt-0 my-0 text-center">
@@ -209,7 +215,7 @@
                                         </div>
                                         <div class="col-1">
                                             <button type="button" class="btn btn-block btn-outline-secondary"
-                                            th:if="${session.usuariosession == null}"
+                                                th:if="${session.usuariosession == null}"
                                                 style="margin-top: 20px; margin-left: 210px" data-toggle="modal"
                                                 data-target="#contactModal1">
                                                 Contacto

@@ -16,7 +16,11 @@
 <body>
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 
-
+    <div style="position: fixed; bottom: 79px; right: 15px; z-index: 1000;">
+        <a href="https://wa.me/+5491150513333" target="_blank">
+            <img src="/img/logowpp.svg" alt="Logo de WhatsApp" width="120">
+        </a>
+    </div>
 
     <div class="px-4 pt-5 my-5 text-center border-bottom"
         style="background: rgba(255, 255, 255, 0.7); border: none; padding-bottom: 40px;">
@@ -138,8 +142,7 @@
                 </div>
                 <div class="mb-3 d-flex align-items-center">
                     <input name="precioPropiedad" type="number" th:value="${propiedad.precioPropiedad}"
-                        class="form-control"
-                        style="border-radius:10px; border: 2px black solid; width: 300px;">
+                        class="form-control" style="border-radius:10px; border: 2px black solid; width: 300px;">
                     <label class="form-label ms-3">Precio de la Propiedad</label>
                 </div>
                 <div class="row" style="width: 1000px;">
@@ -476,7 +479,7 @@
         document.getElementById('campo').value = valor;
     </script>
 
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
