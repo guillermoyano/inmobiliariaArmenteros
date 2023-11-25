@@ -46,6 +46,12 @@ public class PortalControlador {
 
         return "redirect:./propiedad/listarPropiedades";
     }
+    
+      @GetMapping("/nosotros")
+    public String nosotros() {
+
+        return "nosotros.html";
+    }
 
     @GetMapping("/casasPrincipal")
     public String casasPrincipal(ModelMap modelo) {

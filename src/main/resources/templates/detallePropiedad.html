@@ -117,7 +117,7 @@
                                         <span>
                                             RESERVADA
                                         </span>
-                                        
+
                                     </h5>
                                     <h5 th:unless="${propiedad.estadoComercial == false}"
                                         th:text="'Estado: ' + ${propiedad.estado}"
@@ -138,12 +138,15 @@
                                                 </a>
                                             </div>
                                             <div class="col-6">
-                                                <button type="button" class="btn btn-block btn-outline-secondary mb-2"
-                                                    th:if="${session.usuariosession != null}">
-                                                    <a th:href="@{/imagen/modificar/__${propiedad.idPropiedad}__}">
+                                                <a th:href="@{/imagen/modificar/__${propiedad.idPropiedad}__}">
+
+                                                    <button type="button"
+                                                        class="btn btn-block btn-outline-secondary mb-2"
+                                                        th:if="${session.usuariosession != null}">
+
                                                         Modificar Imágenes
-                                                    </a>
-                                                </button>
+
+                                                    </button></a>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -182,27 +185,31 @@
                                                 </div>
                                             </div>
                                             <div class="col-6">
-                                                <button type="button" class="btn btn-block btn-outline-secondary mb-2"
-                                                    th:if="${session.usuariosession != null}">
-                                                    <a th:href="@{/propiedad/darDeBaja/__${propiedad.idPropiedad}__}">
+                                                <a th:href="@{/propiedad/darDeBaja/__${propiedad.idPropiedad}__}">
+                                                    <button type="button"
+                                                        class="btn btn-block btn-outline-secondary mb-2"
+                                                        th:if="${session.usuariosession != null}">
+
                                                         Activar / Desactivar
-                                                    </a>
-                                                </button>
+
+                                                    </button> </a>
                                             </div>
                                             <div class="col-1">
-                                                <button type="button" class="btn btn-block btn-outline-secondary"
-                                                    th:if="${session.usuariosession != null}"
-                                                    style="margin-top: 20px; margin-left: 210px" data-toggle="modal"
-                                                    data-target="#contactModal2">
-                                                    <a th:href="@{/propiedad/reservar/__${propiedad.idPropiedad}__}">
+                                                <a th:href="@{/propiedad/reservar/__${propiedad.idPropiedad}__}">
+                                                    <button type="button" class="btn btn-block btn-outline-secondary"
+                                                        th:if="${session.usuariosession != null}"
+                                                        style="margin-top: 20px; margin-left: 210px" data-toggle="modal"
+                                                        data-target="#contactModal2">
+
                                                         Reservar
-                                                    </a>
-                                                    
-                                                </button>
+
+
+                                                    </button></a>
                                             </div>
                                         </div>
                                         <div class="col-1">
                                             <button type="button" class="btn btn-block btn-outline-secondary"
+                                            th:if="${session.usuariosession == null}"
                                                 style="margin-top: 20px; margin-left: 210px" data-toggle="modal"
                                                 data-target="#contactModal1">
                                                 Contacto
