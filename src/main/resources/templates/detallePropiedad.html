@@ -41,7 +41,7 @@
                                                     alt="Imagen" data-bs-toggle="modal" data-bs-target="#imageModal"
                                                     onclick="openModal(this)">
                                                 <div
-                                                    style="position: absolute; bottom: 10px; right: 10px; width: 150px; background-color: rgba(204, 204, 204, 0.4); padding: 5px; border-radius: 15px;">
+                                                    style="position: absolute; bottom: 10px; right: 10px; width: 150px; background-color: rgba(204, 204, 204, 0.7); padding: 5px; border-radius: 15px;">
                                                     <img src="/img/armenteros original.png" style="width: 100%;"
                                                         alt="Logo">
                                                 </div>
@@ -76,7 +76,7 @@
                                                 alt="Imagen Ampliada">
 
                                             <div
-                                                style="position: absolute; bottom: 50px; right: 50px; width: 350px; background-color: rgba(204, 204, 204, 0.5); padding: 10px; border-radius: 15px;">
+                                                style="position: absolute; bottom: 50px; right: 50px; width: 350px; background-color: rgba(204, 204, 204, 0.7); padding: 10px; border-radius: 15px;">
                                                 <img src="/img/armenteros original.png" style="width: 100%;" alt="Logo">
                                             </div>
 
@@ -115,7 +115,7 @@
                                         </span>
                                     </h5>
                                     <h5 th:if="${propiedad.reserva == false}"
-                                        style="font-family: 'Sometype Mono', sans-serif; color: red; text-align: left; font-size: 26px">
+                                        style="font-family: 'Sometype Mono', sans-serif; color: rgb(20, 220, 50); text-align: left; font-size: 26px">
                                         <span>
                                             RESERVADA
                                         </span>
@@ -141,13 +141,10 @@
                                             </div>
                                             <div class="col-6">
                                                 <a th:href="@{/imagen/modificar/__${propiedad.idPropiedad}__}">
-
                                                     <button type="button"
                                                         class="btn btn-block btn-outline-secondary mb-2"
                                                         th:if="${session.usuariosession != null}">
-
                                                         Modificar Imágenes
-
                                                     </button></a>
                                             </div>
                                         </div>
@@ -191,9 +188,7 @@
                                                     <button type="button"
                                                         class="btn btn-block btn-outline-secondary mb-2"
                                                         th:if="${session.usuariosession != null}">
-
                                                         Activar / Desactivar
-
                                                     </button> </a>
                                             </div>
                                             <div class="col-1">
@@ -201,12 +196,7 @@
                                                     <button type="button" class="btn btn-block btn-outline-secondary"
                                                         th:if="${session.usuariosession != null}"
                                                         style="margin-top: 20px; margin-left: 210px" data-toggle="modal"
-                                                        data-target="#contactModal2">
-
-                                                        Reservar
-
-
-                                                    </button></a>
+                                                        data-target="#contactModal2">Reservar</button></a>
                                             </div>
                                         </div>
                                         <div class="col-1">
@@ -217,73 +207,6 @@
                                                 Contacto
                                             </button>
                                         </div>
-
-                                        <!-- <div class="row">
-                                            <div class="col-6">
-                                                <a th:href="@{/propiedad/modificar/__${propiedad.idPropiedad}__}">
-                                                    <button type="button"
-                                                        class="btn btn-block btn-outline-secondary mb-2"
-                                                        th:if="${session.usuariosession != null}">
-                                                        Modificar los Datos
-                                                    </button></a>
-                                            </div>
-                                            <div class="col-6">
-                                                <button type="button" class="btn btn-block btn-outline-secondary mb-2"
-                                                    th:if="${session.usuariosession != null}">
-                                                    <a th:href="@{/imagen/modificar/__${propiedad.idPropiedad}__}">
-                                                        Modificar
-                                                        Imágenes</a>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <button type="button" class="btn btn-block btn-outline-secondary mb-2"
-                                                    th:if="${session.usuariosession != null}" data-toggle="modal"
-                                                    data-target="#confirmDeleteModal1">Eliminar
-                                                    Propiedad</button>
-                                            </div>
-                                            <div class="modal fade" id="confirmDeleteModal1" tabindex="-1" role="dialog"
-                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content bg-dark text-white">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel"
-                                                                style="color: white;">Confirmar Eliminación
-                                                            </h5>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            ¿Estás seguro de que deseas eliminar definitivamente
-                                                            esta
-                                                            propiedad?
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Cancelar</button>
-                                                            <a class="btn btn-danger"
-                                                                th:href="@{/propiedad/eliminar/__${propiedad.idPropiedad}__}">Eliminar</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <button type="button" class="btn btn-block btn-outline-secondary mb-2"
-                                                    th:if="${session.usuariosession != null}">
-                                                    <a th:href="@{/propiedad/darDeBaja/__${propiedad.idPropiedad}__}">
-                                                        Activar /
-                                                        Desactivar</a>
-                                                </button>
-                                            </div>
-                                            <div class="col-1">
-                                                <button type="button" class="btn btn-block btn-outline-secondary"
-                                                    style="margin-top: 20px; margin-left: 210px" data-toggle="modal"
-                                                    data-target="#contactModal1">Contacto</button>
-                                            </div>
-                                        </div> -->
                                     </div>
                                 </div>
                             </div>

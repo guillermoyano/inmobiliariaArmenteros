@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.inmobiliaria.armenteros.controladores;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,9 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Guille
  */
 @Controller
-public class ErroresControlador implements ErrorController{
-    
-    
+public class ErrorControlador implements ErrorController {
+
     @RequestMapping(value = "/error", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView renderErrorPage(HttpServletRequest httpRequest) {
 
@@ -38,7 +34,7 @@ public class ErroresControlador implements ErrorController{
                 break;
             }
             case 401: {
-                errorMsg = "No tiene autorización para acceder";
+                errorMsg = "No tiene autorización";
                 break;
             }
             case 404: {
@@ -63,5 +59,5 @@ public class ErroresControlador implements ErrorController{
     public String getErrorPath() {
         return "/error.html";
     }
-    
+
 }
