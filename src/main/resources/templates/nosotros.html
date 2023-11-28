@@ -18,11 +18,7 @@
 <body>
     <header th:replace="/fragments/navbar" :: header> </header>
 
-    <div style="position: fixed; bottom: 200px; right: 15px; z-index: 1000;">
-        <a href="https://wa.me/+5491150513333" target="_blank">
-            <img src="/img/logowpp.svg" alt="Logo de WhatsApp" width="120">
-        </a>
-    </div>
+    <header th:replace="/fragments/wpp" :: header> </header>
 
 
 
@@ -56,141 +52,55 @@
         <main>
             <div class="container py-4">
                 <header class="pb-3 mb-4 border-bottom">
-                    <a href="/" class="d-flex align-items-center text-body-emphasis text-decoration-none">
-                        <svg width="40" height="32" class="me-2" role="img" viewBox="0 0 118 94"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <title>Bootstrap</title>
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
-                                fill="currentColor"></path>
-                        </svg>
-                        <span class="fs-4">Ejemplo de Jumbotron</span>
-                    </a>
+
+                    <img src="/img/armenteros original.png" alt="" style="width: 250px; margin-left: 65px; ">
+
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+                        fill="currentColor"></path>
+                    </svg>
+                    <span class="fs-4"></span>
+
                 </header>
 
                 <div class="p-5 mb-4 bg-body-tertiary rounded-3">
                     <div class="container-fluid py-5">
-                        <h1 class="display-5 fw-bold">Jumbotron personalizado</h1>
-                        <p class="col-md-8 fs-4">Usando una serie de utilidades, puedes crear este jumbotron, tal como
-                            el de versiones anteriores de Bootstrap. Consulta los ejemplos a continuación para saber
-                            cómo puede remezclarlo y cambiarle el estilo a tu gusto.</p>
-                        <button class="btn btn-primary btn-lg" type="button">Botón de ejemplo</button>
+                        <h1 class="display-5 fw-bold">Sobre Nosotros</h1>
+                        <p class="col-md-8 fs-4">En Armenteros Propiedades, creemos en convertir sueños en hogares y
+                            oportunidades en realidades.
+                            Somos una agencia inmobiliaria dedicada a brindar soluciones integrales para satisfacer las
+                            necesidades únicas de nuestros clientes.
+                            Nuestra misión es facilitar el proceso de compra, venta y alquiler de propiedades,
+                            proporcionando un servicio excepcional y orientado a resultados.</p>
                     </div>
                 </div>
 
                 <div class="row align-items-md-stretch">
                     <div class="col-md-6">
                         <div class="h-100 p-5 text-bg-dark rounded-3">
-                            <h2>Cambiar el fondo</h2>
-                            <p>Cambia la utilidad de color de fondo y agrega una utilidad de color `.text-*` para
-                                mezclar el aspecto del jumbotron. Luego, mezcla y combina con temas de componentes
-                                adicionales y más.</p>
+                            <h2>Nuestra Historia</h2>
+                            <p>Fundada por Manuel Armenteros, Armenteros Propiedades es el fruto de una pasión
+                                compartida por el sector inmobiliario y el deseo de ofrecer un enfoque personalizado a
+                                cada cliente.
+                                Con una vasta experiencia en el mercado, Manuel ha liderado el camino para establecer
+                                una reputación de confianza y profesionalismo en el rubro.</p>
                             <button class="btn btn-outline-light" type="button">Botón de ejemplo</button>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="h-100 p-5 bg-body-tertiary border rounded-3">
-                            <h2>Agregar bordes</h2>
-                            <p>O mantenlo ligero y agrega un borde para darle una definición adicional a los límites de
-                                tu contenido. Asegúrate de mirar debajo del capó el HTML de origen aquí, ya que hemos
-                                ajustado la alineación y el tamaño del contenido de ambas columnas para que tengan la
-                                misma altura.</p>
+                            <h2>Contacta con Nosotros</h2>
+                            <p>Si estás buscando comprar, vender o alquilar una propiedad, o simplemente necesitas
+                                asesoramiento experto en el mercado inmobiliario, estamos aquí para ayudarte.
+                                En Armenteros Propiedades, no solo vendemos propiedades; construimos relaciones
+                                duraderas. ¡Contáctanos hoy y descubre cómo podemos hacer realidad tus metas
+                                inmobiliarias!</p>
                             <button class="btn btn-outline-secondary" type="button">Botón de ejemplo</button>
                         </div>
                     </div>
                 </div>
 
-                <footer class="py-5 text-center text-body-secondary bg-body-tertiary">
-                    <p>Plantilla de blog creada para <a href="/">Bootstrap</a> por <a
-                            href="https://twitter.com/mdo">@mdo</a>.
-                    </p>
-                    <p class="mb-0">
-                        <a href="#">Volver arriba</a>
-                    </p>
-                    <div class="modal fade" id="esdocuCustomModal" tabindex="-1"
-                        aria-labelledby="esdocuCustomModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="esdocuCustomModalLabel">¡QUEREMOS TRADUCIR MUCHAS
-                                        DOCUMENTACIONES!</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body p-4 opacity-75">
-                                    <p>
-                                        De la mano de las 🦁 <strong>IDEAS DE LA LIBERTAD</strong> 🦁, Argentina y
-                                        Latinoamérica
-                                        están a punto de
-                                        experimentar un fuerte crecimiento profesional en el mercado laboral del
-                                        desarrollo de
-                                        software.
-                                    </p>
-                                    <p>
-                                        Es claro que todo developer debe <strong>aprender inglés</strong>, pero esto es
-                                        un
-                                        proceso que puede demorar
-                                        años.
-                                    </p>
-                                    <p>
-                                        Para trabajar necesitamos documentaciones hoy mismo y en español. Esta es la
-                                        razón de
-                                        ser del proyecto
-                                        <a href="https://esdocu.com" target="_blank" class="text-primary">Esdocu</a>.
-                                    </p>
-                                    <p>
-                                        Mi nombre es Fabián Karaben y he desarrollado un <a
-                                            href="https://youtu.be/1cvMcouK85E" target="_blank"
-                                            class="text-primary">software</a> que facilita la tarea de traducir
-                                        sitios web de
-                                        documentaciones Open Source, incluyendo funcionalidades para mantener las
-                                        traducciones
-                                        <strong>siempre actualizadas</strong>.
-                                    </p>
-                                    <p>
-                                        Esta traducción de <strong>Bootstrap</strong> está actualizada
-                                        (<a href="https://bootstrap-esdocu.com/docs/5.3/getting-started/introduction/"
-                                            target="_blank" class="text-primary">ir a v5.3</a>)
-                                        y ahora mismo me encuentro traduciendo los sitios web de <strong>Dart</strong>,
-                                        <strong>Flutter</strong> y
-                                        <strong>Go</strong>.
-                                        Posteriormente <strong>Tailwind CSS</strong>, <strong>React</strong>,
-                                        <strong>Next.js</strong> y más. Todos
-                                        los enlaces están en <a href="https://esdocu.com" target="_blank"
-                                            class="text-primary">esdocu.com</a>.
-                                    </p>
-                                    <p>
-                                        Si te nace ayudarme a cubrir los costos del proyecto, te dejo algunos enlaces
-                                        para que
-                                        puedas realizar tu
-                                        donación. Cada pequeño aporte ayuda mucho ya que es prácticamente imposible
-                                        monetizar
-                                        este contenido con
-                                        anuncios.
-                                    </p>
-                                    <p>
-                                        ¡Muchas gracias! <a href="https://twitter.com/search?q=%23VLLC" target="_blank"
-                                            class="text-primary">#VLLC</a>
-                                    </p>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="https://link.mercadopago.com.ar/esdocu" target="_blank" role="button"
-                                        class="btn btn-success" style="color: white">Mercado Pago</a>
-                                    <a href="https://paypal.me/esdocu" target="_blank" role="button"
-                                        class="btn btn-success" style="color: white">PayPal</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <script type="text/javascript">
-                        window.onload = () => {
-                            setTimeout(function () {
-                                const myModal = new bootstrap.Modal(document.getElementById('esdocuCustomModal'));
-                                myModal.show();
-                            }, 140000);
-                        }
-                    </script>
-                </footer>
+
                 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js"
                     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
                     crossorigin="anonymous"></script>
