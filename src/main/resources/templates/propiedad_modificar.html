@@ -16,37 +16,14 @@
 <body>
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 
-    <div style="position: fixed; bottom: 79px; right: 15px; z-index: 1000;">
-        <a href="https://wa.me/+5491150513333" target="_blank">
-            <img src="/img/logowpp.svg" alt="Logo de WhatsApp" width="120">
-        </a>
-    </div>
 
     <div class="px-4 pt-5 my-5 text-center border-bottom"
         style="background: rgba(255, 255, 255, 0.7); border: none; padding-bottom: 40px;">
         <h4 class="display-4 fw-bold text-body-emphasis">Modificación datos de la Propiedad</h4>
         <div class="d-flex justify-content-center">
-
             <form th:action="@{/propiedad/modificar/__${propiedad.idPropiedad}__}" method="POST"
                 enctype="multipart/form-data">
-                <div id="successPopup" class="popup">
-                    <div th:if="${error != null}" class="card1">
-                        <div class="card_image"> <img src="/img/deptoPrincipal.png" /> </div>
-                        <div class="card_title title-white">
-                            <h5 style="color: red">** ERROR **</h5>
-                            <h5 th:text="${error}"></h5>
-                        </div>
-                    </div>
-                </div>
-                <div id="errorPopup" class="popup">
-                    <div th:if="${exito != null}" class="card1">
-                        <div class="card_image"> <img src="/img/casaPrincipal.png" /> </div>
-                        <div class="card_title title-white">
-                            <h5>** EXITO **</h5>
-                            <p th:text="${exito}"></p>
-                        </div>
-                    </div>
-                </div>
+
                 <!--<input hidden th:value="${propiedad.idPropietario}" name="idPropietario">-->
                 <div class="mb-3 d-flex align-items-center">
                     <input type="text" class="form-control" th:value="${propietario.nombreApellido}" readonly
@@ -380,21 +357,31 @@
                         </div>
                     </div>
                 </div>
-
-                <!--                        <div class="mb-3 d-flex align-items-center">
-                            <input name="archivo" type="file" class="form-control" id="inputImagenes" style="width: 300px" multiple required>
-                                <label class="form-label ms-3">Carga de Imágenes (Máximo 10)</label>
-                        </div>
-                        <div id="imagenPrevia" class="mb-3">
-                            La previsualización de imágenes se mostrará aquí 
-                        </div>-->
                 <input value="Cargar " type="submit" class="btn btn-primary" />
             </form>
         </div>
     </div>
 
-
     <div th:replace="/fragments/footer" :: div></div>
+
+    <div id="successPopup" class="popup">
+        <div th:if="${error != null}" class="card1">
+            <div class="card_image"> <img src="/img/deptoPrincipal.png" /> </div>
+            <div class="card_title title-white">
+                <h5 style="color: red">** ERROR **</h5>
+                <h5 th:text="${error}"></h5>
+            </div>
+        </div>
+    </div>
+    <div id="errorPopup" class="popup">
+        <div th:if="${exito != null}" class="card1">
+            <div class="card_image"> <img src="/img/casaPrincipal.png" /> </div>
+            <div class="card_title title-white">
+                <h5>** EXITO **</h5>
+                <p th:text="${exito}"></p>
+            </div>
+        </div>
+    </div>
 
     <script>
         function showSuccessPopup() {

@@ -15,16 +15,9 @@
 </head>
 
 <body>
-    <nav th:replace="/fragments/navbar" :: nav> </nav>
-
-    <div style="position: fixed; bottom: 79px; right: 15px; z-index: 1000;">
-        <a href="https://wa.me/+5491150513333" target="_blank">
-            <img src="/img/logowpp.svg" alt="Logo de WhatsApp" width="120">
-        </a>
-    </div>
+    <!-- <nav th:replace="/fragments/navbar" :: nav> </nav>
 
     <h2 class="titulo">Lista de Propiedades</h2>
-
 
     <div class="contenedorInput">
         <div class="table-wrapper">
@@ -47,13 +40,8 @@
                     <tr>
 
                         <td>
-                            <!--                            <img style="width: 90px; height: 50px; border-radius: 20px;"
-                                         th:src="@{/imagen/listaDeImagenes/__${imagen1.idPropiedad}__}">-->
                             <img style="width: 800px; height: 400px"
                                 th:src="'data:image/jpeg;base64,' + ${#strings.toString(imagen1)}" alt="Imagen">
-                            <!--                        th:src="@{/imagen/propiedad/__${imagenes}__}">-->
-
-
                         </td>
                         <td th:text="${imagen1.contenido}" style="background-color: white;"></td>
                         <td th:text="${propiedad.calle}" style="background-color: white;"></td>
@@ -90,7 +78,6 @@
         </div>
     </div>
 
-
     <div id="successPopup" class="popup">
         <div th:if="${error != null}" class="card1">
             <div class="card_image"> <img src="/img/sadDog.jpg" /> </div>
@@ -108,7 +95,7 @@
                 <p th:text="${exito}"></p>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
     <script>

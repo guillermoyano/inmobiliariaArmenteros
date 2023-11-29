@@ -16,12 +16,6 @@
 <body>
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 
-    <div style="position: fixed; bottom: 79px; right: 15px; z-index: 1000;">
-        <a href="https://wa.me/+5491150513333" target="_blank">
-            <img src="/img/logowpp.svg" alt="Logo de WhatsApp" width="120">
-        </a>
-    </div>
-
     <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError">
         <div class="card-body">
             <h5 class="card-title">Error!</h5>
@@ -37,7 +31,7 @@
 
     <section class="py-5 text-center container">
         <form class="formulario mx-auto" th:action="@{/usuario/crearUsuario}" method="POST" style="width: 400px;">
-            <img class="mb-4" src="/img/armenteros original.png" alt="" width="200px">
+            <img class="mb-4" src="/img/armenteros original.png" alt="" width="300px">
             <h1 class="h3 mb-3 fw-normal">Crear Nuevo Usuario</h1>
             <div class="form-floating">
                 <input type="text" class="form-control" id="floatingInput" name="nombre"

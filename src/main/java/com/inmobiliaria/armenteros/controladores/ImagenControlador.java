@@ -72,7 +72,6 @@ public class ImagenControlador {
     public String listarImagenesPropiedad(ModelMap modelo, @PathVariable Integer idPropiedad) {
         Propiedad propiedad = propiedadServicio.getone(idPropiedad);
         List<Imagen> imagenes = imagenRepositorio.listaImagenes(idPropiedad);
-        System.out.println("aca Ta!!");
         List<String> imagen1 = new ArrayList<>();
 
         for (Imagen aux : imagenes) {
@@ -107,7 +106,6 @@ public class ImagenControlador {
         modelo.put("propiedad", propiedadServicio.getone(idPropiedad));
         Propiedad propiedad = propiedadServicio.getone(idPropiedad);
         List<Imagen> imagenes = imagenRepositorio.listaImagenes(idPropiedad);
-        System.out.println("aca Ta!!");
         List<String> imagen1 = new ArrayList<>();
 
         for (Imagen aux : imagenes) {
@@ -129,7 +127,6 @@ public class ImagenControlador {
         byte[] foto = imagen.getContenido();
         String base = Base64.getEncoder().encodeToString(foto);
         modelo.put("base", base);
-        System.out.println("salida del get");
         return "modificarImagenPropiedad.html";
     }
 
@@ -137,7 +134,6 @@ public class ImagenControlador {
     public String modificarImagen1(@PathVariable Integer idImagen, MultipartFile archivo, ModelMap modelo, RedirectAttributes redirect) throws MiException {
 
         Integer idPropiedad = imagenServicio.getone(idImagen).getPropiedad().getIdPropiedad();
-        System.out.println("algo" + idPropiedad);
         try {
             imagenServicio.modificarImagen(archivo, idImagen);
             redirect.addFlashAttribute("exito", "La imágen ha sido modificada correctamente.");

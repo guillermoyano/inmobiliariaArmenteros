@@ -17,12 +17,6 @@
 
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 
-    <div style="position: fixed; bottom: 79px; right: 15px; z-index: 1000;">
-        <a href="https://wa.me/+5491150513333" target="_blank">
-            <img src="/img/logowpp.svg" alt="Logo de WhatsApp" width="120">
-        </a>
-    </div>
-
     <div class='container' style='text-align: center;'>
         <h2 class="titulo">Lista de Usuarios</h2>
         <div class="contenedorInput" style="padding: 10px;">
@@ -30,7 +24,6 @@
                 <table class="fl-table" style="width: 100%; margin-top: 10px; border-top: none;">
                     <thead>
                         <tr>
-
                             <th>Nombre Apellido / ID</th>
                             <th>Email</th>
                             <th>Rol</th>
@@ -52,15 +45,12 @@
                                     th:href="@{/usuario/modificarRol/__${usuarios.id}__}">
                                     <button class="btn btn-sm btn-outline-secondary" style="margin: 5px;">
                                         Rol
-
                                     </button></a>
                             </td>
                             <td>
                                 <a style='text-decoration: none' class="modificar">
                                     <button class="btn btn-sm btn-outline-secondary" style="margin: 5px;">
-                                        Modificar
-
-                                    </button></a>
+                                        Modificar</button></a>
                             </td>
                     <tbody>
                 </table>

@@ -1,0 +1,30 @@
+<div id="errorPopup" class="popup">
+    <div class="card" style="width: 18rem;" th:if="${error != null}">
+        <div class="card-body">
+            <h5 class="card-title">** ERROR **</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary" th:text="${error}"></h6>
+            <p class="card-text"></p>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div id="errorPopup" class="popup">
+    <div th:if="${error != null}" class="card1">
+    <div class="card_image"> <img src="/img/deptoPrincipal.png" /> </div>
+    <div class="card_title title-white">
+        <h5 style="color: red"></h5>
+        <h5></h5>
+    </div>
+</div>
+</div>
+
+<div id="successPopup" class="popup">
+    <div th:if="${exito != null}" class="card1">
+        <div class="card_image"> <img src="/img/casaPrincipal.png" /> </div>
+        <div class="card_title title-white">
+            <h5>** EXITO **</h5>
+            <p th:text="${exito}"></p>
+        </div>
+    </div>
+</div> -->

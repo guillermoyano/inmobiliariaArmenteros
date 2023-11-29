@@ -15,14 +15,7 @@
 <body>
     <nav th:replace="/fragments/navbar" :: nav> </nav>
 
-    <div style="position: fixed; bottom: 79px; right: 15px; z-index: 1000;">
-        <a href="https://wa.me/+5491150513333" target="_blank">
-            <img src="/img/logowpp.svg" alt="Logo de WhatsApp" width="120">
-        </a>
-    </div>
-
-    <div class="px-4 pt-5 my-5 text-center border-bottom"
-        style="background: rgba(255, 255, 255, 0.7); border: none; padding-bottom: 40px;">
+    <div class="px-4 pt-5 my-5 text-center" style="background: rgba(255, 255, 255, 0.7); border: none;">
         <h3 class="display-4 fw-bold text-body-emphasis">Formulario nuevo propietario</h3>
         <div class="d-flex justify-content-center">
             <form action="/propietario/registro" method="POST" class="text-start">
@@ -40,7 +33,6 @@
                     <label for="telefono" class="form-label">Teléfono</label>
                     <input type="text" name="telefono" class="form-control" th:value="${telefono}"
                         style="border-radius:10px; border: 2px black solid;">
-
                 </div>
                 <div class="mb-3 text-center">
                     <label for="email" class="form-label">Correo Electrónico</label>
@@ -51,51 +43,15 @@
                     <label for="direccion" class="form-label">Dirección</label>
                     <input type="text" name="direccion" class="form-control" th:value="${direccion}"
                         style="border-radius:10px; border: 2px black solid; width: 300px;">
-
                 </div>
-
                 <div class="text-center">
                     <button type="submit" class="btn btn-success">Guardar</button>
                 </div>
             </form>
-
         </div>
     </div>
 
-
     <div th:replace="/fragments/footer" :: div></div>
-
-
-
-
-    <!-- <div class="container">
-        <form action="/propietario/registro" method="POST">
-
-
-            <div class="mb-3 d-flex align-items-center">
-                <input name="dni" type="text" id="campo" class="form-control" style="width: 300px;" readonly />
-                <label class="form-label ms-3">Dni</label>
-            </div>
-            <div class="mb-3 d-flex align-items-center">
-                <input type="text" name="nombreApellido" id="nombreApellido" th:value="${nombreApellido}"
-                    class="form-control" style="width: 300px;">
-                <label class="form-label ms-3">Nombre y Apellido</label>
-            </div>
-            <div class="mb-3 d-flex align-items-center">
-                <input type="text" name="telefono" class="form-control" th:value="${telefono}" style="width: 300px;">
-                <label class="form-label ms-3">Telefono</label>
-            </div>
-            <div class="mb-3 d-flex align-items-center">
-                <input type="email" name="email" class="form-control" th:value="${email}" style="width: 300px;">
-                <label class="form-label ms-3">Correo Electronico</label>
-            </div>
-            <div class="mb-3 d-flex align-items-center">
-                <input type="text" name="direccion" class="form-control" th:value="${direccion}" style="width: 300px;">
-                <label class="form-label ms-3">Direccion</label>
-            </div>
-            <input value="Cargar " type="submit" class="btn btn-primary" />
-        </form>
-    </div> -->
 
     <div id="successPopup" class="popup">
         <div th:if="${error != null}" class="card1">

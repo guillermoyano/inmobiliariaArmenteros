@@ -2,13 +2,11 @@
 package com.inmobiliaria.armenteros.controladores;
 
 import com.inmobiliaria.armenteros.entidades.Usuario;
-import com.inmobiliaria.armenteros.enumeraciones.Rol;
 import com.inmobiliaria.armenteros.excepciones.MiException;
 import com.inmobiliaria.armenteros.repositorios.UsuarioRepositorio;
 import com.inmobiliaria.armenteros.servicios.UsuarioServicio;
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -67,7 +65,6 @@ public class UsuarioControlador {
             usuarioServicio.cambiarRol(id);
 //            redirectAttributes.addFlashAttribute("success", "El usuario con id=" + id + " ha sido modificado correctamente!");
         } catch (MiException e) {
-            System.out.println("hola");
             redirect.addFlashAttribute("error", e.getMessage());
             return "redirect:/listarUsuarios";
         }

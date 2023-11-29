@@ -18,9 +18,7 @@
         <div class="text-center">
             <h1 class="display-1 fw-bold" th:text="'Error ' + ${codigo}"></h1>
             <p class="fs-3"> <span class="text-danger">Opps!</span></p>
-            <p class="lead" th:text="${mensaje}">
-                The page you’re looking for doesn’t exist.
-            </p>
+            <p class="lead" th:text="${mensaje}"></p>
             <a href="/" class="btn btn-primary">Volver al inicio</a>
         </div>
     </div>

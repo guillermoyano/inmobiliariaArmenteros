@@ -82,7 +82,6 @@ public class PropiedadControlador {
             @RequestParam(required = false) Long idPropietario, List<MultipartFile> archivo, @RequestParam(required = false) Long precioPropiedad,
             @RequestParam(required = false) String moneda,
             RedirectAttributes redirect, ModelMap modelo) throws MiException{
-        System.out.println("sssss");
         modelo.put("propietario", propietarioServicio.getone(idPropietario));
         try {
             propiedadServicio.crearPropiedad(mts2Totales, mts2Cubiertos, mts2Descubiertos, localidad, barrio, calle, descripcion, altura, cantBanios,
@@ -90,11 +89,8 @@ public class PropiedadControlador {
                     permiteMascotas, salonJuegos, gimnasio, luz, pavimento, cocina, patio, quincho, sum, terraza, baulera, parrilla, cochera, pileta,
                     ascensor, lavadero, suite, vestidor, toillete, expensas, tipoVivienda, moneda, idPropietario, archivo, precioPropiedad);
             redirect.addFlashAttribute("exito", "La propiedad fue cargada correctamente");
-            
-            System.out.println("2sssss");
 
         } catch (MiException ex) {
-            System.out.println("4sssss");
             redirect.addFlashAttribute("error", ex.getMessage());
             redirect.addFlashAttribute("mts2Totales", mts2Totales);
             redirect.addFlashAttribute("mts2Cubiertos", mts2Cubiertos);
@@ -108,11 +104,8 @@ public class PropiedadControlador {
             redirect.addFlashAttribute("cantHabitaciones", cantHabitaciones);
             redirect.addFlashAttribute("precioPropiedad", precioPropiedad);
             
-            
             return "redirect:../propiedad/registrar/" + idPropietario;
-
         }
-        System.out.println("3sssss");
         return "redirect:/";
     }
 
