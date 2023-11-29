@@ -1,4 +1,4 @@
-<div id="exitoPopup" class="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
+<!-- <div id="exitoPopup" class="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
     <div class="card" style="width: 18rem;" th:if="${exito != null}">
         <div class="card-body" style="background-color: darkgreen; text-align: center; color: white; border-radius: 10px">
             <h5 class="card-title">¡¡¡ EXITO !!!</h5>
@@ -6,11 +6,36 @@
             <p class="card-text"></p>
         </div>
     </div>
-</div>
+</div> -->
 
 <script>
-    setTimeout(function() {
+    setTimeout(function () {
         var exitoPopup = document.getElementById('exitoPopup');
         exitoPopup.style.display = 'none';
     }, 3000); // Desaparecerá después de 3 segundos (3000 milisegundos)
 </script>
+
+<div id="exitoPopup" class="popup"
+    style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+        <div class="col">
+            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                style="background-image: url('unsplash-photo-1.jpg');">
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                    <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold" th:if="${exito != null}"></h3>
+                    <ul class="d-flex list-unstyled mt-auto">
+                        <li class="me-auto">
+                            <img src="/img/comprobado.png" alt="Bootstrap" width="32" height="32"
+                                class="rounded-circle border border-white">
+                        </li>
+                        <li class="d-flex align-items-center me-3">
+                            <small>¡¡¡ EXITO !!</small>
+                        </li>
+                        <li class="d-flex align-items-center">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

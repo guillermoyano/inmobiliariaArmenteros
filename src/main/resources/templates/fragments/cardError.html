@@ -1,4 +1,5 @@
-<div id="errorPopup" class="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
+<div id="errorPopup" class="popup"
+    style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
     <div class="card" style="width: 18rem;" th:if="${error != null}">
         <div class="card-body" style="background-color: #ea3723; text-align: center; color: white; border-radius: 10px">
             <h5 class="card-title">¡¡¡ ERROR !!!</h5>
@@ -9,8 +10,45 @@
 </div>
 
 <script>
-    setTimeout(function() {
+    setTimeout(function () {
         var errorPopup = document.getElementById('errorPopup');
         errorPopup.style.display = 'none';
     }, 3000); // Desaparecerá después de 3 segundos (3000 milisegundos)
 </script>
+
+
+<div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+    <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+            style="background-image: url('unsplash-photo-1.jpg');">
+            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Título corto, chaqueta larga</h3>
+                <ul class="d-flex list-unstyled mt-auto">
+                    <li class="me-auto">
+                        <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32"
+                            class="rounded-circle border border-white">
+                    </li>
+                    <li class="d-flex align-items-center me-3">
+                        <svg class="bi me-2" width="1em" height="1em">
+                            <use xlink:href="#geo-fill"></use>
+                        </svg>
+                        <small>Tierra</small>
+                    </li>
+                    <li class="d-flex align-items-center">
+                        <svg class="bi me-2" width="1em" height="1em">
+                            <use xlink:href="#calendar3"></use>
+                        </svg>
+                        <small>3d</small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

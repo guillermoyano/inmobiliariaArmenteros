@@ -34,7 +34,7 @@
                 <table class="fl-table" style="width: 100%; margin-top: 10px; border-top: none;">
                     <thead>
                         <tr>
-                            <th>ID Propiedad</th>
+                            <th>ID / Propietario</th>
                             <th>Tipo de Vivienda</th>
                             <th>Calle</th>
                             <th>Barrio / Localidad</th>
@@ -44,7 +44,11 @@
                     </thead>
                     <tbody th:each="propiedad : ${propiedades}" style="margin-top: 115px">
                         <tr>
-                            <td th:text="${propiedad.idPropiedad}"></td>
+                            <td>
+                                <span  th:text="${propiedad.idPropiedad}"></span>
+                                <br />
+                                <span th:text="${propiedad.propietario.nombreApellido}" style="font-size: 13px; color: gray;"></span>
+                            </td>
                             <td th:text="${propiedad.tipoVivienda}"></td>
                             <td th:text="${propiedad.calle + ' ' + propiedad.altura}"></td>
                             <td>

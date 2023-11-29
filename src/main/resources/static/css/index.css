@@ -45,7 +45,7 @@ a:visited {
     color: #333;
 }
 
-/* body::before {
+body::before {
     content: "";
     background-image: url('../img/inmobiliaria.jpg');
     background-size: cover;
@@ -59,17 +59,6 @@ a:visited {
     opacity: 0.;
     z-index: -1;
 }
-
-body,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: #000;
-} */
 
 .d-flex.justify-content-center {
     justify-content: center;
