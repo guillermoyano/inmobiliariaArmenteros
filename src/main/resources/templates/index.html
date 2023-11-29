@@ -34,6 +34,7 @@
     <header th:replace="/fragments/wpp" :: header> </header>
 
     <main>
+        <div th:replace="/fragments/cardExito" :: div></div>
         <section class="text-center container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
@@ -134,9 +135,10 @@
                                         style="font-size: 70px; color: crimson; transform: rotate(45deg); font-family: 'Kanit', sans-serif; margin: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
                                         <span th:if="${propiedades.estado == 'VENTA'}">VENDIDA</span>
                                         <span th:if="${propiedades.estado == 'ALQUILER'}">ALQUILADA</span>
+                                        <span th:if="${propiedades.estado == 'ALQUILER_TEMPORARIO'}">ALQUILADA</span>
                                     </p>
                                 </div>
-                            </div><div th:if="${propiedades.reserva == false}"
+                            </div><div th:if="${propiedades.reserva == false && propiedades.estadoComercial == true}"
                                 style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;">
                                 <div
                                     style="width: 450px; height: 90px; transform: rotate(-45deg); background: rgba(0, 0, 0, 0.8); position: absolute; top: 250px; border-radius: 10px;">
@@ -170,8 +172,8 @@
         </div>
     </main>
     <div th:replace="/fragments/footer" :: div></div>
-
-    <script>
+</body>
+<script>
         // Función para cargar los valores almacenados en el localStorage al cargar la página
         window.onload = function () {
             document.getElementById('keyword').value = localStorage.getItem('keyword') || '';
@@ -214,8 +216,4 @@
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-
-
 </html>

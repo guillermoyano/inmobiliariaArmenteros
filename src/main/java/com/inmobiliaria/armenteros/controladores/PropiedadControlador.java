@@ -81,7 +81,7 @@ public class PropiedadControlador {
             @RequestParam(required = false) Boolean expensas, @RequestParam(required = false) String tipoVivienda,
             @RequestParam(required = false) Long idPropietario, List<MultipartFile> archivo, @RequestParam(required = false) Long precioPropiedad,
             @RequestParam(required = false) String moneda,
-            RedirectAttributes redirect, ModelMap modelo) throws MiException{
+            RedirectAttributes redirect, ModelMap modelo) throws MiException {
         modelo.put("propietario", propietarioServicio.getone(idPropietario));
         try {
             propiedadServicio.crearPropiedad(mts2Totales, mts2Cubiertos, mts2Descubiertos, localidad, barrio, calle, descripcion, altura, cantBanios,
@@ -89,7 +89,7 @@ public class PropiedadControlador {
                     permiteMascotas, salonJuegos, gimnasio, luz, pavimento, cocina, patio, quincho, sum, terraza, baulera, parrilla, cochera, pileta,
                     ascensor, lavadero, suite, vestidor, toillete, expensas, tipoVivienda, moneda, idPropietario, archivo, precioPropiedad);
             redirect.addFlashAttribute("exito", "La propiedad fue cargada correctamente");
-
+            return "redirect:../";
         } catch (MiException ex) {
             redirect.addFlashAttribute("error", ex.getMessage());
             redirect.addFlashAttribute("mts2Totales", mts2Totales);
@@ -103,10 +103,9 @@ public class PropiedadControlador {
             redirect.addFlashAttribute("cantBanios", cantBanios);
             redirect.addFlashAttribute("cantHabitaciones", cantHabitaciones);
             redirect.addFlashAttribute("precioPropiedad", precioPropiedad);
-            
+
             return "redirect:../propiedad/registrar/" + idPropietario;
         }
-        return "redirect:/";
     }
 
     @GetMapping("/lista")
@@ -175,26 +174,25 @@ public class PropiedadControlador {
 
     @GetMapping("modificar/{idPropiedad}")
     public String modificar(@PathVariable Integer idPropiedad, ModelMap modelo) throws MiException {
-    
+
         modelo.put("propiedad", propiedadServicio.getone(idPropiedad));
         Long algo = propiedadServicio.getone(idPropiedad).getPropietario().getIdPropietario();
         modelo.put("propietario", propietarioServicio.getone(algo));
 
         return "propiedad_modificar.html";
     }
-    
 
     @PostMapping("modificar/{idPropiedad}")
     public String modificar(@PathVariable Integer idPropiedad, Long mts2Totales, Long mts2Cubiertos, Long mts2Descubiertos, String localidad, String barrio, String calle,
             String descripcion, Integer altura, Integer cantBanios, Integer cantHabitaciones, String estado, Boolean aguaCorriente, Boolean aireAcondicionado,
             Boolean aptoCredito, Boolean balcon, Boolean banio, Boolean aptoProfesional, Boolean cloacas, Boolean gasNatural, Boolean permiteMascotas, Boolean salonJuegos,
             Boolean gimnasio, Boolean luz, Boolean pavimento, Boolean cocina, Boolean patio, Boolean quincho, Boolean sum, Boolean terraza, Boolean baulera, Boolean parrilla,
-            Boolean cochera, Boolean pileta, Boolean ascensor, Boolean lavadero, Boolean suite, Boolean vestidor, Boolean toillete, Boolean expensas, String tipoVivienda, 
+            Boolean cochera, Boolean pileta, Boolean ascensor, Boolean lavadero, Boolean suite, Boolean vestidor, Boolean toillete, Boolean expensas, String tipoVivienda,
             Long precioPropiedad, String moneda, ModelMap modelo, RedirectAttributes redirect) throws MiException {
         try {
-            propiedadServicio.modificarPropiedad(idPropiedad, mts2Totales, mts2Cubiertos, mts2Descubiertos, localidad, barrio, calle, descripcion, altura, cantBanios, 
+            propiedadServicio.modificarPropiedad(idPropiedad, mts2Totales, mts2Cubiertos, mts2Descubiertos, localidad, barrio, calle, descripcion, altura, cantBanios,
                     cantHabitaciones, estado, aguaCorriente, aireAcondicionado, aptoCredito, balcon, banio, aptoProfesional, cloacas, gasNatural, permiteMascotas,
-                    salonJuegos, gimnasio, luz, pavimento, cocina, patio, quincho, sum, terraza, baulera, parrilla, cochera, pileta, ascensor, lavadero, suite, 
+                    salonJuegos, gimnasio, luz, pavimento, cocina, patio, quincho, sum, terraza, baulera, parrilla, cochera, pileta, ascensor, lavadero, suite,
                     vestidor, toillete, expensas, tipoVivienda, precioPropiedad, moneda);
             redirect.addFlashAttribute("exito", "Ha sido modificada correctamente.");
             return "redirect:../lista";
@@ -205,21 +203,21 @@ public class PropiedadControlador {
     }
 
     @GetMapping("eliminar/{idPropiedad}")
-    public String eliminarPropiedad(@PathVariable Integer idPropiedad, RedirectAttributes redirect) throws MiException{
+    public String eliminarPropiedad(@PathVariable Integer idPropiedad, RedirectAttributes redirect) throws MiException {
         propiedadServicio.eliminarPropiedad(idPropiedad);
         return "redirect:../lista";
     }
-    
+
     @GetMapping("darDeBaja/{idPropiedad}")
-    public String cambiarPropiedad(@PathVariable Integer idPropiedad, RedirectAttributes redirect) throws MiException{
+    public String cambiarPropiedad(@PathVariable Integer idPropiedad, RedirectAttributes redirect) throws MiException {
         propiedadServicio.estadoPropiedad(idPropiedad);
         return "redirect:../lista";
     }
-    
+
     @GetMapping("reservar/{idPropiedad}")
-    public String reservaPropiedad(@PathVariable Integer idPropiedad, RedirectAttributes redirect) throws MiException{
+    public String reservaPropiedad(@PathVariable Integer idPropiedad, RedirectAttributes redirect) throws MiException {
         propiedadServicio.reservaPropiedad(idPropiedad);
         return "redirect:../lista";
     }
-    
+
 }

@@ -112,11 +112,12 @@ public class PortalControlador {
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/inicio")
-    public String inicio(HttpSession session) {
+    public String inicio(HttpSession session, RedirectAttributes redirectAttributes) {
 
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
 
         if (logueado.getRol().toString().equals("ADMIN")) {
+            redirectAttributes.addFlashAttribute("exito", "El usuario fue logeado correctamente!");
             return "redirect:./propiedad/listarPropiedades";
         }
 

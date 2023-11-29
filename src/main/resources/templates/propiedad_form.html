@@ -1,363 +1,346 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://www.thymelead.org/extras/spring-security">
+      xmlns:sec="http://www.thymelead.org/extras/spring-security">
 
-<head>
-    <title>Carga Propiedad</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/img/home_243.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/css/index.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-</head>
+    <head>
+        <title>Carga Propiedad</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/img/home_243.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="/css/index.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    </head>
 
-<body>
+    <body>
 
-    <nav th:replace="/fragments/navbar" :: nav> </nav>
-
-    <div class="px-4 pt-5 my-5 text-center border-bottom"
-        style="background: rgba(255, 255, 255, 0.7); border: none; padding-bottom: 40px;">
-        <h4 class="display-4 fw-bold text-body-emphasis">Formulario nueva propiedad</h4>
-        <div class="d-flex justify-content-center">
-            <form action="/propiedad/registro" method="POST" enctype="multipart/form-data">
-                <input hidden th:value="${propietario.idPropietario}" name="idPropietario"
-                    style="border-radius:10px; border: 2px black solid; width: 300px;">
-                <div class="mb-3 d-flex align-items-center">
-                    <input type="text" class="form-control" th:value="${propietario.nombreApellido}" readonly
-                        style="border-radius:10px; border: 2px black solid; width: 300px;">
-                    <label class="form-label ms-3">Propietario</label>
-                </div>
-                <div class="mb-3 d-flex align-items-center">
-                    <select name="tipoVivienda" class="form-select"
-                        style="border-radius:10px; border: 2px black solid; width: 300px;" required>
-                        <option value="" disabled selected>Selecciona una opción</option>
-                        <option value="CASA">Casa</option>
-                        <option value="CASA_QUINTA">Casa Quinta</option>
-                        <option value="COCHERA">Cochera</option>
-                        <option value="DEPTO">Departamento</option>
-                        <option value="GALPON">Galpon</option>
-                        <option value="PH">Propiedad Horizontal</option>
-                        <option value="TERRENO">Terreno</option>
-                    </select>
-                    <label class="form-label ms-3">Tipo de vivienda</label>
-                </div>
-                <div class="mb-3 d-flex align-items-center">
-                    <input type="number" name="mts2Totales" th:value="${mts2Totales}" class="form-control"
-                        style="border-radius:10px; border: 2px black solid; width: 300px;">
-                    <label class="form-label ms-3">Metros cuadrados totales</label>
-                </div>
-                <div class="mb-3 d-flex align-items-center">
-                    <input name="mts2Cubiertos" type="number" th:value="${mts2Cubiertos}" class="form-control"
-                        style="border-radius:10px; border: 2px black solid; width: 300px;">
-                    <label class="form-label ms-3">Metros cuadrados cubiertos</label>
-                </div>
-                <div class="mb-3 d-flex align-items-center">
-                    <input name="mts2Descubiertos" type="number" th:value="${mts2Descubiertos}" class="form-control"
-                        style="border-radius:10px; border: 2px black solid; width: 300px;">
-                    <label class="form-label ms-3">Metros cuadrados descubiertos</label>
-                </div>
-                <div class="mb-3 d-flex align-items-center">
-                    <input name="localidad" type="text" th:value="${localidad}" class="form-control"
-                        style="border-radius:10px; border: 2px black solid; width: 300px;">
-                    <label class="form-label  ms-3"> Localidad</label>
-                </div>
-                <div class="mb-3 d-flex align-items-center">
-                    <input name="barrio" type="text" th:value="${barrio}" class="form-control"
-                        style="border-radius:10px; border: 2px black solid; width: 300px;">
-                    <label class="form-label ms-3">Barrio</label>
-                </div>
-                <div class="mb-3 d-flex align-items-center">
-                    <input name="calle" type="text" th:value="${calle}" class="form-control"
-                        style="border-radius:10px; border: 2px black solid; width: 300px;">
-                    <label class="form-label ms-3">Calle</label>
-                </div>
-                <div class="mb-3 d-flex align-items-center">
-                    <input name="altura" type="text" th:value="${altura}" class="form-control"
-                        style="border-radius:10px; border: 2px black solid; width: 300px;">
-                    <label class="form-label ms-3">Altura</label>
-                </div>
-                <div class="mb-3 d-flex align-items-center">
-                    <input name="descripcion" type="text" th:value="${descripcion}" class="form-control"
-                        style="border-radius:10px; border: 2px black solid; width: 300px;">
-                    <label class="form-label ms-3">Piso / Timbre</label>
-                </div>
-                <div class="mb-3 d-flex align-items-center">
-                    <input name="cantBanios" type="number" th:value="${cantBanios}" class="form-control"
-                        style="border-radius:10px; border: 2px black solid; width: 300px;">
-                    <label class="form-label ms-3">Cantidad de Baños</label>
-                </div>
-                <div class="mb-3 d-flex align-items-center">
-                    <input name="cantHabitaciones" type="number" th:value="${cantHabitaciones}" class="form-control"
-                        style="border-radius:10px; border: 2px black solid; width: 300px;">
-                    <label class="form-label ms-3">Cantidad Habitaciones</label>
-                </div>
-                <div class="mb-3 d-flex align-items-center">
-                    <select name="estado" class="form-select"
-                        style="border-radius:10px; border: 2px black solid; width: 300px;" required>
-                        <option value="" disabled selected>Selecciona una opción</option>
-                        <option value="VENTA">Venta</option>
-                        <option value="ALQUILER">Alquiler</option>
-                        <option value="ALQUILER_TEMPORARIO">Alquiler temporario</option>
-                        <option value="PERMUTA">Permuta</option>
-                        <option value="OTROS">Otros</option>
-                    </select>
-                    <label class="form-label ms-3">Estado</label>
-                </div>
-                <div class="mb-3 d-flex align-items-center">
-                    <select name="moneda" class="form-select"
-                        style="border-radius:10px; border: 2px black solid; width: 300px;" required>
-                        <option value="" disabled selected>Selecciona una opción</option>
-                        <option value="PESOS">Pesos</option>
-                        <option value="DOLARES">Dólares</option>
-                    </select>
-                    <label class="form-label ms-3">Moneda</label>
-                </div>
-                <div class="mb-3 d-flex align-items-center">
-                    <input name="precioPropiedad" type="number" th:value="${precioPropiedad}" class="form-control"
-                        style="border-radius:10px; border: 2px black solid; width: 300px;">
-                    <label class="form-label ms-3">Precio de la Propiedad</label>
-                </div>
-                <div class="row" style="width: 1000px;">
-                    <div class="col-md-3" style="width: 250px;">
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="aguaCorriente"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label d-block">Agua Corriente </span>
-                            </label>
+        <nav th:replace="/fragments/navbar" :: nav> </nav>
+        <div th:replace="/fragments/cardExito" :: div></div>
+        <div th:replace="/fragments/cardError" :: div></div>
+        <div class="px-4 pt-5 my-5 text-center border-bottom"
+             style="background: rgba(255, 255, 255, 0.7); border: none; padding-bottom: 40px;">
+            <h4 class="display-4 fw-bold text-body-emphasis">Formulario nueva propiedad</h4>
+            <div class="d-flex justify-content-center">
+                <form action="/propiedad/registro" method="POST" enctype="multipart/form-data">
+                    <input hidden th:value="${propietario.idPropietario}" name="idPropietario"
+                           style="border-radius:10px; border: 2px black solid; width: 300px;">
+                        <div class="mb-3 d-flex align-items-center">
+                            <input type="text" class="form-control" th:value="${propietario.nombreApellido}" readonly
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                <label class="form-label ms-3">Propietario</label>
                         </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="aireAcondicionado"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Aire Acondicionado</span>
-                            </label>
+                        <div class="mb-3 d-flex align-items-center">
+                            <select name="tipoVivienda" class="form-select"
+                                    style="border-radius:10px; border: 2px black solid; width: 300px;" required>
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option value="CASA">Casa</option>
+                                <option value="CASA_QUINTA">Casa Quinta</option>
+                                <option value="COCHERA">Cochera</option>
+                                <option value="DEPTO">Departamento</option>
+                                <option value="GALPON">Galpon</option>
+                                <option value="PH">Propiedad Horizontal</option>
+                                <option value="TERRENO">Terreno</option>
+                            </select>
+                            <label class="form-label ms-3">Tipo de vivienda</label>
                         </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="aptoCredito"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Apto Credito</span>
-                            </label>
+                        <div class="mb-3 d-flex align-items-center">
+                            <input type="number" name="mts2Totales" th:value="${mts2Totales}" class="form-control"
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                <label class="form-label ms-3">Metros cuadrados totales</label>
                         </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="balcon"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Balcón</span>
-                            </label>
+                        <div class="mb-3 d-flex align-items-center">
+                            <input name="mts2Cubiertos" type="number" th:value="${mts2Cubiertos}" class="form-control"
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                <label class="form-label ms-3">Metros cuadrados cubiertos</label>
                         </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="aptoProfesional"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Apto Profesional</span>
-                            </label>
+                        <div class="mb-3 d-flex align-items-center">
+                            <input name="mts2Descubiertos" type="number" th:value="${mts2Descubiertos}" class="form-control"
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                <label class="form-label ms-3">Metros cuadrados descubiertos</label>
                         </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="banio"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Baño</span>
-                            </label>
+                        <div class="mb-3 d-flex align-items-center">
+                            <input name="localidad" type="text" th:value="${localidad}" class="form-control"
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                <label class="form-label  ms-3"> Localidad</label>
                         </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="cloacas"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Cloacas</span>
-                            </label>
+                        <div class="mb-3 d-flex align-items-center">
+                            <input name="barrio" type="text" th:value="${barrio}" class="form-control"
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                <label class="form-label ms-3">Barrio</label>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="gasNatural"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Gas Natural</span>
-                            </label>
+                        <div class="mb-3 d-flex align-items-center">
+                            <input name="calle" type="text" th:value="${calle}" class="form-control"
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                <label class="form-label ms-3">Calle</label>
                         </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="permiteMascotas"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Permite Mascotas</span>
-                            </label>
+                        <div class="mb-3 d-flex align-items-center">
+                            <input name="altura" type="text" th:value="${altura}" class="form-control"
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                <label class="form-label ms-3">Altura</label>
                         </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="salonJuegos"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Salón de Juegos</span>
-                            </label>
+                        <div class="mb-3 d-flex align-items-center">
+                            <input name="descripcion" type="text" th:value="${descripcion}" class="form-control"
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                <label class="form-label ms-3">Piso / Timbre</label>
                         </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="gimnasio"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Gimnasio</span>
-                            </label>
+                        <div class="mb-3 d-flex align-items-center">
+                            <input name="cantBanios" type="number" th:value="${cantBanios}" class="form-control"
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                <label class="form-label ms-3">Cantidad de Baños</label>
                         </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="luz"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Luz</span>
-                            </label>
+                        <div class="mb-3 d-flex align-items-center">
+                            <input name="cantHabitaciones" type="number" th:value="${cantHabitaciones}" class="form-control"
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                <label class="form-label ms-3">Cantidad Habitaciones</label>
                         </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="pavimento"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Pavimento</span>
-                            </label>
+                        <div class="mb-3 d-flex align-items-center">
+                            <select name="estado" class="form-select"
+                                    style="border-radius:10px; border: 2px black solid; width: 300px;" required>
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option value="VENTA">Venta</option>
+                                <option value="ALQUILER">Alquiler</option>
+                                <option value="ALQUILER_TEMPORARIO">Alquiler temporario</option>
+                                <option value="PERMUTA">Permuta</option>
+                                <option value="OTROS">Otros</option>
+                            </select>
+                            <label class="form-label ms-3">Estado</label>
                         </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="cocina"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Cocina</span>
-                            </label>
+                        <div class="mb-3 d-flex align-items-center">
+                            <select name="moneda" class="form-select"
+                                    style="border-radius:10px; border: 2px black solid; width: 300px;" required>
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option value="PESOS">Pesos</option>
+                                <option value="DOLARES">Dólares</option>
+                            </select>
+                            <label class="form-label ms-3">Moneda</label>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="toillete"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Toillete</span>
-                            </label>
+                        <div class="mb-3 d-flex align-items-center">
+                            <input name="precioPropiedad" type="number" th:value="${precioPropiedad}" class="form-control"
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                <label class="form-label ms-3">Precio de la Propiedad</label>
                         </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="patio"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Patio</span>
-                            </label>
+                        <div class="row" style="width: 1000px;">
+                            <div class="col-md-3" style="width: 250px;">
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="aguaCorriente"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label d-block">Agua Corriente </span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="aireAcondicionado"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Aire Acondicionado</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="aptoCredito"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Apto Credito</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="balcon"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Balcón</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="aptoProfesional"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Apto Profesional</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="banio"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Baño</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="cloacas"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Cloacas</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="gasNatural"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Gas Natural</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="permiteMascotas"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Permite Mascotas</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="salonJuegos"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Salón de Juegos</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="gimnasio"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Gimnasio</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="luz"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Luz</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="pavimento"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Pavimento</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="cocina"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Cocina</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="toillete"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Toillete</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="patio"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Patio</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="quincho"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Quincho</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="expensas"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Expensas</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="sum"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Sum</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="terraza"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Terraza</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="baulera"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Baulera</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="parrilla"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Parrilla</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="cochera"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Cochera</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="pileta"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Pileta</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="ascensor"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Ascensor</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="lavadero"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Lavadero</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="suite"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Suite</span>
+                                    </label>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <label style="text-align: left; display: block;">
+                                        <input type="checkbox" class="form-check-input" name="vestidor"
+                                               style="border-radius:10px; border: 2px black solid;">
+                                            <span class="form-check-label">Vestidor</span>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="quincho"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Quincho</span>
-                            </label>
+                        <div class="mb-3 d-flex align-items-center">
+                            <input name="archivo" type="file" class="form-control" id="inputImagenes"
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;" multiple required>
+                                <label class="form-label ms-3">Carga de Imágenes (Máximo 21)</label>
                         </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="expensas"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Expensas</span>
-                            </label>
+                        <div id="imagenPrevia" class="mb-3">
+                            La previsualización de imágenes se mostrará aquí
                         </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="sum"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Sum</span>
-                            </label>
-                        </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="terraza"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Terraza</span>
-                            </label>
-                        </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="baulera"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Baulera</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="parrilla"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Parrilla</span>
-                            </label>
-                        </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="cochera"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Cochera</span>
-                            </label>
-                        </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="pileta"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Pileta</span>
-                            </label>
-                        </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="ascensor"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Ascensor</span>
-                            </label>
-                        </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="lavadero"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Lavadero</span>
-                            </label>
-                        </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="suite"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Suite</span>
-                            </label>
-                        </div>
-                        <div class="mb-3 form-check">
-                            <label style="text-align: left; display: block;">
-                                <input type="checkbox" class="form-check-input" name="vestidor"
-                                    style="border-radius:10px; border: 2px black solid;">
-                                <span class="form-check-label">Vestidor</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-3 d-flex align-items-center">
-                    <input name="archivo" type="file" class="form-control" id="inputImagenes"
-                        style="border-radius:10px; border: 2px black solid; width: 300px;" multiple required>
-                    <label class="form-label ms-3">Carga de Imágenes (Máximo 21)</label>
-                </div>
-                <div id="imagenPrevia" class="mb-3">
-                    La previsualización de imágenes se mostrará aquí
-                </div>
-                <button type="submit" class="btn btn-success">Guardar</button>
-            </form>
-        </div>
-    </div>
-
-    <div th:replace="/fragments/footer" :: div></div>
-
-    <div id="successPopup" class="popup">
-        <div th:if="${error != null}" class="card1">
-            <div class="card_image"> <img src="/img/deptoPrincipal.png" /> </div>
-            <div class="card_title title-white">
-                <h5 style="color: red">** ERROR **</h5>
-                <h5 th:text="${error}"></h5>
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                </form>
             </div>
         </div>
-    </div>
-    <div id="errorPopup" class="popup">
-        <div th:if="${exito != null}" class="card1">
-            <div class="card_image"> <img src="/img/casaPrincipal.png" /> </div>
-            <div class="card_title title-white">
-                <h5>** EXITO **</h5>
-                <p th:text="${exito}"></p>
-            </div>
-        </div>
-    </div>
 
+        <div th:replace="/fragments/footer" :: div></div>
+
+    </body>
     <script>
         function showSuccessPopup() {
             var successPopup = document.getElementById("successPopup");
@@ -368,7 +351,6 @@
                 successPopup.style.display = "none";
             }, 5000);
         }
-
         // Función para mostrar el popup de error
         function showErrorPopup() {
             var errorPopup = document.getElementById("errorPopup");
@@ -392,7 +374,6 @@
             gap: 5px;
             /* Espacio de 5 píxeles entre las imágenes */
         }
-
         .image-container {
             width: 100px;
             height: 100px;
@@ -400,14 +381,12 @@
             border: 2px solid black;
             border-radius: 10px;
         }
-
         .image {
             object-fit: cover;
             width: 100%;
             height: 100%;
         }
     </style>
-
     <script>
         const inputImagenes = document.getElementById("inputImagenes");
         const imagenPrevia = document.getElementById("imagenPrevia");
@@ -457,26 +436,15 @@
             }
         });
     </script>
-
-
-
-
-
-
-
     <script>
         var valor = localStorage.getItem('valor');
         document.getElementById('campo').value = valor;
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js"
-        integrity="sha384-q9CRHqZndzlxGLOj+xrdLDJa9ittGte1NksRmgJKeCV9DrM7Kz868XYqsKWPpAmn" crossorigin="anonymous">
-        </script>
-
+            integrity="sha384-q9CRHqZndzlxGLOj+xrdLDJa9ittGte1NksRmgJKeCV9DrM7Kz868XYqsKWPpAmn" crossorigin="anonymous">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
-        </script>
-
-</body>
-
+            integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
+    </script>
 </html>

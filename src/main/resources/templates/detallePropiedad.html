@@ -108,8 +108,11 @@
                                         <span th:if="${propiedad.estado == 'ALQUILER'}">
                                             Estado: ALQUILADA
                                         </span>
+                                        <span th:if="${propiedad.estado == 'ALQUILER_TEMPORARIO'}">
+                                            Estado: ALQUILADA
+                                        </span>
                                     </h5>
-                                    <h5 th:if="${propiedad.reserva == false}"
+                                    <h5 th:if="${propiedad.reserva == false && propiedad.estadoComercial == true}"
                                         style="font-family: 'Sometype Mono', sans-serif; color: rgb(20, 220, 50); text-align: left; font-size: 26px">
                                         <span>
                                             RESERVADA
@@ -471,7 +474,7 @@
                                 <div class="mb-3">
                                     <label for="asunto" class="form-label">Asunto:</label>
                                     <text type="text" id="asunto" name="asunto" class="form-control"
-                                        th:text="${propiedad.estado}+' '+${propiedad.tipoVivienda}+' / idPropiedad N°: '+${propiedad.idPropiedad}"><br>
+                                        th:text="${propiedad.estado}+' '+${propiedad.tipoVivienda}+' / idPropiedad N°: MA'+${propiedad.idPropiedad}"><br>
                                 </div>
                                 <div class="mb-3">
                                     <label for="contactMessage" class="form-label">Dejá tú consulta</label>

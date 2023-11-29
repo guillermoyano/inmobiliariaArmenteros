@@ -1,4 +1,3 @@
-
 package com.inmobiliaria.armenteros.controladores;
 
 import com.inmobiliaria.armenteros.entidades.Usuario;
@@ -20,7 +19,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  *
  * @author Tonna/SA
  */
-
 @Controller
 @RequestMapping("/usuario")
 
@@ -30,36 +28,36 @@ public class UsuarioControlador {
     UsuarioRepositorio usuarioRepositorio;
     @Autowired
     UsuarioServicio usuarioServicio;
-    
+
     @GetMapping("/crearUsuario")
-    public String crearUsuario(){
-        
+    public String crearUsuario() {
+
         return "registro.html";
     }
-    
+
     @PostMapping("crearUsuario")
-    public String crearUsuario(String nombre, String email, String password, String password2, RedirectAttributes redirect) throws IOException{
-        
+    public String crearUsuario(String nombre, String email, String password, String password2, RedirectAttributes redirect) throws IOException {
+
         try {
-          usuarioServicio.registrar(nombre, email, password, password2);
-          
-          
+            usuarioServicio.registrar(nombre, email, password, password2);
+            redirect.addFlashAttribute("exito", "El usuario ha sido cargado correctamente");
+
         } catch (MiException e) {
-           return "registro.html";
+            redirect.addFlashAttribute("error", e.getMessage());
+            return "registro.html";
         }
         return "redirect:/";
     }
-    
-    
+
     @GetMapping("/listarUsuarios")
-    public String listadoDeUsuarios (ModelMap modelo){
-        
-        List<Usuario>usuarios = usuarioRepositorio.findAll();
+    public String listadoDeUsuarios(ModelMap modelo) {
+
+        List<Usuario> usuarios = usuarioRepositorio.findAll();
         modelo.put("usuarios", usuarios);
         return "usuarios_list.html";
     }
-    
-   @GetMapping("/modificarRol/{id}")
+
+    @GetMapping("/modificarRol/{id}")
     public String cambiarRol(@PathVariable String id, RedirectAttributes redirect) {
         try {
             usuarioServicio.cambiarRol(id);

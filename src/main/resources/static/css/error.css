@@ -86,7 +86,7 @@ body {
   overflow-x: hidden;
 }
 body::after {
-  content: 'The page you are trying to reach doesn\'t exist.';
+  content: 'The page you are trying to reach doesn\'t exist';
   font-family: 'Merriweather Sans', sans-serif;
   color: var(--black);
   font-size: 1rem;

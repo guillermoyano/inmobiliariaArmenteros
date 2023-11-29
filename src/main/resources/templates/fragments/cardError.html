@@ -1,30 +1,16 @@
-<div id="errorPopup" class="popup">
+<div id="errorPopup" class="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
     <div class="card" style="width: 18rem;" th:if="${error != null}">
-        <div class="card-body">
-            <h5 class="card-title">** EXITO **</h5>
+        <div class="card-body" style="background-color: #ea3723; text-align: center; color: white; border-radius: 10px">
+            <h5 class="card-title">¡¡¡ ERROR !!!</h5>
             <h6 class="card-subtitle mb-2 text-body-secondary" th:text="${error}"></h6>
             <p class="card-text"></p>
         </div>
     </div>
 </div>
 
-
-<!-- <div id="errorPopup" class="popup">
-    <div th:if="${error != null}" class="card1">
-    <div class="card_image"> <img src="/img/deptoPrincipal.png" /> </div>
-    <div class="card_title title-white">
-        <h5 style="color: red"></h5>
-        <h5></h5>
-    </div>
-</div>
-</div>
-
-<div id="successPopup" class="popup">
-    <div th:if="${exito != null}" class="card1">
-        <div class="card_image"> <img src="/img/casaPrincipal.png" /> </div>
-        <div class="card_title title-white">
-            <h5>** EXITO **</h5>
-            <p th:text="${exito}"></p>
-        </div>
-    </div>
-</div> -->
+<script>
+    setTimeout(function() {
+        var errorPopup = document.getElementById('errorPopup');
+        errorPopup.style.display = 'none';
+    }, 3000); // Desaparecerá después de 3 segundos (3000 milisegundos)
+</script>

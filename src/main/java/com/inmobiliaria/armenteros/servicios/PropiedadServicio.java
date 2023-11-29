@@ -417,6 +417,7 @@ public class PropiedadServicio {
         if (respuesta.isPresent()) {
 
             Propiedad propiedad = respuesta.get();
+            
             if (propiedad.getReserva() != null) {
                 if (propiedad.getReserva() == true) {
                     propiedad.setReserva(false);
