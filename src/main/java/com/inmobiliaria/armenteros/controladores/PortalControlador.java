@@ -116,12 +116,12 @@ public class PortalControlador {
 
         Usuario logueado = (Usuario) session.getAttribute("usuariosession");
 
-        if (logueado.getRol().toString().equals("ADMIN")) {
+        if (logueado.getRol().toString().equals("ADMIN") || logueado.getRol().toString().equals("USER")) {
             redirectAttributes.addFlashAttribute("exito", "El usuario fue logeado correctamente!");
             return "redirect:./propiedad/listarPropiedades";
         }
 
-        return "index.html";
+        return "redirect:./propiedad/listarPropiedades";
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")

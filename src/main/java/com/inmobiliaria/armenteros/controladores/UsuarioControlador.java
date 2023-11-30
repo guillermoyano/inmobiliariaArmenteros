@@ -46,7 +46,7 @@ public class UsuarioControlador {
             redirect.addFlashAttribute("error", e.getMessage());
             return "registro.html";
         }
-        return "redirect:/";
+        return "redirect:./propiedad/listarPropiedades";
     }
 
     @GetMapping("/listarUsuarios")
