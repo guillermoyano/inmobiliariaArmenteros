@@ -35,7 +35,7 @@ return "send_mail";
 @PostMapping("/enviar-correo")
     public String enviarCorreo(@RequestParam String nombre, @RequestParam String email, @RequestParam String asunto, @RequestParam String mensaje, RedirectAttributes redirect) {
         SimpleMailMessage mail = new SimpleMailMessage();
-        mail.setTo("propiedadesarmenteros@gmail.com"); // Reemplaza con tu dirección de correo electrónico
+        mail.setTo("armenterospropiedades@gmail.com"); // Reemplaza con tu dirección de correo electrónico
         mail.setSubject(asunto);
         mail.setText("De: " + nombre + "\nCorreo: " + email + "\nMensaje: " + mensaje);
 
