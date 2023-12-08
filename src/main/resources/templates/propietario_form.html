@@ -16,7 +16,6 @@
         <nav th:replace="/fragments/navbar" :: nav> </nav>
         
         <div th:replace="/fragments/cardError1" :: div></div>
-        <div th:replace="/fragments/cardExito1" :: div></div>
         <div class="px-4 pt-5 my-5 text-center" style="background: rgba(255, 255, 255, 0.7); border: none;">
             <h3 class="display-4 fw-bold text-body-emphasis">Formulario nuevo propietario</h3>
             <div class="d-flex justify-content-center">
@@ -54,34 +53,6 @@
         </div>
         <div th:replace="/fragments/footer" :: div></div>
     </body>
-        <script>
-            function showSuccessPopup() {
-                var successPopup = document.getElementById("successPopup");
-                successPopup.style.display = "block";
-
-                // Ocultar el popup después de 5 segundos
-                setTimeout(function () {
-                    successPopup.style.display = "none";
-                }, 5000);
-            }
-
-            // Función para mostrar el popup de error
-            function showErrorPopup() {
-                var errorPopup = document.getElementById("errorPopup");
-                errorPopup.style.display = "block";
-
-                // Ocultar el popup después de 5 segundos
-                setTimeout(function () {
-                    errorPopup.style.display = "none";
-                }, 5000);
-            }
-
-            // Ejemplo de uso: Mostrar popup de éxito después de un evento exitoso
-            showSuccessPopup();
-
-            // Ejemplo de uso: Mostrar popup de error después de un evento fallido
-            showErrorPopup();
-        </script>
         <script>
             var valor = localStorage.getItem('valor');
             document.getElementById('campo').value = valor;

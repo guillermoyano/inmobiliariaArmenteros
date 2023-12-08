@@ -16,7 +16,6 @@
 
         <nav th:replace="/fragments/navbar" :: nav> </nav>
         <div th:replace="/fragments/cardExito1" :: div></div>
-        <div th:replace="/fragments/cardError1" :: div></div>
         <div class="px-4 pt-5 my-5 text-center border-bottom"
              style="background: rgba(255, 255, 255, 0.7); border: none; padding-bottom: 40px;">
             <h4 class="display-4 fw-bold text-body-emphasis">Formulario nueva propiedad</h4>
@@ -45,52 +44,52 @@
                         </div>
                         <div class="mb-3 d-flex align-items-center">
                             <input type="number" name="mts2Totales" th:value="${mts2Totales}" class="form-control"
-                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;" required>
                                 <label class="form-label ms-3">Metros cuadrados totales</label>
                         </div>
                         <div class="mb-3 d-flex align-items-center">
                             <input name="mts2Cubiertos" type="number" th:value="${mts2Cubiertos}" class="form-control"
-                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;" required>
                                 <label class="form-label ms-3">Metros cuadrados cubiertos</label>
                         </div>
                         <div class="mb-3 d-flex align-items-center">
                             <input name="mts2Descubiertos" type="number" th:value="${mts2Descubiertos}" class="form-control"
-                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;" required>
                                 <label class="form-label ms-3">Metros cuadrados descubiertos</label>
                         </div>
                         <div class="mb-3 d-flex align-items-center">
                             <input name="localidad" type="text" th:value="${localidad}" class="form-control"
-                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;" required>
                                 <label class="form-label  ms-3"> Localidad</label>
                         </div>
                         <div class="mb-3 d-flex align-items-center">
                             <input name="barrio" type="text" th:value="${barrio}" class="form-control"
-                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;" required>
                                 <label class="form-label ms-3">Barrio</label>
                         </div>
                         <div class="mb-3 d-flex align-items-center">
                             <input name="calle" type="text" th:value="${calle}" class="form-control"
-                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;"required>
                                 <label class="form-label ms-3">Calle</label>
                         </div>
                         <div class="mb-3 d-flex align-items-center">
                             <input name="altura" type="text" th:value="${altura}" class="form-control"
-                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;"required>
                                 <label class="form-label ms-3">Altura</label>
                         </div>
                         <div class="mb-3 d-flex align-items-center">
                             <input name="descripcion" type="text" th:value="${descripcion}" class="form-control"
-                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;"required>
                                 <label class="form-label ms-3">Piso / Timbre</label>
                         </div>
                         <div class="mb-3 d-flex align-items-center">
                             <input name="cantBanios" type="number" th:value="${cantBanios}" class="form-control"
-                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;"required>
                                 <label class="form-label ms-3">Cantidad de Baños</label>
                         </div>
                         <div class="mb-3 d-flex align-items-center">
                             <input name="cantHabitaciones" type="number" th:value="${cantHabitaciones}" class="form-control"
-                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;"required>
                                 <label class="form-label ms-3">Cantidad Habitaciones</label>
                         </div>
                         <div class="mb-3 d-flex align-items-center">
@@ -116,7 +115,7 @@
                         </div>
                         <div class="mb-3 d-flex align-items-center">
                             <input name="precioPropiedad" type="number" th:value="${precioPropiedad}" class="form-control"
-                                   style="border-radius:10px; border: 2px black solid; width: 300px;">
+                                   style="border-radius:10px; border: 2px black solid; width: 300px;"required>
                                 <label class="form-label ms-3">Precio de la Propiedad</label>
                         </div>
                         <div class="row" style="width: 1000px;">

@@ -42,7 +42,7 @@ return "send_mail";
         mailSender.send(mail);
 
         // Puedes redirigir al usuario a una página de confirmación
-        return "redirect:/";
+        return "redirect:../propiedad/listarPropiedades";
     }
 }
 

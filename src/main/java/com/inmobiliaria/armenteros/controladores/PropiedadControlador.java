@@ -53,7 +53,6 @@ public class PropiedadControlador {
 
     @GetMapping("/registrarUno")
     public String registrarUno(ModelMap modelo) {
-
         modelo.put("propietario", propietarioRepositorio.buscarPropietarioPorId());
         return "propiedad_form.html";
     }

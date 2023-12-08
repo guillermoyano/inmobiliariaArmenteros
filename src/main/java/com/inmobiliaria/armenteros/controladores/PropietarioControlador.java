@@ -54,7 +54,6 @@ public class PropietarioControlador {
     
     @GetMapping("/registrar")
     public String registrar(ModelMap modelo, @PathVariable Long idPropietario){
-    
         return "propietario_form.html";
     }
 
@@ -66,7 +65,7 @@ public class PropietarioControlador {
             if(propietarioServicio.buscarPorDni(dni)==null){
                 propietarioServicio.crearPropietario(dni, nombreApellido, telefono, email, direccion);
                 mailServicio.sendEmail(email);
-                redirect.addFlashAttribute("exito", "salió todo bien");
+                redirect.addFlashAttribute("exito", "salió todo bien");return "redirect:../propiedad/registrarUno";
             }
             
         } catch (MiException ex) {

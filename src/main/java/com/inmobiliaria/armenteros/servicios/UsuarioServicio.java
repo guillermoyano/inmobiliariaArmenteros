@@ -43,8 +43,8 @@ public class UsuarioServicio implements UserDetailsService {
 
         Usuario usuario = new Usuario();
 
-        usuario.setNombre(nombre);
-        usuario.setEmail(email);
+        usuario.setNombre(cambiarPrimeraLetraCadaPalabra(nombre));
+        usuario.setEmail(email.toLowerCase());
 
         usuario.setPassword(new BCryptPasswordEncoder().encode(password));
 
@@ -64,8 +64,8 @@ public class UsuarioServicio implements UserDetailsService {
         if (respuesta.isPresent()) {
 
             Usuario usuario = respuesta.get();
-            usuario.setNombre(nombre);
-            usuario.setEmail(email);
+            usuario.setNombre(cambiarPrimeraLetraCadaPalabra(nombre));
+            usuario.setEmail(email.toLowerCase());
 
             usuario.setPassword(new BCryptPasswordEncoder().encode(password));
 
@@ -73,6 +73,34 @@ public class UsuarioServicio implements UserDetailsService {
 
         }
 
+    }
+    
+    public static String cambiarPrimeraLetraCadaPalabra(String texto) {
+        if (texto == null || texto.isEmpty()) {
+            return texto;
+        }
+
+        String[] palabras = texto.split(" ");
+        StringBuilder resultado = new StringBuilder();
+
+     
+        for (int i = 0; i < palabras.length; i++) {
+            String palabra = palabras[i];
+            if (!palabra.isEmpty()) {
+                if (i == 0) {
+                    resultado.append(palabra.substring(0, 1).toUpperCase());
+                    resultado.append(palabra.substring(1).toLowerCase());
+                } else if (palabra.length() == 2) {
+                    resultado.append(palabra.toLowerCase());
+                } else {
+                    resultado.append(palabra.substring(0, 1).toUpperCase());
+                    resultado.append(palabra.substring(1).toLowerCase());
+                }
+                resultado.append(" ");
+            }
+        }
+
+        return resultado.toString().trim(); // Elimina el espacio en blanco al final.
     }
 
     private void validar(String nombre, String email, String password, String password2) throws MiException {

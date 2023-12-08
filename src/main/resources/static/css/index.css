@@ -1,3 +1,10 @@
+.body{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,
+        minmax(150px, 1fr));
+    gap: 32px;
+}
+
 .full-width-image {
     width: 100vw;
     height: 230px;

@@ -90,8 +90,7 @@ public class PortalControlador {
         try {
             usuarioServicio.registrar(nombre, email, password, password2);
             redirectAttributes.addFlashAttribute("exito", "El usuario fue cargado correctamente!");
-
-            return "redirect:/";
+            return "redirect:../propiedad/listarPropiedades";
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
             modelo.put("nombre", nombre);

@@ -53,21 +53,6 @@ public class ImagenControlador {
         return "carruselImagenes.html";
     }
 
-//    @GetMapping("/listaDeImagenes/{idPropiedad}")
-//    public String obtenerImagenesPropiedad(ModelMap modelo, Integer idPropiedad) {
-//
-//        List<Imagen> imagenes = imagenRepositorio.listaImagenes(idPropiedad);
-//        List<String> imagen1 = new ArrayList<>();
-//
-//        for (Imagen aux : imagenes) {
-//            byte[] foto = aux.getContenido();
-//            String base = Base64.getEncoder().encodeToString(foto);
-//            imagen1.add(base);
-//        }
-//        modelo.addAttribute("imagen1", imagen1);
-//        return "carruselImagenes.html";
-//    }
-
     @GetMapping("/propiedad/{idPropiedad}")
     public String listarImagenesPropiedad(ModelMap modelo, @PathVariable Integer idPropiedad) {
         Propiedad propiedad = propiedadServicio.getone(idPropiedad);
@@ -146,23 +131,5 @@ public class ImagenControlador {
 
        return "redirect:/imagen/modificar/" + idPropiedad;
     }
-//    @PostMapping("/modificar/{idPropiedad}")
-//    public String modificar(@PathVariable Integer idPropiedad, MultipartFile archivo, ModelMap modelo, RedirectAttributes redirect) throws MiException {
-//        try {
-//            // 1. Obtén todas las imágenes relacionadas con la propiedad
-//            List<Imagen> imagenesPropiedad = imagenRepositorio.listaImagenes(idPropiedad); // Reemplaza con el método adecuado
-//
-//            // 2. Itera a través de las imágenes y modifícalas
-//            for (Imagen imagen : imagenesPropiedad) {
-//                imagenServicio.modificarImagen(archivo, imagen.getPropiedad().getIdPropiedad()); // Asume que tienes un método para modificar una imagen específica
-//            }
-//
-//            redirect.addFlashAttribute("exito", "Todas las imágenes han sido modificadas correctamente.");
-//            return "redirect:/";
-//        } catch (MiException ex) {
-//            redirect.addFlashAttribute("error", ex.getMessage());
-//            return "imagenes_modificar.html";
-//        }
-//    }
 
 }
