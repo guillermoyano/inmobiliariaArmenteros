@@ -27,8 +27,8 @@
             <div class="container">
                 <div class="card bg-dark text-white" style="border-radius: 15px; margin: 20px;">
                     <div class="card-header" style="border-bottom: 0px solid rgba(0,0,0,.125);">
-                        <div class="row g-0">
-                            <div class="col-md-4" style="width: 50%;">
+                        <div class="row col g-0">
+                            <div class="row-3 col-lg-7">
                                 <div id="carouselExample" class="carousel slide carousel-fade">
                                     <div class="carousel-inner">
                                         <div th:each="imagen1, iterStat : ${imagen1}"
@@ -39,7 +39,8 @@
                                                     alt="Imagen" data-bs-toggle="modal" data-bs-target="#imageModal"
                                                     onclick="openModal(this)">
                                                 <div
-                                                    style="position: absolute; bottom: 10px; right: 10px; width: 150px; background-color: rgba(204, 204, 204, 0.7); padding: 5px; border-radius: 15px;">
+                                                    class="loguito"
+                                                    style="position: absolute; bottom: 10px; right: 10px; background-color: rgba(204, 204, 204, 0.7); padding: 5px; border-radius: 15px;">
                                                     <img src="/img/armenteros original.png" style="width: 100%;"
                                                         alt="Logo">
                                                 </div>
@@ -73,14 +74,15 @@
                                             <img id="modalImage" style="width: 100%; height: auto;" src=""
                                                 alt="Imagen Ampliada">
                                             <div
-                                                style="position: absolute; bottom: 50px; right: 50px; width: 350px; background-color: rgba(204, 204, 204, 0.7); padding: 10px; border-radius: 15px;">
+                                                class="loguito-modal"
+                                                style="position: absolute; bottom: 50px; right: 50px; background-color: rgba(204, 204, 204, 0.7); padding: 10px; border-radius: 15px;">
                                                 <img src="/img/armenteros original.png" style="width: 100%;" alt="Logo">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8" style="width: 45%;">
+                            <div class="row-3 col-lg-5">
                                 <div class="card-body" th:each="propiedad : ${propiedad}">
                                     <h3 th:text="${propiedad.tipoVivienda}"
                                         style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
@@ -210,8 +212,8 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="row text-center mx-auto" style="max-width: 1000px;">
-                            <div class="col-md-3" style="width: 250px;">
+                        <div class="row col">
+                            <div class="col-md-3 row-3">
                                 <div class="mb-3 form-check">
                                     <label style="text-align: left; display: block;">
                                         <input type="checkbox" class="form-check-input" name="aguaCorriente"
@@ -269,7 +271,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-3">
+                            <div class="col-md-3 row-3">
                                 <div class="mb-3 form-check">
                                     <label style="text-align: left; display: block;">
                                         <input type="checkbox" class="form-check-input" name="gasNatural"
@@ -327,7 +329,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-3">
+                            <div class="col-md-3 row-3">
                                 <div class="mb-3 form-check">
                                     <label style="text-align: left; display: block;">
                                         <input type="checkbox" class="form-check-input" name="toillete"
@@ -385,7 +387,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-3">
+                            <div class="col-md-3 row-3">
                                 <div class="mb-3 form-check">
                                     <label style="text-align: left; display: block;">
                                         <input type="checkbox" class="form-check-input" name="parrilla"

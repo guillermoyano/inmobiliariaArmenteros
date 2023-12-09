@@ -86,3 +86,10 @@ a:visited {
     text-decoration: none;
     /* Elimina el subrayado */
 }
+
+.loguito{
+    width: 34%; 
+}
+.loguito-modal{
+    width: 10%; 
+}
