@@ -22,8 +22,6 @@
         <div class="d-flex justify-content-center">
             <form th:action="@{/propiedad/modificar/__${propiedad.idPropiedad}__}" method="POST"
                 enctype="multipart/form-data">
-
-                <!--<input hidden th:value="${propiedad.idPropietario}" name="idPropietario">-->
                 <div class="mb-3 d-flex align-items-center">
                     <input type="text" class="form-control" th:value="${propietario.nombreApellido}" readonly
                         style="border-radius:10px; border: 2px black solid; width: 300px;">
