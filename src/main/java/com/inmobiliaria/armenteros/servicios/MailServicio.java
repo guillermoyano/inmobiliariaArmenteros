@@ -18,7 +18,7 @@ public class MailServicio {
     @Autowired
     private JavaMailSender mailSender;
 
-    String from = "armenterospropiedades@gmail.com";//dirección de correo que hace el envío.
+    String from = "manuel@armenterospropiedades.com";//dirección de correo que hace el envío.
     //String to = "pepehonguito@gmail.com";//dirección de correo que recibe el mail.
 
     public ResponseEntity<?> sendEmail(String to) {

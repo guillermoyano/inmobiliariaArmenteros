@@ -51,12 +51,6 @@ public class PropiedadControlador {
         return "propiedad_form.html";
     }
 
-    @GetMapping("/registrarUno")
-    public String registrarUno(ModelMap modelo) {
-        modelo.put("propietario", propietarioRepositorio.buscarPropietarioPorId());
-        return "propiedad_form.html";
-    }
-
     @PostMapping("/registro")
     public String registro(@RequestParam(required = false) Long mts2Totales, @RequestParam(required = false) Long mts2Cubiertos,
             @RequestParam(required = false) Long mts2Descubiertos, @RequestParam(required = false) String localidad,

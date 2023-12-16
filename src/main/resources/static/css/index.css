@@ -3,7 +3,7 @@
     grid-template-columns: repeat(auto-fit,
         minmax(150px, 1fr));
     gap: 32px;
-    background-image: url('../img/inmobiliaria.jpg');
+    background-image: url('../img/Inmobiliaria.jpg');
     background-size: cover;
 }
 
@@ -56,7 +56,7 @@ a:visited {
 
 body::before {
     content: "";
-    background-image: url('../img/inmobiliaria.jpg');
+    background-image: url('../img/Inmobiliaria.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
