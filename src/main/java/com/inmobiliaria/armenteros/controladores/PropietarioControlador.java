@@ -44,7 +44,6 @@ public class PropietarioControlador {
     public String buscarPropietarioPorDni(@RequestParam Long dni, RedirectAttributes redirect, ModelMap modelo){
         Propietario propietario = propietarioServicio.buscarPorDni(dni);
         if(propietario !=null){
-           // return "index.html";
         return "redirect:../propietario/listaUnico/" + propietario.getIdPropietario() ;
         }else{
             return "propietario_form.html";
@@ -64,8 +63,10 @@ public class PropietarioControlador {
         try {
             if(propietarioServicio.buscarPorDni(dni)==null){
                 propietarioServicio.crearPropietario(dni, nombreApellido, telefono, email, direccion);
+                Propietario propietario = propietarioServicio.buscarPorDni(dni);
                 mailServicio.sendEmail(email);
-                redirect.addFlashAttribute("exito", "salió todo bien");return "redirect:../propiedad/registrarUno";
+                redirect.addFlashAttribute("exito", "salió todo bien");
+                return "redirect:../propiedad/registrar/" +propietario.getIdPropietario();
             }
             
         } catch (MiException ex) {
@@ -76,7 +77,7 @@ public class PropietarioControlador {
             modelo.put("direccion", direccion);
             return "propietario_form.html";
         }
-        return "redirect:../propiedad/registrarUno";
+        return "redirect:../propiedad/registrar";
         }
     
     @GetMapping("/lista")
