@@ -70,15 +70,10 @@
                 <div class="mb-3 d-flex align-items-center">
                     <input name="calle" type="text" th:value="${calle}" class="form-control"
                         style="border-radius:10px; border: 2px black solid; width: 300px;" required>
-                    <label class="form-label ms-3">Calle</label>
+                    <label class="form-label ms-3">Calle / Altura</label>
                 </div>
                 <div class="mb-3 d-flex align-items-center">
                     <input name="altura" type="text" th:value="${altura}" class="form-control"
-                        style="border-radius:10px; border: 2px black solid; width: 300px;" required>
-                    <label class="form-label ms-3">Altura</label>
-                </div>
-                <div class="mb-3 d-flex align-items-center">
-                    <input name="descripcion" type="text" th:value="${descripcion}" class="form-control"
                         style="border-radius:10px; border: 2px black solid; width: 300px;" required>
                     <label class="form-label ms-3">Piso / Timbre</label>
                 </div>
@@ -117,6 +112,11 @@
                     <input name="precioPropiedad" type="number" th:value="${precioPropiedad}" class="form-control"
                         style="border-radius:10px; border: 2px black solid; width: 300px;" required>
                     <label class="form-label ms-3">Precio de la Propiedad</label>
+                </div>
+                <div class="mb-3 d-flex align-items-center">
+                    <textarea name="descripcion" type="text" th:value="${descripcion}" class="form-control"
+                        style="border-radius:10px; border: 2px black solid; width: 300px;" required></textarea>
+                    <label class="form-label ms-3">Detalles</label>
                 </div>
                 <div class="row" style="width: 1000px;">
                     <div class="col-md-3" style="width: 250px;">

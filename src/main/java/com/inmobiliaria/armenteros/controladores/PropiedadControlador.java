@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,6 +45,7 @@ public class PropiedadControlador {
     @Autowired
     ImagenRepositorio imagenRepositorio;
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/registrar/{idPropietario}")
     public String registrar(ModelMap modelo, @PathVariable Long idPropietario) {
 
@@ -165,6 +167,7 @@ public class PropiedadControlador {
 
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("modificar/{idPropiedad}")
     public String modificar(@PathVariable Integer idPropiedad, ModelMap modelo) throws MiException {
 
@@ -195,18 +198,21 @@ public class PropiedadControlador {
         }
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("eliminar/{idPropiedad}")
     public String eliminarPropiedad(@PathVariable Integer idPropiedad, RedirectAttributes redirect) throws MiException {
         propiedadServicio.eliminarPropiedad(idPropiedad);
         return "redirect:../lista";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("darDeBaja/{idPropiedad}")
     public String cambiarPropiedad(@PathVariable Integer idPropiedad, RedirectAttributes redirect) throws MiException {
         propiedadServicio.estadoPropiedad(idPropiedad);
         return "redirect:../lista";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("reservar/{idPropiedad}")
     public String reservaPropiedad(@PathVariable Integer idPropiedad, RedirectAttributes redirect) throws MiException {
         propiedadServicio.reservaPropiedad(idPropiedad);

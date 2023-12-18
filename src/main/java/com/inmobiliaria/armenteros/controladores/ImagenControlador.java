@@ -14,6 +14,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -85,6 +86,7 @@ public class ImagenControlador {
 
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/modificar/{idPropiedad}")
     public String modificar(@PathVariable Integer idPropiedad, ModelMap modelo) throws MiException {
 
@@ -105,6 +107,7 @@ public class ImagenControlador {
         return "imagenes_modificar.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/modificar1/{idImagen}")
     public String modificarImagen(@PathVariable Integer idImagen, ModelMap modelo, RedirectAttributes redirect) throws MiException {
 
@@ -122,14 +125,14 @@ public class ImagenControlador {
         try {
             imagenServicio.modificarImagen(archivo, idImagen);
             redirect.addFlashAttribute("exito", "La imágen ha sido modificada correctamente.");
-            
+
         } catch (MiException ex) {
             redirect.addFlashAttribute("error", ex.getMessage());
             return "imagenes_modificar.html";
 
         }
 
-       return "redirect:/imagen/modificar/" + idPropiedad;
+        return "redirect:/imagen/modificar/" + idPropiedad;
     }
 
 }

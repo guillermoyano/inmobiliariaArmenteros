@@ -45,47 +45,23 @@ public class PortalControlador {
 
         return "redirect:./propiedad/listarPropiedades";
     }
-    
-      @GetMapping("/nosotros")
+
+    @GetMapping("/nosotros")
     public String nosotros() {
 
         return "nosotros.html";
     }
 
-    @GetMapping("/casasPrincipal")
-    public String casasPrincipal(ModelMap modelo) {
-
-        List<Propiedad> propiedades = propiedadRepositorio.findAll();
-        List<Imagen> imagenes = imagenRepositorio.findAll();
-
-        Map<Integer, List<String>> imagenesPorPropiedad = new HashMap<>();
-
-        for (Propiedad aux : propiedades) {
-            Integer idPropiedad = aux.getIdPropiedad();
-            List<String> imagen1 = new ArrayList<>();
-
-            for (Imagen aux1 : imagenes) {
-                if (aux1.getPropiedad().getIdPropiedad() == idPropiedad) {
-                    byte[] foto = aux1.getContenido();
-                    String base = Base64.getEncoder().encodeToString(foto);
-                    imagen1.add(base);
-                }
-            }
-            imagenesPorPropiedad.put(idPropiedad, imagen1);
-        }
-        modelo.addAttribute("propiedades", propiedades);
-        modelo.addAttribute("imagenesPorPropiedad", imagenesPorPropiedad);
-        return "casasPrincipal.html";
-    }
-
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/registrar")
     public String registrar() {
         return "registro.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/registro")
     public String registro(@RequestParam String nombre, @RequestParam String email, @RequestParam String password, String password2,
-             ModelMap modelo, RedirectAttributes redirectAttributes) throws IOException, MiException {
+            ModelMap modelo, RedirectAttributes redirectAttributes) throws IOException, MiException {
 
         try {
             usuarioServicio.registrar(nombre, email, password, password2);
@@ -109,7 +85,6 @@ public class PortalControlador {
         return "23433073.html";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping("/inicio")
     public String inicio(HttpSession session, RedirectAttributes redirectAttributes) {
 
@@ -123,7 +98,7 @@ public class PortalControlador {
         return "redirect:./propiedad/listarPropiedades";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo, HttpSession session) {
 
@@ -132,11 +107,11 @@ public class PortalControlador {
         return "usuario_modificar.html";
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/perfil/{id}")
     public String actualizar(@PathVariable String id, @RequestParam String nombre,
             @RequestParam String email, @RequestParam String password, @RequestParam String password2, ModelMap modelo,
-             RedirectAttributes redirectAttributes) {
+            RedirectAttributes redirectAttributes) {
 
         try {
             usuarioServicio.actualizar(id, nombre, email, password, password2);
@@ -155,6 +130,7 @@ public class PortalControlador {
         }
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/lista")
     public String listar(ModelMap modelo) {
         List<Usuario> usuarios = usuarioServicio.listarUsuarios();

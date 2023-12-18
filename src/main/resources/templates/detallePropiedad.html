@@ -100,6 +100,9 @@
                                     <h5 th:text="'Baños: ' + ${propiedad.cantBanios}"
                                         style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
                                     </h5>
+                                    <h6 th:text="'Detalle: ' + ${propiedad.descripcion}"
+                                        style="font-family: 'Sometype Mono', sans-serif; color: white; text-align: left;">
+                                    </h6>
                                     <h5 th:if="${propiedad.estadoComercial == false}"
                                         style="font-family: 'Sometype Mono', sans-serif; color: red; text-align: left; font-size: 26px">
                                         <span th:if="${propiedad.estado == 'VENTA'}">

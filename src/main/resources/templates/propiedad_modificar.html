@@ -70,15 +70,10 @@
                 <div class="mb-3 d-flex align-items-center">
                     <input name="calle" type="text" th:value="${propiedad.calle}" class="form-control"
                         style="border-radius:10px; border: 2px black solid; width: 300px;">
-                    <label class="form-label ms-3">Calle</label>
+                    <label class="form-label ms-3">Calle / Altura</label>
                 </div>
                 <div class="mb-3 d-flex align-items-center">
                     <input name="altura" type="text" th:value="${propiedad.altura}" class="form-control"
-                        style="border-radius:10px; border: 2px black solid; width: 300px;">
-                    <label class="form-label ms-3">Altura</label>
-                </div>
-                <div class="mb-3 d-flex align-items-center">
-                    <input name="descripcion" type="text" th:value="${propiedad.descripcion}" class="form-control"
                         style="border-radius:10px; border: 2px black solid; width: 300px;">
                     <label class="form-label ms-3">Piso / Timbre</label>
                 </div>
@@ -91,6 +86,11 @@
                     <input name="cantHabitaciones" type="number" th:value="${propiedad.cantHabitaciones}"
                         class="form-control" style="border-radius:10px; border: 2px black solid; width: 300px;">
                     <label class="form-label ms-3">Cantidad Habitaciones</label>
+                </div>
+                <div class="mb-3 d-flex align-items-center">
+                    <textarea name="descripcion" type="text" th:value="${propiedad.descripcion}" class="form-control"
+                        style="border-radius:10px; border: 2px black solid; width: 300px;"></textarea>
+                    <label class="form-label ms-3">Detalle</label>
                 </div>
                 <div class="mb-3 d-flex align-items-center">
                     <select name="estado" class="form-select"
@@ -354,7 +354,7 @@
                         </div>
                     </div>
                 </div>
-                <input value="Cargar " type="submit" class="btn btn-primary" />
+                <input value="Modificar " type="submit" class="btn btn-primary" />
             </form>
         </div>
     </div>
