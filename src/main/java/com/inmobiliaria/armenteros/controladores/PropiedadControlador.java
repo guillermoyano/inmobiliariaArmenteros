@@ -57,7 +57,7 @@ public class PropiedadControlador {
     public String registro(@RequestParam(required = false) Long mts2Totales, @RequestParam(required = false) Long mts2Cubiertos,
             @RequestParam(required = false) Long mts2Descubiertos, @RequestParam(required = false) String localidad,
             @RequestParam(required = false) String barrio, @RequestParam(required = false) String calle,
-            @RequestParam(required = false) String descripcion, @RequestParam(required = false) Integer altura,
+            @RequestParam(required = false) String descripcion, @RequestParam(required = false) String altura,
             @RequestParam(required = false) Integer cantBanios, @RequestParam(required = false) Integer cantHabitaciones,
             @RequestParam(required = false) String estado, @RequestParam(required = false) Boolean aguaCorriente,
             @RequestParam(required = false) Boolean aireAcondicionado, @RequestParam(required = false) Boolean aptoCredito,
@@ -180,7 +180,7 @@ public class PropiedadControlador {
 
     @PostMapping("modificar/{idPropiedad}")
     public String modificar(@PathVariable Integer idPropiedad, Long mts2Totales, Long mts2Cubiertos, Long mts2Descubiertos, String localidad, String barrio, String calle,
-            String descripcion, Integer altura, Integer cantBanios, Integer cantHabitaciones, String estado, Boolean aguaCorriente, Boolean aireAcondicionado,
+            String descripcion, String altura, Integer cantBanios, Integer cantHabitaciones, String estado, Boolean aguaCorriente, Boolean aireAcondicionado,
             Boolean aptoCredito, Boolean balcon, Boolean banio, Boolean aptoProfesional, Boolean cloacas, Boolean gasNatural, Boolean permiteMascotas, Boolean salonJuegos,
             Boolean gimnasio, Boolean luz, Boolean pavimento, Boolean cocina, Boolean patio, Boolean quincho, Boolean sum, Boolean terraza, Boolean baulera, Boolean parrilla,
             Boolean cochera, Boolean pileta, Boolean ascensor, Boolean lavadero, Boolean suite, Boolean vestidor, Boolean toillete, Boolean expensas, String tipoVivienda,

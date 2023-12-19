@@ -32,7 +32,7 @@ public class Propiedad {
     private String localidad;
     private String barrio;
     private String calle;
-    private Integer altura;
+    private String altura;
     private String estado;
     private String descripcion;
     private String moneda;
@@ -87,7 +87,7 @@ public class Propiedad {
     public Propiedad() {
     }
 
-    public Propiedad(Integer idPropiedad, Long precioPropiedad, Long mts2Totales, Long mts2Cubiertos, Long mts2Descubiertos, String localidad, String barrio, String calle, Integer altura, String estado, String descripcion, String moneda, Date fechaPublicacion, Integer cantHabitaciones, Integer cantBanios, String tipoVivienda, Propietario propietario, List<Imagen> imagenes) {
+    public Propiedad(Integer idPropiedad, Long precioPropiedad, Long mts2Totales, Long mts2Cubiertos, Long mts2Descubiertos, String localidad, String barrio, String calle, String altura, String estado, String descripcion, String moneda, Date fechaPublicacion, Integer cantHabitaciones, Integer cantBanios, String tipoVivienda, Propietario propietario, List<Imagen> imagenes) {
         this.idPropiedad = idPropiedad;
         this.precioPropiedad = precioPropiedad;
         this.mts2Totales = mts2Totales;
@@ -172,11 +172,11 @@ public class Propiedad {
         this.calle = calle;
     }
 
-    public Integer getAltura() {
+    public String getAltura() {
         return altura;
     }
 
-    public void setAltura(Integer altura) {
+    public void setAltura(String altura) {
         this.altura = altura;
     }
 

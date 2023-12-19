@@ -33,7 +33,7 @@ public class PropiedadServicio {
 
     @Transactional
     public void crearPropiedad(Long mts2Totales, Long mts2Cubiertos, Long mts2Descubiertos, String localidad, String barrio, String calle,
-            String descripcion, Integer altura, Integer cantBanios, Integer cantHabitaciones, String estado, Boolean aguaCorriente, Boolean aireAcondicionado,
+            String descripcion, String altura, Integer cantBanios, Integer cantHabitaciones, String estado, Boolean aguaCorriente, Boolean aireAcondicionado,
             Boolean aptoCredito, Boolean balcon, Boolean banio, Boolean aptoProfesional, Boolean cloacas, Boolean gasNatural, Boolean permiteMascotas, Boolean salonJuegos,
             Boolean gimnasio, Boolean luz, Boolean pavimento, Boolean cocina, Boolean patio, Boolean quincho, Boolean sum, Boolean terraza, Boolean baulera, Boolean parrilla,
             Boolean cochera, Boolean pileta, Boolean ascensor, Boolean lavadero, Boolean suite, Boolean vestidor, Boolean toillete, Boolean expensas, String tipoVivienda, String moneda, Long idPropietario,
@@ -208,7 +208,7 @@ public class PropiedadServicio {
 
     @Transactional
     public void modificarPropiedad(Integer idPropiedad, Long mts2Totales, Long mts2Cubiertos, Long mts2Descubiertos, String localidad, String barrio, String calle,
-            String descripcion, Integer altura, Integer cantBanios, Integer cantHabitaciones, String estado, Boolean aguaCorriente, Boolean aireAcondicionado,
+            String descripcion, String altura, Integer cantBanios, Integer cantHabitaciones, String estado, Boolean aguaCorriente, Boolean aireAcondicionado,
             Boolean aptoCredito, Boolean balcon, Boolean banio, Boolean aptoProfesional, Boolean cloacas, Boolean gasNatural, Boolean permiteMascotas, Boolean salonJuegos,
             Boolean gimnasio, Boolean luz, Boolean pavimento, Boolean cocina, Boolean patio, Boolean quincho, Boolean sum, Boolean terraza, Boolean baulera, Boolean parrilla,
             Boolean cochera, Boolean pileta, Boolean ascensor, Boolean lavadero, Boolean suite, Boolean vestidor, Boolean toillete, Boolean expensas, String tipoVivienda,
@@ -434,7 +434,7 @@ public class PropiedadServicio {
         return propiedadRepositorio.getOne(idPropiedad);
     }
 
-    private void validar(String localidad, String barrio, String calle, String descripcion, Long mts2Totales, Long mts2Cubiertos, Long mts2Descubiertos, Integer altura, Integer cantBanios,
+    private void validar(String localidad, String barrio, String calle, String descripcion, Long mts2Totales, Long mts2Cubiertos, Long mts2Descubiertos, String altura, Integer cantBanios,
             Integer cantHabitaciones, String estado, String tipoVivienda, Long precioPropiedad, String moneda) throws MiException {
 
         if (tipoVivienda.isEmpty()) {
@@ -458,7 +458,7 @@ public class PropiedadServicio {
         if (calle.isEmpty() || calle == null) {
             throw new MiException("La Calle no puede estar vacia");
         }
-        if (altura == null) {
+        if (altura .isEmpty() || altura == null) {
             throw new MiException("La Altura no puede estar vacia");
         }
         if (descripcion.isEmpty() || descripcion == null) {
