@@ -115,20 +115,21 @@
                             <div th:if="${propiedades.estadoComercial == false}"
                                 style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;">
                                 <div
-                                    style="width: 450px; height: 90px; transform: rotate(-45deg); background: rgba(0, 0, 0, 0.8); position: absolute; top: 250px; border-radius: 10px;">
+                                    style="position: absolute; width: 100%; height: 10%; transform: rotate(-45deg); background: rgba(0, 0, 0, 0.8); top: 50%; border-radius: 10px;">
                                     <p
-                                        style="font-size: 70px; color: crimson; transform: rotate(45deg); font-family: 'Kanit', sans-serif; margin: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                        style="position: absolute; font-size: 290%; color: crimson; transform: rotate(45deg); font-family: 'Kanit', sans-serif; margin: 0; top: 50%; left: 50%; transform: translate(-50%, -50%);">
                                         <span th:if="${propiedades.estado == 'VENTA'}">VENDIDA</span>
                                         <span th:if="${propiedades.estado == 'ALQUILER'}">ALQUILADA</span>
                                         <span th:if="${propiedades.estado == 'ALQUILER_TEMPORARIO'}">ALQUILADA</span>
                                     </p>
                                 </div>
-                            </div><div th:if="${propiedades.reserva == false && propiedades.estadoComercial == true}"
+                            </div>
+                            <div th:if="${propiedades.reserva == false && propiedades.estadoComercial == true}"
                                 style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;">
                                 <div
-                                    style="width: 450px; height: 90px; transform: rotate(-45deg); background: rgba(0, 0, 0, 0.8); position: absolute; top: 250px; border-radius: 10px;">
+                                    style="position: absolute; width: 100%; height: 10%; transform: rotate(-45deg); background: rgba(0, 0, 0, 0.8); top: 50%; border-radius: 10px;">
                                     <p
-                                        style="font-size: 70px; color: rgb(20, 220, 50); transform: rotate(45deg); font-family: 'Kanit', sans-serif; margin: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                        style="position: absolute; font-size: 290%; color: rgb(20, 220, 50); transform: rotate(45deg); font-family: 'Kanit', sans-serif; margin: 0; top: 50%; left: 50%; transform: translate(-50%, -50%);">
                                         <span>RESERVADA</span>
                                     </p>
                                 </div>
