@@ -79,7 +79,7 @@ public class ImagenControlador {
 
         HttpHeaders headers = new HttpHeaders();
 
-        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setContentType(MediaType.IMAGE_JPEG);
 
         System.out.println(foto);
         return new ResponseEntity<>(foto, headers, HttpStatus.OK);

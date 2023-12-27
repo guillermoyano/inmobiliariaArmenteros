@@ -52,7 +52,8 @@ public class PropiedadControlador {
         modelo.put("propietario", propietarioServicio.getone(idPropietario));
         return "propiedad_form.html";
     }
-
+    
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("/registro")
     public String registro(@RequestParam(required = false) Long mts2Totales, @RequestParam(required = false) Long mts2Cubiertos,
             @RequestParam(required = false) Long mts2Descubiertos, @RequestParam(required = false) String localidad,
@@ -103,12 +104,13 @@ public class PropiedadControlador {
         }
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/lista")
     public String listar(ModelMap modelo, @Param("keyword") String keyword) {
         try {
             List<Propiedad> propiedades = new ArrayList<>();
             if (keyword == null) {
-                propiedadRepositorio.ordenarPropiedadPorFechaDesc().forEach(propiedades::add);
+                propiedadRepositorio.findAll().forEach(propiedades::add);
             } else {
                 propiedadRepositorio.buscarPropiedadPorCalle(keyword).forEach(propiedades::add);
                 modelo.addAttribute("keyword", keyword);
@@ -130,11 +132,11 @@ public class PropiedadControlador {
 
             if (keyword == null) {
                 propiedadRepositorio.ordenarPropiedadPorFechaDesc().forEach(propiedades::add);
-                ImagenesPorPropiedad(modelo);
+//                ImagenesPorPropiedad(modelo);
             } else {
                 propiedadRepositorio.buscarPropiedadPotTipoDeVivienda(keyword, keyword1, keyword2, keyword3, keyword4, keyword5).forEach(propiedades::add);
                 modelo.addAttribute("keyword", keyword);
-                ImagenesPorPropiedad(modelo);
+//                ImagenesPorPropiedad(modelo);
             }
             modelo.addAttribute("propiedades", propiedades);
         } catch (Exception e) {
@@ -142,30 +144,30 @@ public class PropiedadControlador {
         }
         return "index.html";
     }
-
-    public void ImagenesPorPropiedad(ModelMap modelo) {
-        List<Propiedad> propiedades = propiedadRepositorio.findAll();
-        List<Imagen> imagenes = imagenRepositorio.findAll();
-
-        Map<Integer, List<String>> imagenesPorPropiedad = new HashMap<>();
-
-        for (Propiedad aux : propiedades) {
-            Integer idPropiedad = aux.getIdPropiedad();
-            List<String> imagen1 = new ArrayList<>();
-
-            for (Imagen aux1 : imagenes) {
-                if (aux1.getPropiedad().getIdPropiedad() == idPropiedad) {
-                    byte[] foto = aux1.getContenido();
-                    String base = Base64.getEncoder().encodeToString(foto);
-                    imagen1.add(base);
-                }
-            }
-            imagenesPorPropiedad.put(idPropiedad, imagen1);
-        }
-        modelo.addAttribute("propiedades", propiedades);
-        modelo.addAttribute("imagenesPorPropiedad", imagenesPorPropiedad);
-
-    }
+//
+//    public void ImagenesPorPropiedad(ModelMap modelo) {
+//        List<Propiedad> propiedades = propiedadRepositorio.findAll();
+//        List<Imagen> imagenes = imagenRepositorio.findAll();
+//
+//        Map<Integer, List<String>> imagenesPorPropiedad = new HashMap<>();
+//
+//        for (Propiedad aux : propiedades) {
+//            Integer idPropiedad = aux.getIdPropiedad();
+//            List<String> imagen1 = new ArrayList<>();
+//
+//            for (Imagen aux1 : imagenes) {
+//                if (aux1.getPropiedad().getIdPropiedad() == idPropiedad) {
+//                    byte[] foto = aux1.getContenido();
+//                    String base = Base64.getEncoder().encodeToString(foto);
+//                    imagen1.add(base);
+//                }
+//            }
+//            imagenesPorPropiedad.put(idPropiedad, imagen1);
+//        }
+//        modelo.addAttribute("propiedades", propiedades);
+//        modelo.addAttribute("imagenesPorPropiedad", imagenesPorPropiedad);
+//
+//    }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("modificar/{idPropiedad}")
@@ -178,6 +180,7 @@ public class PropiedadControlador {
         return "propiedad_modificar.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping("modificar/{idPropiedad}")
     public String modificar(@PathVariable Integer idPropiedad, Long mts2Totales, Long mts2Cubiertos, Long mts2Descubiertos, String localidad, String barrio, String calle,
             String descripcion, String altura, Integer cantBanios, Integer cantHabitaciones, String estado, Boolean aguaCorriente, Boolean aireAcondicionado,
