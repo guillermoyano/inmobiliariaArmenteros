@@ -1,6 +1,5 @@
 package com.inmobiliaria.armenteros.servicios;
 
-import com.inmobiliaria.armenteros.entidades.Imagen;
 import com.inmobiliaria.armenteros.entidades.Usuario;
 import com.inmobiliaria.armenteros.enumeraciones.Rol;
 import com.inmobiliaria.armenteros.excepciones.MiException;

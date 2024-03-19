@@ -1,18 +1,12 @@
 package com.inmobiliaria.armenteros.controladores;
 
-import com.inmobiliaria.armenteros.entidades.Imagen;
-import com.inmobiliaria.armenteros.entidades.Propiedad;
 import com.inmobiliaria.armenteros.entidades.Usuario;
 import com.inmobiliaria.armenteros.excepciones.MiException;
 import com.inmobiliaria.armenteros.repositorios.ImagenRepositorio;
 import com.inmobiliaria.armenteros.repositorios.PropiedadRepositorio;
 import com.inmobiliaria.armenteros.servicios.UsuarioServicio;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

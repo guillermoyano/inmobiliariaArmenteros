@@ -1,18 +1,12 @@
 package com.inmobiliaria.armenteros.controladores;
 
-import com.inmobiliaria.armenteros.entidades.Imagen;
 import com.inmobiliaria.armenteros.entidades.Propiedad;
 import com.inmobiliaria.armenteros.excepciones.MiException;
-import com.inmobiliaria.armenteros.repositorios.ImagenRepositorio;
 import com.inmobiliaria.armenteros.repositorios.PropiedadRepositorio;
-import com.inmobiliaria.armenteros.repositorios.PropietarioRepositorio;
 import com.inmobiliaria.armenteros.servicios.PropiedadServicio;
 import com.inmobiliaria.armenteros.servicios.PropietarioServicio;
 import java.util.ArrayList;
-import java.util.Base64;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -40,10 +34,6 @@ public class PropiedadControlador {
     PropiedadRepositorio propiedadRepositorio;
     @Autowired
     PropietarioServicio propietarioServicio;
-    @Autowired
-    PropietarioRepositorio propietarioRepositorio;
-    @Autowired
-    ImagenRepositorio imagenRepositorio;
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("/registrar/{idPropietario}")
@@ -132,11 +122,9 @@ public class PropiedadControlador {
 
             if (keyword == null) {
                 propiedadRepositorio.ordenarPropiedadPorFechaDesc().forEach(propiedades::add);
-//                ImagenesPorPropiedad(modelo);
             } else {
                 propiedadRepositorio.buscarPropiedadPotTipoDeVivienda(keyword, keyword1, keyword2, keyword3, keyword4, keyword5).forEach(propiedades::add);
                 modelo.addAttribute("keyword", keyword);
-//                ImagenesPorPropiedad(modelo);
             }
             modelo.addAttribute("propiedades", propiedades);
         } catch (Exception e) {
@@ -144,30 +132,6 @@ public class PropiedadControlador {
         }
         return "index.html";
     }
-//
-//    public void ImagenesPorPropiedad(ModelMap modelo) {
-//        List<Propiedad> propiedades = propiedadRepositorio.findAll();
-//        List<Imagen> imagenes = imagenRepositorio.findAll();
-//
-//        Map<Integer, List<String>> imagenesPorPropiedad = new HashMap<>();
-//
-//        for (Propiedad aux : propiedades) {
-//            Integer idPropiedad = aux.getIdPropiedad();
-//            List<String> imagen1 = new ArrayList<>();
-//
-//            for (Imagen aux1 : imagenes) {
-//                if (aux1.getPropiedad().getIdPropiedad() == idPropiedad) {
-//                    byte[] foto = aux1.getContenido();
-//                    String base = Base64.getEncoder().encodeToString(foto);
-//                    imagen1.add(base);
-//                }
-//            }
-//            imagenesPorPropiedad.put(idPropiedad, imagen1);
-//        }
-//        modelo.addAttribute("propiedades", propiedades);
-//        modelo.addAttribute("imagenesPorPropiedad", imagenesPorPropiedad);
-//
-//    }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping("modificar/{idPropiedad}")

@@ -62,7 +62,6 @@ public class UsuarioControlador {
     public String cambiarRol(@PathVariable String id, RedirectAttributes redirect) {
         try {
             usuarioServicio.cambiarRol(id);
-//            redirectAttributes.addFlashAttribute("success", "El usuario con id=" + id + " ha sido modificado correctamente!");
         } catch (MiException e) {
             redirect.addFlashAttribute("error", e.getMessage());
             return "redirect:/listarUsuarios";
