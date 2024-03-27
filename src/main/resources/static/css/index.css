@@ -107,5 +107,9 @@ a:visited {
     border: 2px black solid;
 }
 
+.page-link:hover {
+    background-color: #212529 !important;
+    color: white !important;
+}
 
 
