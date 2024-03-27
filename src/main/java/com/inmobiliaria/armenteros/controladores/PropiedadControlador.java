@@ -121,7 +121,7 @@ public class PropiedadControlador {
             @Param("keyword3") String keyword3, @Param("keyword4") Long keyword4, @Param("keyword5") Long keyword5, Pageable pageable) {
 
         try {
-            pageable = PageRequest.of(pageable.getPageNumber(), 3, pageable.getSort());
+            pageable = PageRequest.of(pageable.getPageNumber(), 6, pageable.getSort());
             Page<Propiedad> propiedadesPage;
 
             if (keyword == null) {

@@ -1,7 +1,7 @@
-.body{
+.body {
     display: grid;
     grid-template-columns: repeat(auto-fit,
-        minmax(150px, 1fr));
+            minmax(150px, 1fr));
     gap: 32px;
     background-image: url('../img/Inmobiliaria.jpg');
     background-size: cover;
@@ -89,9 +89,23 @@ a:visited {
     /* Elimina el subrayado */
 }
 
-.loguito{
-    width: 34%; 
+.loguito {
+    width: 34%;
 }
-.loguito-modal{
-    width: 30%; 
+
+.loguito-modal {
+    width: 30%;
 }
+
+.custom-div {
+    background-color: rgb(255, 255, 255);
+    color: black; /* Cambiado a negro */
+    padding: 20px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px black solid;
+}
+
+
+
